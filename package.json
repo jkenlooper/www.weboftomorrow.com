@@ -1,0 +1,22 @@
+{
+  "name": "www.weboftomorrow.com",
+  "description": "A statically generated website",
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "cssnano": "^3.0.3",
+    "postcss-bem-linter": "^1.1.0",
+    "postcss-calc": "^5.0.0",
+    "postcss-cli": "^2.1.0",
+    "postcss-custom-media": "^5.0.0",
+    "postcss-custom-properties": "^5.0.0",
+    "postcss-import": "^7.0.0",
+    "postcss-reporter": "^1.2.1",
+    "postcss-url": "^5.0.0"
+  },
+  "scripts": {
+    "prepublish": "bower install && ./build.sh",
+    "build": "./build.sh"
+  },
+  "author": "Jake Hickenlooper",
+  "license": "WTFPL"
+}

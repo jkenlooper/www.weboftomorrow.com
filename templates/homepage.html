@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}
+  {{ logo_large|safe }}
+{% endblock %}
+
+{% block main %}
+{# screencasts list #}
+{# toc #}
+
+<article>
+{{ preface|readfile|markdown }}
+</article>
+
+{#
+<article>
+{{ foreword|readfile|markdown }}
+</article>
+#}
+{% endblock %}

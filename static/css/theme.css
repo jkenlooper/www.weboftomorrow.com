@@ -1,0 +1,9 @@
+.Base-footer {
+  border-top-color: var(--color-red);
+  background-color: var(--color-orange);
+  color: white;
+  text-shadow: 0 0 1px var(--color-red);
+}
+.Base-footer a {
+  color: inherit;
+}

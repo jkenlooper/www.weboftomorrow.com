@@ -1,0 +1,23 @@
+/* postcss-bem-linter: define BottomNav */
+
+.BottomNav {
+  overflow: hidden;
+  width: 100%;
+}
+  .BottomNav-inner {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap-reverse;
+    margin-left: -2.5rem;
+    margin-right: -2.5rem;
+  }
+    .BottomNav-link {
+      display: block;
+      text-align: right;
+      padding: 0.5rem 2.5rem;
+      text-decoration: none;
+      color: inherit;
+    }

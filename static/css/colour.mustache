@@ -1,0 +1,15 @@
+{{#palettes}}
+/*! Colourlovers Palette
+    {{title}}
+    {{url}}
+    by: {{user_name}}
+    {{description}}
+*/
+:root {
+{{#colors}}
+    /* {{title}} */
+    --color-{{normalized_title}}: {{hex}};
+{{/colors}}
+}
+
+{{/palettes}}

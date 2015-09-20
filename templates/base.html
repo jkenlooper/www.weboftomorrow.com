@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Web of Tomorrow</title>
+
+    <meta name="description" content="{{ description|readfile }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="{{ url_for('send_theme_file', filename='css/site.css') }}">
+
+  </head>
+  <body>
+
+    <div class="Base">
+      <header class="Base-header">
+        <div class="Base-content">
+          {% block header %}
+          Add a default header...
+          {{ logo|safe }}
+          <nav class="local">
+          </nav>
+          {% endblock %}
+        </div>
+      </header>
+
+      <main role="main" class="Base-main">
+      <div class="Base-content">
+        {% block main %}
+
+        {% endblock %}
+      </div>
+      </main>
+
+      <div class="Base-bottom">
+        <div class="Base-content">
+
+          {% if site.bottom_nav %}
+          <div class="BottomNav">
+            <nav class="BottomNav-inner">
+              {% for item in site.bottom_nav %}
+              <a class="BottomNav-link" href="{{ url_for('.page_uri', uri=item.link) }}">
+                {{ item.linkname }}
+              </a>
+              {% endfor %}
+            </nav>
+          </div>
+          {% endif %}
+        </div>
+
+        <footer class="Base-footer">
+          <div class="Base-content">
+
+            <div class="BottomFooter">
+
+              <div class="BottomFooter-info">
+                <p>
+                <strong>Location: </strong>
+                <span class="u-textNoWrap">{{ site.location }}</span>
+                </p>
+                <p>
+                <strong>GitHub: </strong>
+                <a href="https://github.com/jkenlooper"
+                  title="github - jkenlooper (Jake Hickenlooper)"
+                  class="i-github-mark-light">
+                </a>
+                </p>
+              </div>
+
+              <div class="BottomFooter-copy">
+                {{ site.footer_copy|readfile|markdown }}
+              </div>
+              <div class="BottomFooter-version">
+                <a href="https://github.com/jkenlooper/www.weboftomorrow.com/tree/{{ config.VERSION }}"
+                   title="Review the source for this version of the website.">
+                {{ config.VERSION }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

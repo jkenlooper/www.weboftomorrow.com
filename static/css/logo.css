@@ -1,0 +1,21 @@
+.Logo {
+  text-align: center;
+  padding-bottom: 4.0rem;
+}
+  .Logo-img {
+    max-width: 21.3rem;
+    max-height: 21.3rem;
+    min-width: 11.3rem;
+    min-height: 11.3rem;
+    width: 100%;
+    height: 100%;
+  }
+  .Logo-caption {
+  }
+
+@media (--sm-viewport) {
+  .Logo-img {
+    width: 50vmin;
+    height: 50vmin;
+  }
+}

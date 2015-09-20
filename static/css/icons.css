@@ -1,0 +1,13 @@
+/*
+ * At the moment there is just this single icon.  So just manually adding it.
+ */
+
+.i-github-mark-light {
+  background-image: url(./img/GitHub-Mark-Light-64px.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
