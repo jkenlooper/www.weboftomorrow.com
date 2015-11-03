@@ -4,30 +4,79 @@
 
 /*
  * Specificity ordered stylesheet (ITCSS).
- * Most components follow the suitcss naming convention.
  */
 
-/* Generic */
-@import "normalize.css/normalize.css";
+/* 0 Generic */
+/* For reset styles. */
+@import "normalize.css";
 
-/* Base */
-@import "plain.css";
-@import "typography.css";
+/* 1 Elements */
+/* Only plain element selectors with no class or id used. */
+/* The plain.css is commonly used to set default margin/padding, border styles. */
+/*
+ * Typographic styles
+ * should be set in the dry-typography.css. */
+/* Grouped by default display type. */
+/* block - body, div, h1-h6, p,  section, article, ... */
+/* table - table, th, td, ... */
+/* inline-block - img, input, button, ... */
+/* inline - a, strong, em, ... */
+@import "1-elements/plain.css";
+/* DRY typography for setting a limited set of typographic styles.  A maximum
+ * of 6 sets of rules for font-size, line-height is good.  Depending on the
+ * site's design; having other typographic features such as color or
+ * text-transform may be used. */
+@import "1-elements/dry-typography.css";
 
-/* Objects */
-@import "suit-components-grid/index.css";
+/* 2 Objects */
+/* These are design agnostic and are used in a wide range of websites.  Mostly
+ * for commonly used layouts and such. Most should follow the SUIT CSS naming
+ * convention. */
+@import "suitcss-components-grid";
 
-/* UI Components */
-@import "base.css";
-@import "bottom-nav.css";
-@import "bottom-footer.css";
-@import "logo.css";
+/* 3 Components */
+/* Components follow the SUIT CSS naming convention and have a test page
+ * describing intended use. Grouped by global and local and can be in any order
+ * within those groups. */
+/* Global components */
+/* These components are imported from elsewhere and have design elements unlike
+ * objects. */
 
-/* Theme variables */
-@import "variables.css";
-@import "theme.css";
+/* Local components */
+/* Can modifiy a global component with the same name.  These components can
+ * have the site's design applied to them here. However, components should not
+ * set styles that are not specific to it.  For example, a component should not
+ * set typographic styles as these are generally not specific to that
+ * component. Also, they should not set any vertical spacing or border styles
+ * as those are only relevant to the parent container which is usually part of
+ * the theme layout. */
+@import "3-components/base";
+@import "3-components/bottom-nav.css";
+@import "3-components/bottom-footer.css";
+@import "3-components/logo.css";
 
-/* Utilities */
-@import "icons.css";
-@import "suit-utils-size/index.css";
-@import "suitcss-utils-text/index.css";
+/* 4 Theme */
+/* For styling a wider range of selectors to fit the overall theme of a site.
+ * This is where using the full cascade comes into play. An example is setting
+ * the font-size of all strong elements within the sidebar. Or changing the
+ * header style used on a component when it's within another component and
+ * using a -wrapComponent is not warranted. */
+/* CAUTION: Having too many styles within the theme can get messy. It's better
+ * to isolate styles into components if possible. */
+/* Selectors here are commonly prefixed with a 't-'.
+/* The 'layout' sets the spacing and border styling of components.
+ */
+@import "4-theme/colour.css";
+@import "4-theme/theme.css";
+
+/* 5 Utilities */
+@import "5-utilities/icons.css";
+@import "suitcss-utils-size";
+@import "suitcss-utils-text";
+
+/* Root Settings */
+/* Define the variables used for custom media queries, typography, image sizes,
+ * and other general settings that are used throughout. Not all variables are
+ * defined here, just the ones that should preserve their value.  This is why
+ * it's last. */
+@import "6-settings/settings.css";

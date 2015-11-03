@@ -11,12 +11,19 @@
     "postcss-custom-properties": "^5.0.0",
     "postcss-import": "^7.0.0",
     "postcss-reporter": "^1.2.1",
-    "postcss-url": "^5.0.0"
+    "postcss-url": "^5.0.0",
+    "suitcss-components-test": "^0.2.1"
   },
   "scripts": {
-    "prepublish": "bower install && ./build.sh",
-    "build": "./build.sh"
+    "prepublish": "rm -rf dist/css && mkdir -p dist/css && npm run buildcss",
+    "buildcss": "postcss -c static/css/postcss.json"
   },
   "author": "Jake Hickenlooper",
-  "license": "WTFPL"
+  "license": "WTFPL",
+  "dependencies": {
+    "normalize.css": "^3.0.3",
+    "suitcss-components-grid": "^2.0.2",
+    "suitcss-utils-size": "^0.7.2",
+    "suitcss-utils-text": "^0.4.2"
+  }
 }
