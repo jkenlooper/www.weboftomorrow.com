@@ -1,4 +1,4 @@
-/* postcss-bem-linter: define Base */
+/** @define Base; use strict */
 
 /* Base component is the general layout of the site. */
 /* Set the specific colors and such in the theme.css */

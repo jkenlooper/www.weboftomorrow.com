@@ -1,2 +1,10 @@
 @import "jackup";
+
 @import "../index.css";
+
+/* Add custom styles to aid in visual tests. */
+body {
+  margin: 0px;
+  font-size: 62.5%;
+  padding: 0px;
+}

@@ -1,24 +1,23 @@
 {
   "name": "base",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "A CSS Component following the suitcss naming convention.",
   "main": "index.css",
   "style": "index.css",
   "files": [
     "index.css"
   ],
   "scripts": {
-    "build": "npm run setup && npm run preprocess",
-    "build-test": "npm run setup && npm run preprocess-test",
-    "preprocess": "suitcss index.css build/build.css",
-    "preprocess-test": "suitcss test/test.css build/test.css",
-    "setup": "npm install && mkdir -p build"
+    "prepublish": "mkdir -p dist && npm run buildcss && npm run buildcss-test",
+    "buildcss": "suitcss index.css dist/index.css",
+    "buildcss-test": "suitcss test/test.css dist/test.css",
+    "npm-prerequisites": "csssources test/test.css index.css > .npm-prerequisites"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "csssources": "*",
     "jackup": "0.0.0",
-    "suitcss-preprocessor": "~0.4.0",
-    "suitcss-components-test": "^0.2.1"
-  }
+    "suitcss-preprocessor": "~0.4.0"
+  },
+  "author": "Jake Hickenlooper <jake@weboftomorrow.com>",
+  "license": "MIT"
 }
