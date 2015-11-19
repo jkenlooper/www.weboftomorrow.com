@@ -1,4 +1,7 @@
 /.verify_version_*
+/.livereload
+/.npm-prerequisites
+/.npm-target
 /node_modules/
 /bower_components/
 /db
@@ -8,3 +11,4 @@
 
 /documents
 /media
+

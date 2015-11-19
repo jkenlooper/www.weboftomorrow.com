@@ -4,6 +4,7 @@
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "cssnano": "^3.0.3",
+    "csssources": "0.0.1",
     "postcss-bem-linter": "^1.1.0",
     "postcss-calc": "^5.0.0",
     "postcss-cli": "^2.1.0",
@@ -15,14 +16,16 @@
     "suitcss-components-test": "^0.2.1"
   },
   "scripts": {
-    "prepublish": "rm -rf dist/css && mkdir -p dist/css && npm run buildcss",
-    "buildcss": "postcss -c static/css/postcss.json"
+    "prepublish": "mkdir -p dist/css && npm run buildcss",
+    "buildcss": "postcss -c static/css/postcss.json",
+    "npm-prerequisites": "csssources static/css/site.css > .npm-prerequisites"
   },
   "author": "Jake Hickenlooper",
   "license": "WTFPL",
   "dependencies": {
     "normalize.css": "^3.0.3",
     "suitcss-components-grid": "^2.0.2",
+    "suitcss-utils-layout": "^0.4.2",
     "suitcss-utils-size": "^0.7.2",
     "suitcss-utils-text": "^0.4.2"
   }
