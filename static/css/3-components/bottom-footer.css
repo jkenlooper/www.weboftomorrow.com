@@ -3,6 +3,7 @@
 .BottomFooter {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
 }
@@ -10,12 +11,18 @@
   min-width: 113px;
 }
 .BottomFooter-copy {
+  min-width: 20rem;
   max-width: 51rem;
   margin-left: 10px;
   margin-right: 0px;
   padding-bottom: 4.0rem;
 }
-.BottomFooter-version {
+.BottomFooter-end {
   align-self: flex-end;
-  padding-left: 0px;
 }
+  .BottomFooter-dinosaur {
+  }
+  .BottomFooter-version {
+    padding-left: 0px;
+    text-align: right;
+  }

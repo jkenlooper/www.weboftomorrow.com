@@ -73,11 +73,25 @@
               <div class="BottomFooter-copy">
                 {{ site.footer_copy|readfile|markdown }}
               </div>
-              <div class="BottomFooter-version">
-                <a href="https://github.com/jkenlooper/www.weboftomorrow.com/tree/{{ config.VERSION }}"
-                   title="Review the source for this version of the website.">
-                {{ config.VERSION }}
-                </a>
+
+              <div class="BottomFooter-end">
+                {% if site.footer_dinosaur %}
+                <div class="BottomFooter-dinosaur">
+                  <!-- Beware! This site has a Dinosaur! RWOAER!! -->
+                  <img
+                     class="Dinosaur"
+                     src="{{ url_for('send_media_file', filename=site.footer_dinosaur.path) }}"
+                     alt="{{ site.footer_dinosaur.title }}"
+                     width="{{ site.footer_dinosaur.width }}"
+                     height="{{ site.footer_dinosaur.height }}">
+                </div>
+                {% endif %}
+                <div class="BottomFooter-version">
+                  <a href="https://github.com/jkenlooper/www.weboftomorrow.com/tree/{{ config.VERSION }}"
+                     title="Review the source for this version of the website.">
+                  {{ config.VERSION }}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
