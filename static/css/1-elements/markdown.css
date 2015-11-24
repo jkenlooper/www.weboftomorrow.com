@@ -1,0 +1,67 @@
+/* markdown.css
+ * Using mostly pseudo elements; attach common markdown syntax back to the HTML elements.
+ */
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before,
+strong::before,
+strong::after,
+b::before,
+b::after,
+em::before,
+em::after,
+li::before {
+  opacity: 0.42;
+}
+h1::before {
+  content: '# ';
+}
+h2::before {
+  content: '## ';
+}
+h3::before {
+  content: '### ';
+}
+h4::before {
+  content: '#### ';
+}
+h5::before {
+  content: '##### ';
+}
+h6::before {
+  content: '###### ';
+}
+
+b::before,
+strong::before {
+  content: '**';
+}
+b::after,
+strong::after {
+  content: '**';
+}
+
+em::before {
+  content: '*';
+}
+em::after {
+  content: '*';
+}
+
+/* Replace the default list-style. */
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin-left: 1.5em;
+}
+ul > li::before {
+  content: '* ';
+  float: left;
+  margin-left: -1.5em;
+}

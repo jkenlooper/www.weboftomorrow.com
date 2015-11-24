@@ -1,3 +1,9 @@
+/* Only styles for things that are not typographic. */
+body {
+  background-color: var(--color-beige);
+  color: var(--color-darkpurple);
+  padding: 0;
+}
 /* Add a fixed top shadow */
 body::before {
   content: "";
@@ -10,3 +16,74 @@ body::before {
   z-index: 10;
 }
 
+/* block */
+address,
+p {
+  margin: 0 0 1.3rem;
+}
+address {
+  font-style: normal;
+  line-height: 1.5em;
+}
+article {
+  max-width: 80rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+article h1 {
+  position: relative;
+  text-align: center;
+  margin-top: 2.0rem;
+  padding-bottom: calc(0.7rem + 0.4rem);
+  /* See ::after element.
+  border-bottom: 0.4rem solid var(--color-red);
+  */
+  margin-bottom: 1.5rem;
+}
+article h1::after {
+  /* Add a bottom border with oh so fancy rounded edges.  For safety reasons. */
+  content: "";
+  background-color: var(--color-red);
+  border-radius: 0.2rem;
+  height: 0.4rem;
+  display: block;
+  position: absolute;
+  bottom: 0.5rem;
+  left: -2.5rem;
+  right: -2.5rem;
+}
+/* Indent the first paragraph after a header in an article. */
+article h1 + p,
+article h2 + p,
+article h3 + p {
+  text-indent: 2.5rem;
+}
+article li p {
+  text-indent: 0;
+}
+
+/* inline-block */
+
+/* table */
+
+/* inline */
+a {
+  color: inherit;
+  text-decoration: none;
+  color: var(--color-red);
+}
+
+strong,
+b {
+  text-shadow: 0.05em 0.05em 0 rgba(0,0,0,0.25);
+}
+
+@media (--sm-viewport) {
+  body {
+  }
+  h1,h2,h3,h4,h5,h6,
+  header {
+  }
+}

@@ -12,21 +12,9 @@
 
 /* 1 Elements */
 /* Only plain element selectors with no class or id used. */
-/* The plain.css is commonly used to set default margin/padding, border styles. */
-/*
- * Typographic styles
- * should be set in the dry-typography.css. */
-/* Grouped by default display type. */
-/* block - body, div, h1-h6, p,  section, article, ... */
-/* table - table, th, td, ... */
-/* inline-block - img, input, button, ... */
-/* inline - a, strong, em, ... */
 @import "1-elements/plain.css";
-/* DRY typography for setting a limited set of typographic styles.  A maximum
- * of 6 sets of rules for font-size, line-height is good.  Depending on the
- * site's design; having other typographic features such as color or
- * text-transform may be used. */
 @import "1-elements/dry-typography.css";
+@import "1-elements/markdown.css";
 
 /* 2 Objects */
 /* These are design agnostic and are used in a wide range of websites.  Mostly
@@ -72,6 +60,7 @@
 /* 5 Utilities */
 @import "5-utilities/icons.css";
 @import "suitcss-utils-size";
+@import "suitcss-utils-layout";
 @import "suitcss-utils-text";
 
 /* Root Settings */

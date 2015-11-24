@@ -8,3 +8,6 @@ body {
   font-size: 62.5%;
   padding: 0px;
 }
+.test-main-content {
+  height: 100vh;
+}
