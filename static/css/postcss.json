@@ -1,6 +1,7 @@
 {
   "input": [
-    "static/css/site.css"
+    "static/css/site.css",
+    "static/css/print.css"
   ],
   "use": [
     "postcss-import",

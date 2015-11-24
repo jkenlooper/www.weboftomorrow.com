@@ -1,0 +1,49 @@
+body {
+  background-color: white;
+  color: black;
+  font-size: 1.0rem;
+  padding: 0;
+}
+/* block */
+address,
+p {
+  margin: 0 0 1.3rem;
+}
+address {
+  font-style: normal;
+  line-height: 1.5em;
+}
+article {
+}
+article h1 {
+}
+
+/* inline-block */
+
+/* table */
+
+/* inline */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+strong,
+b {
+  text-shadow: 0.05em 0.05em 0 rgba(0,0,0,0.25);
+}
+
+/* typography */
+/* headers */
+h1,h2,h3,h4,h5,h6,
+em {
+}
+
+/* Any use of this 'typewriter' font will all
+ * have the same font-size. */
+h1,h2,h3,h4,h5,h6,
+nav,
+header {
+  font-size: 1.2rem;
+}
+

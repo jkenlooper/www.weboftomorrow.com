@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="{{ url_for('send_theme_file', filename='css/site.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ url_for('send_theme_file', filename='css/site.css') }}">
+    <link rel="stylesheet" media="print" href="{{ url_for('send_theme_file', filename='css/print.css') }}">
 
   </head>
   <body>

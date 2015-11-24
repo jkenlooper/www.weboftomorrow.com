@@ -18,7 +18,7 @@
   "scripts": {
     "prepublish": "mkdir -p dist/css && npm run buildcss",
     "buildcss": "postcss -c static/css/postcss.json",
-    "npm-prerequisites": "csssources static/css/site.css > .npm-prerequisites"
+    "npm-prerequisites": "csssources static/css/site.css static/css/print.css > .npm-prerequisites"
   },
   "author": "Jake Hickenlooper",
   "license": "WTFPL",

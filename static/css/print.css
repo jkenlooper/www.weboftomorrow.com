@@ -1,4 +1,4 @@
-/*! Site stylesheet for Web of Tomorrow
+/*! Print stylesheet for Web of Tomorrow
  * Author: Jake Hickenlooper
  */
 
@@ -12,9 +12,9 @@
 
 /* 1 Elements */
 /* Only plain element selectors with no class or id used. */
-@import "1-elements/plain.css";
 @import "1-elements/dry-typography.css";
 @import "1-elements/markdown.css";
+@import "1-elements/print.css";
 
 /* 2 Objects */
 /* These are design agnostic and are used in a wide range of websites.  Mostly
@@ -38,10 +38,6 @@
  * component. Also, they should not set any vertical spacing or border styles
  * as those are only relevant to the parent container which is usually part of
  * the theme layout. */
-@import "3-components/base";
-@import "3-components/bottom-nav.css";
-@import "3-components/bottom-footer.css";
-@import "3-components/logo.css";
 
 /* 4 Theme */
 /* For styling a wider range of selectors to fit the overall theme of a site.
@@ -55,11 +51,10 @@
 /* The 'layout' sets the spacing and border styling of components.
  */
 @import "4-theme/colour.css";
-@import "4-theme/theme.css";
 @import "4-theme/resume.css";
+@import "4-theme/print.css";
 
 /* 5 Utilities */
-@import "5-utilities/icons.css";
 @import "suitcss-utils-size";
 @import "suitcss-utils-layout";
 @import "suitcss-utils-text";
