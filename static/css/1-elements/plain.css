@@ -17,14 +17,6 @@ body::before {
 }
 
 /* block */
-address,
-p {
-  margin: 0 0 1.3rem;
-}
-address {
-  font-style: normal;
-  line-height: 1.5em;
-}
 article {
   max-width: 80rem;
   padding-left: 2.5rem;
@@ -70,7 +62,6 @@ article li p {
 
 /* inline */
 a {
-  color: inherit;
   text-decoration: none;
   color: var(--color-red);
 }

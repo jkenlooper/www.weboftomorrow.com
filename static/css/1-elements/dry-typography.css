@@ -45,3 +45,11 @@ header {
   display: block;
 }
 
+address,
+p {
+  margin: 0 0 1.3rem;
+}
+address {
+  font-style: normal;
+  line-height: 1.5em;
+}
