@@ -5,12 +5,14 @@
   ],
   "use": [
     "postcss-import",
+    "postcss-nested",
     "postcss-custom-properties",
     "postcss-custom-media",
     "postcss-calc",
     "autoprefixer",
     "postcss-url",
     "postcss-reporter",
+    "css-byebye",
     "cssnano"
   ],
   "dir": "dist/css",
@@ -19,5 +21,13 @@
   "postcss-calc": {},
   "postcss-url": {
     "url": "copy"
+  },
+  "css-byebye": {
+    "rulesToRemove": [
+      ""
+    ]
+  },
+  "cssnano": {
+    "safe": true
   }
 }

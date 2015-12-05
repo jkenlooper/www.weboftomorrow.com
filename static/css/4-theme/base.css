@@ -1,28 +1,27 @@
-/** @define Base; use strict */
-
-/* Base component is the general layout of the site. */
-/* Set the specific colors and such in the theme.css */
-
-.Base {
+.wot-Base {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.Base-header {
+.wot-Base-header {
 }
-.Base-main {
+.wot-Base-main {
 }
-.Base-bottom {
+.wot-Base-bottom {
     padding-top: 3.0rem;
 }
-  .Base-footer {
+  .wot-Base-footer {
     padding-top: 3.0rem;
     border-top-width: 0.3rem;
     border-top-style: solid;
     box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    border-top-color: var(--color-red);
+    background-color: var(--color-orange);
+    color: white;
+    text-shadow: 0 0 1px var(--color-red);
   }
-.Base-content {
+.wot-Base-content {
   padding: 1.0rem;
   box-sizing: border-box;
   max-width: 120.0rem;

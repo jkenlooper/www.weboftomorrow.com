@@ -3,6 +3,7 @@
   "description": "A statically generated website",
   "devDependencies": {
     "autoprefixer": "^6.0.3",
+    "css-byebye": "^1.0.1",
     "cssnano": "^3.0.3",
     "csssources": "0.0.1",
     "postcss-bem-linter": "^1.1.0",
@@ -11,6 +12,7 @@
     "postcss-custom-media": "^5.0.0",
     "postcss-custom-properties": "^5.0.0",
     "postcss-import": "^7.0.0",
+    "postcss-nested": "^1.0.0",
     "postcss-reporter": "^1.2.1",
     "postcss-url": "^5.0.0",
     "suitcss-components-test": "^0.2.1"
@@ -24,9 +26,6 @@
   "license": "WTFPL",
   "dependencies": {
     "normalize.css": "^3.0.3",
-    "suitcss-components-grid": "^2.0.2",
-    "suitcss-utils-layout": "^0.4.2",
-    "suitcss-utils-size": "^0.7.2",
     "suitcss-utils-text": "^0.4.2"
   }
 }

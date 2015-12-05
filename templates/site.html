@@ -1,0 +1,23 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Web of Tomorrow</title>
+
+    <meta name="description" content="{{ description|readfile }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" media="screen" href="{{ url_for('send_theme_file', filename='css/site.css') }}">
+    <link rel="stylesheet" media="print" href="{{ url_for('send_theme_file', filename='css/print.css') }}">
+
+  </head>
+  <body>
+
+    {% block body %}
+    {% endblock %}
+
+  </body>
+</html>

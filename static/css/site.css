@@ -4,69 +4,32 @@
 
 /*
  * Specificity ordered stylesheet (ITCSS).
+ * See ./README.md
  */
 
 /* 0 Generic */
-/* For reset styles. */
 @import "normalize.css";
 
 /* 1 Elements */
-/* Only plain element selectors with no class or id used. */
-@import "1-elements/plain.css";
-@import "1-elements/dry-typography.css";
+@import "1-elements/site.css";
+@import "1-elements/typography.css";
 @import "1-elements/markdown.css";
 
 /* 2 Objects */
-/* These are design agnostic and are used in a wide range of websites.  Mostly
- * for commonly used layouts and such. Most should follow the SUIT CSS naming
- * convention. */
-@import "suitcss-components-grid";
 
 /* 3 Components */
-/* Components follow the SUIT CSS naming convention and have a test page
- * describing intended use. Grouped by global and local and can be in any order
- * within those groups. */
-/* Global components */
-/* These components are imported from elsewhere and have design elements unlike
- * objects. */
-
-/* Local components */
-/* Can modifiy a global component with the same name.  These components can
- * have the site's design applied to them here. However, components should not
- * set styles that are not specific to it.  For example, a component should not
- * set typographic styles as these are generally not specific to that
- * component. Also, they should not set any vertical spacing or border styles
- * as those are only relevant to the parent container which is usually part of
- * the theme layout. */
-@import "3-components/base";
 @import "3-components/bottom-nav.css";
 @import "3-components/bottom-footer.css";
 @import "3-components/logo.css";
 
 /* 4 Theme */
-/* For styling a wider range of selectors to fit the overall theme of a site.
- * This is where using the full cascade comes into play. An example is setting
- * the font-size of all strong elements within the sidebar. Or changing the
- * header style used on a component when it's within another component and
- * using a -wrapComponent is not warranted. */
-/* CAUTION: Having too many styles within the theme can get messy. It's better
- * to isolate styles into components if possible. */
-/* Selectors here are commonly prefixed with a 't-'.
-/* The 'layout' sets the spacing and border styling of components.
- */
 @import "4-theme/colour.css";
-@import "4-theme/theme.css";
+@import "4-theme/base.css";
 @import "4-theme/resume.css";
 
 /* 5 Utilities */
 @import "5-utilities/icons.css";
-@import "suitcss-utils-size";
-@import "suitcss-utils-layout";
 @import "suitcss-utils-text";
 
 /* Root Settings */
-/* Define the variables used for custom media queries, typography, image sizes,
- * and other general settings that are used throughout. Not all variables are
- * defined here, just the ones that should preserve their value.  This is why
- * it's last. */
 @import "6-settings/settings.css";
