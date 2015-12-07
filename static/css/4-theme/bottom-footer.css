@@ -1,28 +1,26 @@
-/* postcss-bem-linter: define BottomFooter */
-
-.BottomFooter {
+.wot-BottomFooter {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
 }
-.BottomFooter-info {
+.wot-BottomFooter-info {
   min-width: 113px;
 }
-.BottomFooter-copy {
+.wot-BottomFooter-copy {
   min-width: 20rem;
   max-width: 51rem;
   margin-left: 10px;
   margin-right: 0px;
   padding-bottom: 4.0rem;
 }
-.BottomFooter-end {
+.wot-BottomFooter-end {
   align-self: flex-end;
 }
-  .BottomFooter-dinosaur {
+  .wot-BottomFooter-dinosaur {
   }
-  .BottomFooter-version {
+  .wot-BottomFooter-version {
     padding-left: 0px;
     text-align: right;
   }

@@ -1,0 +1,11 @@
+{% if site.bottom_nav %}
+<div class="wot-BottomNav">
+  <nav class="wot-BottomNav-inner">
+    {% for item in site.bottom_nav %}
+    <a class="wot-BottomNav-link" href="{{ url_for('.page_uri', uri=item.link) }}">
+      {{ item.linkname }}
+    </a>
+    {% endfor %}
+  </nav>
+</div>
+{% endif %}

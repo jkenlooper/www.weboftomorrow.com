@@ -1,0 +1,41 @@
+<div class="wot-BottomFooter">
+
+  <div class="wot-BottomFooter-info">
+    <p>
+    <span>Location: </span><br>
+    <span class="u-textNoWrap">{{ site.location }}</span>
+    </p>
+    <p>
+    <span>GitHub: </span><br>
+    <a href="https://github.com/jkenlooper"
+       title="github - jkenlooper (Jake Hickenlooper)"
+       class="i-github-mark-light u-textInheritColor">
+    </a>
+    </p>
+  </div>
+
+  <div class="wot-BottomFooter-copy">
+    {{ site.footer_copy|readfile|markdown }}
+  </div>
+
+  <div class="wot-BottomFooter-end">
+    {% if site.footer_dinosaur %}
+    <div class="wot-BottomFooter-dinosaur">
+      <!-- Beware! This site has a Dinosaur! RWOAER!! -->
+      <img
+         class="Dinosaur"
+         src="{{ url_for('send_media_file', filename=site.footer_dinosaur.path) }}"
+         alt="{{ site.footer_dinosaur.title }}"
+         width="{{ site.footer_dinosaur.width }}"
+         height="{{ site.footer_dinosaur.height }}">
+    </div>
+    {% endif %}
+    <div class="wot-BottomFooter-version">
+      <a href="https://github.com/jkenlooper/www.weboftomorrow.com/tree/{{ config.VERSION }}"
+         class="u-textInheritColor"
+         title="Review the source for this version of the website.">
+        {{ config.VERSION }}
+      </a>
+    </div>
+  </div>
+</div>

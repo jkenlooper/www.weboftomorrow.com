@@ -18,14 +18,14 @@
 /* 2 Objects */
 
 /* 3 Components */
-@import "3-components/bottom-nav.css";
-@import "3-components/bottom-footer.css";
 @import "3-components/logo.css";
 
 /* 4 Theme */
 @import "4-theme/colour.css";
 @import "4-theme/base.css";
 @import "4-theme/resume.css";
+@import "4-theme/bottom-nav.css";
+@import "4-theme/bottom-footer.css";
 
 /* 5 Utilities */
 @import "5-utilities/icons.css";

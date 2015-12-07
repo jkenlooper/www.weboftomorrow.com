@@ -1,8 +1,19 @@
 .Logo {
   text-align: center;
-  padding-bottom: 4.0rem;
 }
   .Logo-img {
+    width: 80px;
+    height: 80px;
+  }
+  .Logo-caption {
+  }
+
+/* Variant --large */
+.Logo--large {
+  padding-bottom: 4.0rem;
+}
+
+  .Logo--large .Logo-img {
     max-width: 21.3rem;
     max-height: 21.3rem;
     min-width: 11.3rem;
@@ -10,11 +21,11 @@
     width: 100%;
     height: 100%;
   }
-  .Logo-caption {
+  .Logo--large .Logo-caption {
   }
 
 @media (--sm-viewport) {
-  .Logo-img {
+  .Logo--large .Logo-img {
     width: 50vmin;
     height: 50vmin;
   }

@@ -34,3 +34,22 @@ be for simple things.
 typography, image sizes, and other general settings that are used throughout.
 Not all variables are defined here, just the ones that should preserve their
 value.  This is why it's last. 
+
+## Component versus Theme
+
+The rule of thumb for deciding whether a stylesheet should go in components or
+theme section.
+
+**Stylesheets within the *4-components* directory:**
+
+* Designed to be potentially reusable in different contexts.
+* Should have a test page where the styles are developed in isolation.
+
+
+**Stylesheets within the *4-theme* directory:**
+
+* Not likely to be used elsewhere.
+* Part of the name might have location attributes. For example: top-nav,
+  sidebar, footer-content.
+* May be used to modify the styles of a component by wrapping or hijacking.
+* Are usually developed on the site and not in a isolated test page.
