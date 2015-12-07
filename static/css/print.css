@@ -11,8 +11,8 @@
 @import "normalize.css";
 
 /* 1 Elements */
-@import "1-elements/print.css";
 @import "1-elements/typography.css";
+@import "1-elements/print.css";
 @import "1-elements/markdown.css";
 
 /* 2 Objects */
@@ -21,7 +21,6 @@
 
 /* 4 Theme */
 @import "4-theme/colour.css";
-@import "4-theme/resume.css";
 @import "4-theme/paper.css";
 
 /* 5 Utilities */

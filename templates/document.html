@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{% block stylesheet %}
+  {{ super() }}
+  {% if document_stylesheet %}
+  <link rel="stylesheet" media="all" href="{{ url_for('send_media_file', filename=document_stylesheet) }}">
+  {% endif %}
+{% endblock %}
+
 {% block main %}
 <article>
 {{ document|readfile|safe }}

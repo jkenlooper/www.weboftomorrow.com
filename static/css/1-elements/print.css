@@ -4,8 +4,14 @@ body {
   font-size: 1.0rem;
   padding: 0;
 }
+body::before {
+  display: none;
+}
 /* block */
 article {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 article h1 {
 }

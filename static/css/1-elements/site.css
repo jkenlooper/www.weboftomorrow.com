@@ -18,11 +18,8 @@ body::before {
 
 /* block */
 article {
-  max-width: 80rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  margin-left: auto;
-  margin-right: auto;
 }
 article h1 {
   position: relative;
@@ -47,9 +44,9 @@ article h1::after {
   right: -2.5rem;
 }
 /* Indent the first paragraph after a header in an article. */
-article h1 + p,
-article h2 + p,
-article h3 + p {
+article > h1 + p,
+article > h2 + p,
+article > h3 + p {
   text-indent: 2.5rem;
 }
 article li p {
