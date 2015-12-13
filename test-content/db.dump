@@ -28,17 +28,17 @@ CREATE TABLE Node (
     id integer primary key autoincrement,
     name varchar(255),
     value text
-    );
-INSERT INTO "Node" VALUES(5,'homepage',NULL);
-INSERT INTO "Node" VALUES(6,'site',NULL);
-INSERT INTO "Node" VALUES(7,'footer_copy',NULL);
-INSERT INTO "Node" VALUES(8,'footer_copy','footer_copy.md');
-INSERT INTO "Node" VALUES(10,'location','Salt Llama City');
-INSERT INTO "Node" VALUES(11,'contact','bob');
-INSERT INTO "Node" VALUES(12,'description','homepage-description.txt');
-INSERT INTO "Node" VALUES(14,'logo_large',NULL);
-INSERT INTO "Node" VALUES(17,'bottom_nav',NULL);
-INSERT INTO "Node" VALUES(28,'preface','preface.md');
+    , template integer references Template (id) on delete set null, query integer references Query (id) on delete set null);
+INSERT INTO "Node" VALUES(5,'homepage',NULL,1,1);
+INSERT INTO "Node" VALUES(6,'site',NULL,NULL,1);
+INSERT INTO "Node" VALUES(7,'footer_copy',NULL,NULL,NULL);
+INSERT INTO "Node" VALUES(8,'footer_copy','footer_copy.md',NULL,NULL);
+INSERT INTO "Node" VALUES(10,'location','Salt Llama City',NULL,NULL);
+INSERT INTO "Node" VALUES(11,'contact','bob',NULL,NULL);
+INSERT INTO "Node" VALUES(12,'description','homepage-description.txt',NULL,NULL);
+INSERT INTO "Node" VALUES(14,'logo_large',NULL,3,11);
+INSERT INTO "Node" VALUES(17,'bottom_nav',NULL,NULL,1);
+INSERT INTO "Node" VALUES(28,'preface','preface.md',NULL,NULL);
 CREATE TABLE Route (
     id integer primary key autoincrement,
     path text not null,
@@ -48,44 +48,18 @@ CREATE TABLE Route (
     foreign key ( node_id ) references Node ( id ) on delete set null
 );
 INSERT INTO "Route" VALUES(2,'/',5,'','GET');
-CREATE TABLE SelectSQL (
+CREATE TABLE "Query" (
     id integer primary key autoincrement,
     name varchar(255) not null
 );
-INSERT INTO "SelectSQL" VALUES(1,'select_link_node_from_node.sql');
-INSERT INTO "SelectSQL" VALUES(11,'select_picture_for_node.sql');
-CREATE TABLE SelectSQL_Node (
-    selectsql_id integer,
-    node_id integer,
-    foreign key ( selectsql_id ) references SelectSQL ( id ) on delete set null,
-    foreign key ( node_id ) references Node ( id ) on delete set null
-);
-INSERT INTO "SelectSQL_Node" VALUES(1,1);
-INSERT INTO "SelectSQL_Node" VALUES(1,5);
-INSERT INTO "SelectSQL_Node" VALUES(1,6);
-INSERT INTO "SelectSQL_Node" VALUES(1,4);
-INSERT INTO "SelectSQL_Node" VALUES(11,13);
-INSERT INTO "SelectSQL_Node" VALUES(11,5);
-INSERT INTO "SelectSQL_Node" VALUES(11,14);
-INSERT INTO "SelectSQL_Node" VALUES(1,15);
-INSERT INTO "SelectSQL_Node" VALUES(1,19);
-INSERT INTO "SelectSQL_Node" VALUES(1,22);
-INSERT INTO "SelectSQL_Node" VALUES(1,25);
-INSERT INTO "SelectSQL_Node" VALUES(1,17);
+INSERT INTO "Query" VALUES(1,'select_link_node_from_node.sql');
+INSERT INTO "Query" VALUES(11,'select_picture_for_node.sql');
 CREATE TABLE Template (
     id integer primary key autoincrement,
     name varchar(255) unique not null
 );
 INSERT INTO "Template" VALUES(1,'homepage.html');
 INSERT INTO "Template" VALUES(3,'logo_large.html');
-CREATE TABLE Template_Node (
-    template_id integer,
-    node_id integer unique,
-    foreign key ( template_id ) references Template ( id ) on delete set null,
-    foreign key ( node_id ) references Node ( id ) on delete set null
-);
-INSERT INTO "Template_Node" VALUES(1,5);
-INSERT INTO "Template_Node" VALUES(3,14);
 CREATE TABLE Picture (
   id integer primary key autoincrement,
   picturename varchar(64) unique not null,
@@ -133,10 +107,12 @@ CREATE TABLE Node_Picture (
     picture integer references Picture (id) not null
 );
 INSERT INTO "Node_Picture" VALUES(14,2);
+CREATE TABLE Chill (version integer);
+INSERT INTO "Chill" VALUES(1);
 DELETE FROM sqlite_sequence;
 INSERT INTO "sqlite_sequence" VALUES('Node',28);
 INSERT INTO "sqlite_sequence" VALUES('Route',3);
-INSERT INTO "sqlite_sequence" VALUES('SelectSQL',14);
+INSERT INTO "sqlite_sequence" VALUES('Query',14);
 INSERT INTO "sqlite_sequence" VALUES('Template',4);
 INSERT INTO "sqlite_sequence" VALUES('StaticFile',2);
 INSERT INTO "sqlite_sequence" VALUES('Image',2);
