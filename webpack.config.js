@@ -9,6 +9,7 @@ var postcssUrl = require('postcss-url')
 var autoprefixer = require('autoprefixer')
 var cssByebye = require('css-byebye')
 var cssnano = require('cssnano')
+var PRODUCTION = JSON.parse(process.env.NODE_ENV === 'production')
 
 module.exports = {
   entry: {
@@ -60,7 +61,7 @@ module.exports = {
     })
   ],
   postcss: function (webpack) {
-    return [
+    var use = [
       postcssImport({
         addDependencyTo: webpack
       }),
@@ -74,10 +75,13 @@ module.exports = {
         rulesToRemove: [
           ''
         ]
-      }),
-      cssnano({
-        safe: true
       })
     ]
+    if (PRODUCTION) {
+      use.push(cssnano({
+        safe: true
+      }))
+    }
+    return use
   }
 }

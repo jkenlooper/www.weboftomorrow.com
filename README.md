@@ -13,10 +13,12 @@ fancy templating and compiling involved.  But, that doesn't scale and I like to
 practice using my tools for small things so I'm better prepared for larger
 projects.  
 
+At this point I'm testing a few ideas on structuring the site in a more modular
+approach.
+
 ## Installing
 
-You have [npm](https://www.npmjs.com/) and [bower](http://bower.io/) installed?
-Great.
+You have [npm](https://www.npmjs.com/) installed?  Great.
 
     npm install 
 
@@ -37,12 +39,10 @@ And check it out at on your machine: http://localhost:5000/test/
 
 ## Developing
 
-The included build.sh script is used to build all the static resources like css
-and js.  It is automatically run when doing the initial `npm install` command.
-I like to set it to run each time a file changes by using the
-[watchit](https://github.com/jkenlooper/watchit) command:
-
-    while true; do watchit && npm run-script build; done;
+The site uses [webpack](https://webpack.github.io/) to create the static assets
+that are then placed in the dist folder.  This is done with npm scripts.  When
+actively developing the site it's best to run the `npm run watch` command which
+will watch the src files for changes and build them.
 
 
 ## Contributing

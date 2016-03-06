@@ -1,14 +1,7 @@
-/.verify_version_*
-/.livereload
-/.npm-prerequisites
-/.npm-target
 /node_modules/
-/bower_components/
 /db
 /test-content/db
 /dist/
 /frozen/
-
 /documents
 /media
-
