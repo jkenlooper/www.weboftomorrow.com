@@ -1,0 +1,1 @@
+require('./bottom-nav.css')

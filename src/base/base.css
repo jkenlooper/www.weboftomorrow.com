@@ -1,3 +1,5 @@
+@import "../settings/settings.css";
+
 .wot-Base {
   min-height: 100vh;
   display: flex;

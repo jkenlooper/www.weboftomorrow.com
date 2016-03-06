@@ -1,3 +1,4 @@
+@import "colour.css";
 :root {
   --color-darkpurple: var(--color-shadowsonthecliff);
   --color-red: var(--color-bloattonguerbloat);

@@ -1,18 +1,18 @@
-/*! Print stylesheet for Web of Tomorrow
+/*! Site stylesheet for Web of Tomorrow
  * Author: Jake Hickenlooper
  */
 
 /*
  * Specificity ordered stylesheet (ITCSS).
- * Based on ./site.css. See that stylesheet for more info.
+ * See ./README.md
  */
 
 /* 0 Generic */
 @import "normalize.css";
 
 /* 1 Elements */
+@import "1-elements/site.css";
 @import "1-elements/typography.css";
-@import "1-elements/print.css";
 @import "1-elements/markdown.css";
 
 /* 2 Objects */
@@ -20,11 +20,10 @@
 /* 3 Components */
 
 /* 4 Theme */
-@import "4-theme/colour.css";
-@import "4-theme/paper.css";
 
 /* 5 Utilities */
+@import "5-utilities/icons.css";
 @import "suitcss-utils-text";
 
 /* Root Settings */
-@import "6-settings/settings.css";
+@import "../settings/settings.css";
