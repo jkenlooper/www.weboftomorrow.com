@@ -1,5 +1,0 @@
-require('./site/site.css')
-require('./logo')
-require('./base')
-require('./bottom_nav')
-require('./bottom_footer')

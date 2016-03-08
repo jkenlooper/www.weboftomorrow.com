@@ -1,4 +1,4 @@
-{% extends 'site.html' %}
+{% extends 'site/index.html' %}
 
 {% block body %}
 <div class="wot-Base">
@@ -22,7 +22,7 @@
     <div class="wot-Base-content">
 
       {% block bottom %}
-        {% include 'bottom_nav.html' %}
+        {% include 'bottom_nav/index.html' %}
       {% endblock %}
 
     </div>
@@ -31,7 +31,7 @@
       <div class="wot-Base-content">
 
       {% block footer %}
-        {% include 'bottom_footer.html' %}
+        {% include 'bottom_footer/index.html' %}
       {% endblock %}
 
       </div>

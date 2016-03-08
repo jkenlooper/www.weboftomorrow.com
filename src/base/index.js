@@ -1,1 +1,5 @@
-require('./base.css')
+require('../site')
+require('./index.css')
+require('../logo')
+require('../bottom_nav')
+require('../bottom_footer')

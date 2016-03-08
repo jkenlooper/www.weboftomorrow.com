@@ -10,10 +10,19 @@ var autoprefixer = require('autoprefixer')
 var cssByebye = require('css-byebye')
 var cssnano = require('cssnano')
 
+/* Not needed for now.
+var ExtractHTML = new ExtractTextPlugin('[name].html', {
+  allChunks: true
+})
+*/
+var ExtractCSS = new ExtractTextPlugin('[name].css', {
+  allChunks: true
+})
+
 module.exports = {
   entry: {
-    // The 'site' entry is basically the 'common' chunk, and is on every page.
-    site: './src/site.js',
+    homepage: './src/homepage.js',
+    document: './src/document.js',
     print: './src/print.js'
     // Other pages would go here
     // other: './src/other.js',
@@ -44,20 +53,24 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'),
+        loader: ExtractCSS.extract('style-loader', 'css-loader!postcss-loader'),
         exclude: /node_modules/
       }
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      minChunks: 2,
+      minSize: 2
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new ExtractTextPlugin('[name].css', {
-      allChunks: true
-    })
+    ExtractCSS,
+    // ExtractHTML
   ],
   postcss: function (webpack) {
     var use = [
