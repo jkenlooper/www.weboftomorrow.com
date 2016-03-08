@@ -9,7 +9,6 @@ var postcssUrl = require('postcss-url')
 var autoprefixer = require('autoprefixer')
 var cssByebye = require('css-byebye')
 var cssnano = require('cssnano')
-var PRODUCTION = JSON.parse(process.env.NODE_ENV === 'production')
 
 module.exports = {
   entry: {
@@ -77,7 +76,7 @@ module.exports = {
         ]
       })
     ]
-    if (PRODUCTION) {
+    if (this.minimize) {
       use.push(cssnano({
         safe: true
       }))

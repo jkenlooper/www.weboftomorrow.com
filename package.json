@@ -28,8 +28,8 @@
   },
   "scripts": {
     "pretest": "standard",
-    "prepublish": "NODE_ENV='production' webpack --optimize-minimize --optimize-occurence-order",
-    "watch": "NODE_ENV='development' webpack --debug --devtool source-map --output-pathinfo --watch"
+    "prepublish": "webpack --optimize-minimize --optimize-occurence-order",
+    "watch": "webpack --debug --devtool source-map --output-pathinfo --watch"
   },
   "standard": {
     "ignore": [
