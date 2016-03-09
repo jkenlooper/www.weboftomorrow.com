@@ -58,8 +58,8 @@ CREATE TABLE Template (
     id integer primary key autoincrement,
     name varchar(255) unique not null
 );
-INSERT INTO "Template" VALUES(1,'homepage.html');
-INSERT INTO "Template" VALUES(3,'logo_large.html');
+INSERT INTO "Template" VALUES(1,'homepage/index.html');
+INSERT INTO "Template" VALUES(3,'homepage/logo_large.html');
 CREATE TABLE Picture (
   id integer primary key autoincrement,
   picturename varchar(64) unique not null,

@@ -29,6 +29,7 @@
   "scripts": {
     "pretest": "standard",
     "prepublish": "webpack --optimize-minimize --optimize-occurence-order",
+    "build": "webpack --debug --devtool source-map --output-pathinfo",
     "watch": "webpack --debug --devtool source-map --output-pathinfo --watch"
   },
   "standard": {
