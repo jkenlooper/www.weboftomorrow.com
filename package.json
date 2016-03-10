@@ -1,5 +1,6 @@
 {
   "name": "www.weboftomorrow.com",
+  "version": "0.2.0",
   "description": "A statically generated website",
   "private": true,
   "devDependencies": {
@@ -23,19 +24,24 @@
     "postcss-url": "^5.1.1",
     "standard": "^6.0.7",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack": "^1.12.9"
   },
   "scripts": {
     "pretest": "standard",
-    "prepublish": "webpack --optimize-minimize --optimize-occurence-order",
-    "build": "webpack --debug --devtool source-map --output-pathinfo",
-    "watch": "webpack --debug --devtool source-map --output-pathinfo --watch"
+    "prebuild": "rm -rf dist",
+    "build": "webpack --optimize-minimize --optimize-occurence-order",
+    "preinstall": "npm run build",
+    "debug": "webpack --debug --devtool source-map --output-pathinfo",
+    "watch": "webpack --debug --devtool source-map --output-pathinfo --watch",
+    "preversion": "npm test && npm run build",
+    "version": "chill freeze",
+    "postversion": "git push --all && chill-upload-rackspace.py"
   },
   "standard": {
     "ignore": [
       "node_modules/*",
-      "dist"
+      "dist",
+      "webpack.config.js"
     ]
   },
   "author": "Jake Hickenlooper",

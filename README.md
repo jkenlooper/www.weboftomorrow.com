@@ -42,7 +42,21 @@ And check it out at on your machine: http://localhost:5000/test/
 The site uses [webpack](https://webpack.github.io/) to create the static assets
 that are then placed in the dist folder.  This is done with npm scripts.  When
 actively developing the site it's best to run the `npm run watch` command which
-will watch the src files for changes and build them.
+will watch the src files for changes and build them.  The alternative is to
+compile non-minified code with `npm run debug`.
+
+
+## Releasing
+
+The `npm version` command is used to bump and tag versions. It also runs
+commands to build the resources (See the scripts section in the package.json).
+It also does some specific `chill` commands to create the static version of the
+whole site and upload it to a rackspace cdn.
+
+To release a new version and update the website (requires rackspace
+credentials) follow the below workflow:
+
+    npm version [major | minor | patch | ... ]
 
 
 ## Contributing
