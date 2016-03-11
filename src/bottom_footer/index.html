@@ -5,21 +5,10 @@
     <span>Location: </span><br>
     <span class="u-textNoWrap">{{ site.location }}</span>
     </p>
-    <p>
-    GitHub:
-    <a href="https://github.com/jkenlooper"
-       title="GitHub - jkenlooper (Jake Hickenlooper)"
-       class="u-textInheritColor">
-      jkenlooper
-    </a><br>
 
-    Twitter:
-    <a href="https://twitter.com/jkenlooper"
-       class="u-textInheritColor"
-       title="Twitter - jkenlooper">
-      @jkenlooper
-    </a>
-    </p>
+    {% if site.footer_links %}
+    {{ site.footer_links|readfile|safe }}
+    {% endif %}
   </div>
 
   <div class="wot-BottomFooter-copy">
