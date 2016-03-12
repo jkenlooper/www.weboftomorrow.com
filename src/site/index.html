@@ -9,6 +9,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+		{% if site.favicon %}
+      {#
+      Snippet and files generated from http://realfavicongenerator.net/ Keeping
+      this bit out of the template as I think it's messy to copy/paste anything
+      in a template.
+      #}
+			{{ site.favicon|readfile|safe }}
+		{% endif %}
 
     {% block stylesheet %}
     <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='commons.css') }}">
