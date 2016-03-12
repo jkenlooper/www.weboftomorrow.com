@@ -1,15 +1,12 @@
 {% extends "base/index.html" %}
 
-{# TODO: the homepage.css could possibly be missing depending on webpack configuration and stuff that I'm still experimenting with. #}
 {% block stylesheet %}
   {{ super() }}
   <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='homepage.css') }}">
 {% endblock %}
 
 {% block header %}
-<div 'Homepage'>
   {{ logo_large|safe }}
-</div>
 {% endblock %}
 
 {% block main %}
