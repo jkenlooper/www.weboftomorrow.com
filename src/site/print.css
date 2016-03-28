@@ -8,7 +8,7 @@
  */
 
 /* 0 Generic */
-@import "normalize.css";
+@import "0-generic/index.css";
 
 /* 1 Elements */
 @import "1-elements/typography.css";

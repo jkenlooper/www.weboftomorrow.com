@@ -85,7 +85,8 @@ module.exports = {
       postcssUrl,
       cssByebye({
         rulesToRemove: [
-          ''
+          '.u-textKern',
+          '.u-textTruncate',
         ]
       })
     ]

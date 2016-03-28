@@ -46,7 +46,6 @@
   "author": "Jake Hickenlooper",
   "license": "WTFPL",
   "dependencies": {
-    "normalize.css": "^3.0.3",
     "suitcss-utils-text": "^0.4.2"
   }
 }
