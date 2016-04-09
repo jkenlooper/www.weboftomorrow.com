@@ -46,6 +46,6 @@
   "author": "Jake Hickenlooper",
   "license": "WTFPL",
   "dependencies": {
-    "suitcss-utils-text": "^0.4.2"
+    "suitcss-utils-text": "file:lib/suitcss-utils-text-1.0.0.tgz"
   }
 }
