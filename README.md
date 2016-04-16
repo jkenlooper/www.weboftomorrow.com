@@ -15,8 +15,8 @@ projects.  Some notable things I'm trying out:
 
 * Testing a few ideas on structuring the site in a more modular approach.
 
-* Experimenting with bundling all the tools used to generate the static
-  resources.
+* ~~Experimenting with bundling all the tools used to generate the static
+  resources.~~ *Update: this seems rather extreme and has been dropped.*
   
 * Using `npm version` when commiting the `dist/` files to the repository for
   tagged releases.
@@ -42,11 +42,6 @@ site are bundled and the files in `dist/` can be reproduced.
 Within the directory where the package.json is run:
 
     npm install
-
-The `package.json` devDependencies list a wot-builder package that is in
-`lib/`.  I bundled my whole setup to build the `dist/` resources into this
-package.  Note that `npm dedupe` is ran in the preinstall script.  I do this as
-a workaround to get webpack and other tools to be available.
 
 Now install [chill](https://github.com/jkenlooper/chill).  Chill is built on
 the [Flask](http://flask.pocoo.org/) web framework.  I recommend using
