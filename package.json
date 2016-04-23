@@ -34,7 +34,7 @@
     "debug": "webpack --debug --devtool source-map --output-pathinfo",
     "watch": "webpack --debug --devtool source-map --output-pathinfo --watch",
     "preversion": "npm test && npm run build",
-    "version": "git add -f dist && git commit -m 'Add dist/ files'",
+    "version": "git add -f dist && git commit -m 'Add dist/ files' || echo 'No change to dist/ files'",
     "postversion": "chill freeze && git push --all && chill-upload-rackspace.py"
   },
   "standard": {
