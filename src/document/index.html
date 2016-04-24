@@ -3,13 +3,17 @@
 {% block stylesheet %}
   {{ super() }}
   <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='document.css') }}">
-  {% if document_stylesheet %}
-  <link rel="stylesheet" media="all" href="{{ url_for('send_media_file', filename=document_stylesheet) }}">
+  {% if content.document_stylesheet %}
+  <link rel="stylesheet" media="all" href="{{ url_for('send_media_file', filename=content.document_stylesheet) }}">
   {% endif %}
 {% endblock %}
 
 {% block main %}
 <article class="t-Barkdown">
-{{ document|readfile|safe }}
+  {% if content.format == 'html' %}
+    {{ content.document|readfile|safe }}
+  {% elif content.format == 'md' %}
+    {{ content.document|readfile|markdown }}
+  {% endif %}
 </article>
 {% endblock %}
