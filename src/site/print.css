@@ -13,12 +13,11 @@
 /* 1 Elements */
 @import "1-elements/typography.css";
 @import "1-elements/print.css";
-@import "1-elements/markdown.css";
-
 
 /* 2 Objects */
 
 /* 3 Components */
+@import "3-components/barkdown/index.css";
 
 /* 4 Theme */
 @import "4-theme/paper.css";
