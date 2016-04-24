@@ -30,9 +30,11 @@
     "pretest": "standard",
     "prebuild": "rm -rf dist",
     "build": "webpack --optimize-minimize --optimize-occurence-order",
+    "postbuild": "git update-index --no-assume-unchanged `git ls-files dist/`",
     "preinstall": "npm run build",
+    "predebug": "git update-index --assume-unchanged `git ls-files dist/`",
     "debug": "webpack --debug --devtool source-map --output-pathinfo",
-    "watch": "webpack --debug --devtool source-map --output-pathinfo --watch",
+    "watch": "npm run debug -- --watch",
     "preversion": "npm test && npm run build",
     "version": "git add -f dist && git commit -m 'Add dist/ files' || echo 'No change to dist/ files'",
     "postversion": "chill freeze && git push --all && chill-upload-rackspace.py"
