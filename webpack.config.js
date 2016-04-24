@@ -55,6 +55,11 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractCSS.extract('style-loader', 'css-loader!postcss-loader'),
         exclude: /node_modules/
+      },
+      {
+        test: /\.svg$/,
+        loader: 'file-loader!svgo-loader',
+        exclude: /(node_modules|fonts)/
       }
     ]
   },
