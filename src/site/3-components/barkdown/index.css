@@ -1,66 +1,66 @@
-/* markdown.css
+/* barkdown.css
  * Using mostly pseudo elements; attach common markdown syntax back to the HTML elements.
  */
 
-h1::before,
-h2::before,
-h3::before,
-h4::before,
-h5::before,
-h6::before,
-strong::before,
-strong::after,
-b::before,
-b::after,
-em::before,
-em::after,
-li::before {
+.t-Barkdown h1::before,
+.t-Barkdown h2::before,
+.t-Barkdown h3::before,
+.t-Barkdown h4::before,
+.t-Barkdown h5::before,
+.t-Barkdown h6::before,
+.t-Barkdown strong::before,
+.t-Barkdown strong::after,
+.t-Barkdown b::before,
+.t-Barkdown b::after,
+.t-Barkdown em::before,
+.t-Barkdown em::after,
+.t-Barkdown li::before {
   opacity: 0.42;
 }
-h1::before {
+.t-Barkdown h1::before {
   content: '# ';
 }
-h2::before {
+.t-Barkdown h2::before {
   content: '## ';
 }
-h3::before {
+.t-Barkdown h3::before {
   content: '### ';
 }
-h4::before {
+.t-Barkdown h4::before {
   content: '#### ';
 }
-h5::before {
+.t-Barkdown h5::before {
   content: '##### ';
 }
-h6::before {
+.t-Barkdown h6::before {
   content: '###### ';
 }
 
-b::before,
-strong::before {
+.t-Barkdown b::before,
+.t-Barkdown strong::before {
   content: '**';
 }
-b::after,
-strong::after {
+.t-Barkdown b::after,
+.t-Barkdown strong::after {
   content: '**';
 }
 
-em::before {
+.t-Barkdown em::before {
   content: '*';
 }
-em::after {
+.t-Barkdown em::after {
   content: '*';
 }
 
 /* Replace the default list-style. */
-ul {
+.t-Barkdown ul {
   padding: 0;
 }
-li {
+.t-Barkdown li {
   list-style: none;
   margin-left: 1.5em;
 }
-ul > li::before {
+.t-Barkdown ul > li::before {
   content: '* ';
   float: left;
   margin-left: -1.5em;

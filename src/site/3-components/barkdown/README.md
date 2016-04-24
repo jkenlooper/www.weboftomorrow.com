@@ -1,6 +1,6 @@
 # Barkdown Style
 
-Show the markdown syntax for HTML elements.
+ Using mostly pseudo elements; attach common markdown syntax back to the HTML elements.
 
 **Why would anyone do that?** Uhm, good question. It's kinda annoying.
 
