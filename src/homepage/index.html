@@ -10,8 +10,10 @@
 {% endblock %}
 
 {% block main %}
+
 {# screencasts list #}
-{# toc #}
+
+{{ toc|safe }}
 
 <article class="t-Barkdown">
 {{ preface|readfile|markdown }}
