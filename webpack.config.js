@@ -10,6 +10,8 @@ var autoprefixer = require('autoprefixer')
 var cssByebye = require('css-byebye')
 var cssnano = require('cssnano')
 
+var src_entry = require('./src/index.js')
+
 /* Not needed for now.
 var ExtractHTML = new ExtractTextPlugin('[name].html', {
   allChunks: true
@@ -20,13 +22,16 @@ var ExtractCSS = new ExtractTextPlugin('[name].css', {
 })
 
 module.exports = {
-  entry: {
+  entry: src_entry,
+/*
+ {
     homepage: './src/homepage/index.js',
     document: './src/document/index.js',
     print: './src/print.js'
     // Other pages would go here
     // other: './src/other.js',
   },
+*/
   output: {
     path: __dirname + '/dist',
     filename: '[name].bundle.js'
