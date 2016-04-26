@@ -16,8 +16,13 @@
 .t-Barkdown em::after,
 .t-Barkdown a::before,
 .t-Barkdown a::after,
+.t-Barkdown code::before,
+.t-Barkdown code::after,
 .t-Barkdown li::before {
   opacity: 0.42;
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'Source Code Pro', Terminus, monospace;
 }
 .t-Barkdown h1::before {
   content: '# ';
@@ -46,6 +51,9 @@
 .t-Barkdown strong::after {
   content: '**';
 }
+.t-Barkdown b,
+.t-Barkdown strong {
+}
 
 .t-Barkdown em::before {
   content: '*';
@@ -66,6 +74,16 @@ Example: [Google]: http://google.com/
 	content: '][]';
 }
 
+/* inline code */
+.t-Barkdown code {
+}
+.t-Barkdown code::before {
+  content: '`';
+}
+.t-Barkdown code::after {
+  content: '`';
+}
+
 /* Replace the default list-style. */
 .t-Barkdown ol,
 .t-Barkdown ul {
@@ -73,18 +91,21 @@ Example: [Google]: http://google.com/
 }
 .t-Barkdown li {
   list-style: none;
-  margin-left: 1.5em;
+}
+.t-Barkdown ul > li {
+  margin-left: 1.2em;
 }
 .t-Barkdown ul > li::before {
   content: '* ';
   float: left;
-  margin-left: -1.5em;
+  margin-left: -1.2em;
 }
 .t-Barkdown ol > li:first-child {
 	counter-reset: barkdown-li-number 0;
 }
 .t-Barkdown ol > li {
 	counter-increment: barkdown-li-number 1;
+  margin-left: 1.5em;
 }
 .t-Barkdown ol > li::before {
   content: counter(barkdown-li-number) '. ';

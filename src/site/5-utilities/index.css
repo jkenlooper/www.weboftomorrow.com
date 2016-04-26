@@ -1,1 +1,8 @@
 /* 5 Utilities */
+
+/* Typography styles */
+.t-monospace {
+  font-family: 'Source Code Pro', Terminus, monospace;
+  /* Want to keep any use of this font to have the same font-size site wide. */
+  font-size: 1.6rem;
+}
