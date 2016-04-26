@@ -10,10 +10,7 @@ html {
   font-size: 0.625em;
 }
 body {
-  /* The Terminus font is my ideal programming font, but it doesn't look as
-   * good on a website. Using this google hosted one instead.
-   */
-    font-family: 'Source Code Pro', Terminus, monospace;
+  font-family: 'Trebuchet MS', sans-serif;
   font-size: 1.6rem; /* 2.0rem if using Terminus */
   line-height: 1.8em; /* 1.3em if using Terminus */
 }
@@ -30,6 +27,7 @@ body * {
 h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
   font-style: normal;
+  margin: 1.3em 0 0.2em;
 }
 
 /* Any use of this 'typewriter' font will all
@@ -40,14 +38,18 @@ header {
   font-family: 'underwood_championregular', monospace;
   font-size: 2.0rem;
   line-height: 1.3em;
-  margin: 0.4em 0;
   display: block;
+}
+nav,
+header {
+  margin: 0.4em 0;
 }
 
 article {
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
+  line-height: 2.6rem;
 }
 
 address,
@@ -63,4 +65,10 @@ abbr[title] {
 }
 em {
   font-style: normal;
+}
+code {
+  /* The Terminus font is my ideal programming font, but it doesn't look as
+   * good on a website. Using this google hosted one instead.
+   */
+    font-family: 'Source Code Pro', Terminus, monospace;
 }
