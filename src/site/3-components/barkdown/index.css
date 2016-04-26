@@ -14,6 +14,8 @@
 .t-Barkdown b::after,
 .t-Barkdown em::before,
 .t-Barkdown em::after,
+.t-Barkdown a::before,
+.t-Barkdown a::after,
 .t-Barkdown li::before {
   opacity: 0.42;
 }
@@ -50,6 +52,18 @@
 }
 .t-Barkdown em::after {
   content: '*';
+}
+
+/* implicit link name */
+/*
+TODO: define the link at the bottom?
+Example: [Google]: http://google.com/
+*/
+.t-Barkdown a::before {
+	content: '[';
+}
+.t-Barkdown a::after {
+	content: '][]';
 }
 
 /* Replace the default list-style. */
