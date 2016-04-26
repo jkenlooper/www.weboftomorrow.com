@@ -5,7 +5,8 @@
   <ul class="wot-Toc-ul">
     {% for item in value %}
     <li class="wot-Toc-li">
-      <a class="wot-Toc-a" href="{{ url_for('.page_uri', uri=item.toc_item.slug) }}">
+      <a class="wot-Toc-a" href="{{ url_for('.page_uri', uri=item.toc_item.slug) }}"
+                           title="{{ item.toc_item.description }}">
         {{ item.toc_item.title }}
       </a>
     </li>
