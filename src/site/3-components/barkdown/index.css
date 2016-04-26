@@ -67,6 +67,7 @@ Example: [Google]: http://google.com/
 }
 
 /* Replace the default list-style. */
+.t-Barkdown ol,
 .t-Barkdown ul {
   padding: 0;
 }
@@ -76,6 +77,17 @@ Example: [Google]: http://google.com/
 }
 .t-Barkdown ul > li::before {
   content: '* ';
+  float: left;
+  margin-left: -1.5em;
+}
+.t-Barkdown ol > li:first-child {
+	counter-reset: barkdown-li-number 0;
+}
+.t-Barkdown ol > li {
+	counter-increment: barkdown-li-number 1;
+}
+.t-Barkdown ol > li::before {
+  content: counter(barkdown-li-number) '. ';
   float: left;
   margin-left: -1.5em;
 }
