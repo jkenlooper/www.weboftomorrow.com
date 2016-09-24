@@ -1,8 +1,11 @@
-<div class="Logo">
+<a href="/site/"  class="Logo">
   <img
      class="Logo-img"
      src="{{ url_for('send_media_file', filename=path) }}"
      alt="Logo for {{ title }}"
      width="{{ width }}"
      height="{{ height }}">
-</div>
+   <strong class="Logo-caption">
+     {{ title }}
+   </strong>
+</a>

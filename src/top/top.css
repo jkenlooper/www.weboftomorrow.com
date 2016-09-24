@@ -1,0 +1,9 @@
+.wot-Top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wot-Top-logo {
+  flex: 1 0 auto;
+  max-width: 330px;
+}

@@ -1,5 +1,5 @@
 require('../site')
 require('./index.css')
-require('../logo')
+require('../top')
 require('../bottom_nav')
 require('../bottom_footer')
