@@ -1,1 +1,1 @@
-require('./bottom-nav.css')
+import './bottom-nav.css'

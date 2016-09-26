@@ -1,1 +1,1 @@
-require('./site/print.css')
+import './site/print.css'

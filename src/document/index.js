@@ -1,2 +1,2 @@
-require('../base')
-require('./index.css')
+import '../base'
+import './index.css'

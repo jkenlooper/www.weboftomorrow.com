@@ -1,5 +1,5 @@
-require('../site')
-require('./index.css')
-require('../top')
-require('../bottom_nav')
-require('../bottom_footer')
+import '../site'
+import './index.css'
+import '../top'
+import '../bottom_nav'
+import '../bottom_footer'

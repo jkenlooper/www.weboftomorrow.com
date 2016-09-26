@@ -1,2 +1,2 @@
-require('./index.css')
-require('../logo')
+import './index.css'
+import '../logo'

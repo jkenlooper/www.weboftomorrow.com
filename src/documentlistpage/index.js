@@ -1,3 +1,3 @@
-require('../base')
-require('../toc')
-require('./index.css')
+import '../base'
+import '../toc'
+import './index.css'

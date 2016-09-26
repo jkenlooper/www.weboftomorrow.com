@@ -1,1 +1,1 @@
-require('./bottom-footer.css')
+import './bottom-footer.css'
