@@ -50,7 +50,7 @@ INSERT INTO "Node" VALUES(11,'contact','bob',NULL,NULL);
 INSERT INTO "Node" VALUES(12,'description','homepage-description.txt',NULL,NULL);
 INSERT INTO "Node" VALUES(14,'logo_large',NULL,3,11);
 INSERT INTO "Node" VALUES(17,'bottom_nav',NULL,NULL,1);
-INSERT INTO "Node" VALUES(28,'preface','preface.md',NULL,NULL);
+INSERT INTO "Node" VALUES(28,'foreword','foreword.md',NULL,NULL);
 INSERT INTO "Node" VALUES(29,'toc',NULL,5,1);
 INSERT INTO "Node" VALUES(30,'toc_item',NULL,NULL,1);
 INSERT INTO "Node" VALUES(31,'slug','cama',NULL,NULL);
@@ -87,10 +87,10 @@ CREATE TABLE Template (
     id integer primary key autoincrement,
     name varchar(255) unique not null
 );
-INSERT INTO "Template" VALUES(1,'homepage/index.html');
-INSERT INTO "Template" VALUES(3,'homepage/logo_large.html');
-INSERT INTO "Template" VALUES(5,'toc/index.html');
-INSERT INTO "Template" VALUES(6,'document/index.html');
+INSERT INTO "Template" VALUES(1,'homepage.html');
+INSERT INTO "Template" VALUES(3,'logo_large.html');
+INSERT INTO "Template" VALUES(5,'toc.html');
+INSERT INTO "Template" VALUES(6,'documentpage.html');
 CREATE TABLE Picture (
   id integer primary key autoincrement,
   picturename varchar(64) unique not null,
