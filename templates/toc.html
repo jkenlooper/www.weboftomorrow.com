@@ -1,17 +1,16 @@
-{% if value is sequence %}
-<section class="wot-Toc">
-  <h2>Table of Contents</h2>
-  <nav>
-  <ul class="wot-Toc-ul">
-    {% for item in value %}
-    <li class="wot-Toc-li">
-      <a class="wot-Toc-a" href="{{ url_for('.page_uri', uri=item.toc_item.slug) }}"
-                           title="{{ item.toc_item.description }}">
-        {{ item.toc_item.title }}
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-  </nav>
-</section>
-{% endif %}
+{%  from './list_item.html' import listItem %}
+
+{% if value -%}
+  {% if value is mapping -%}
+    {% set value = [value] %}
+  {%- endif %}
+
+  <section class="wot-Toc">
+    <h2>Table of Contents</h2>
+    <nav>
+      {% for item in value %}
+        {{ listItem(item.toc_item.slug, item.toc_item.title, item.toc_item.description) }}
+      {% endfor %}
+    </nav>
+  </section>
+{%- endif %}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%  from './list_item.html' import listItem %}
 
 {% block stylesheet %}
   {{ super() }}
@@ -6,31 +7,24 @@
 {% endblock %}
 
 {% block main %}
-<h1>
-  {{ content.title }}
-</h1>
 
-{{ content.summary }}
+  {{ content.summary }}
 
-{% if document_list %}
-{% if document_list is mapping -%}
-  {% set document_list = [document_list] %}
-{% endif %}
+  {% if document_list %}
+    {% if document_list is mapping -%}
+      {% set document_list = [document_list] %}
+    {% endif %}
 
-<section class="wot-List">
-<ul>
-{% for document in document_list %}
-  <li class="wot-Toc-li">
-  <a class="wot-Toc-a" href="{{ url_for('.page_uri', uri=document.slug) }}">
-    {{ document.title }}
-    {#
-    <p>{{ document.description }}</p>
-    #}
-  </a>
-  </li>
-{% endfor %}
-</ul>
-</section>
-{% endif %}
+    <section>
+      <h1>
+        {{ content.title }}
+      </h1>
+      <nav>
+        {% for document in document_list %}
+          {{ listItem(document.slug, document.title, document.description) }}
+        {% endfor %}
+      </nav>
+    </section>
+  {% endif %}
 
 {% endblock %}
