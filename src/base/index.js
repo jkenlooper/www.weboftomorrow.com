@@ -1,5 +1,4 @@
 import '../site'
-import './index.css'
 import '../top'
 import '../bottom_nav'
 import '../bottom_footer'

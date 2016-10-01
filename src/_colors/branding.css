@@ -6,7 +6,3 @@
   --color-beige: var(--color-edccb);
   /*--color-vintageblue: #a6c4bc;*/
 }
-
-@custom-media --sm-viewport screen and (max-width: 599px);
-@custom-media --md-viewport screen (min-width: 600px) and (max-width: 959px);
-@custom-media --lg-viewport screen (min-width: 960px);

@@ -23,6 +23,7 @@
 		{% endif %}
 
     {% block stylesheet %}
+    <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='all.css') }}">
     <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='commons.css') }}">
     <link rel="stylesheet" media="print" href="{{ url_for('send_theme_file', filename='print.css') }}">
     {% endblock %}
