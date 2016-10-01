@@ -1,0 +1,8 @@
+@import "./colour.css";
+:root {
+  --color-darkpurple: var(--color-shadowsonthecliff);
+  --color-red: var(--color-bloattonguerbloat);
+  --color-orange: var(--color-itscutee);
+  --color-beige: var(--color-edccb);
+  /*--color-vintageblue: #a6c4bc;*/
+}

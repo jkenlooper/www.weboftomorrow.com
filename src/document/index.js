@@ -1,2 +1,2 @@
 import '../base'
-import './index.css'
+import './document.css'

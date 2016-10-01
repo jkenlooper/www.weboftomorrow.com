@@ -1,7 +1,7 @@
-# Component Front End Resources
+# Front End Resources
 
-See the `index.js` file which is used by webpack.config.js for the webpack
-entry setting.
+The `index.js` file is used by webpack.config.js for the webpack entry setting.
 
-The `site/index.css` imports the site wide styles and sets the site wide
-template.  The site wide template is extended by the `homepage` and `document`.
+The `all/index.js` entry imports `all/all.css` which imports a cascade of other
+CSS files.  The theory is to match how the templates extend and import other
+templates.

@@ -23,15 +23,6 @@ var ExtractCSS = new ExtractTextPlugin('[name].css', {
 
 module.exports = {
   entry: src_entry,
-/*
- {
-    homepage: './src/homepage/index.js',
-    document: './src/document/index.js',
-    print: './src/print.js'
-    // Other pages would go here
-    // other: './src/other.js',
-  },
-*/
   output: {
     path: __dirname + '/dist',
     filename: '[name].bundle.js'
@@ -47,7 +38,7 @@ module.exports = {
         loader: 'babel'
       },
       {
-        test: /fonts\/.*\.(eot|svg|ttf|woff)$/,
+        test: /_fonts\/.*\.(eot|svg|ttf|woff)$/,
         loader: 'file-loader?name=[name].[ext]',
         exclude: /node_modules/
       },
@@ -58,13 +49,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractCSS.extract('style-loader', 'css-loader!postcss-loader'),
-        exclude: /node_modules/
+        loader: ExtractCSS.extract('style-loader', 'css-loader!postcss-loader')
       },
       {
         test: /\.svg$/,
         loader: 'file-loader!svgo-loader',
-        exclude: /(node_modules|fonts)/
+        exclude: /(node_modules|_fonts)/
       }
     ]
   },

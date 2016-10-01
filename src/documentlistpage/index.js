@@ -1,3 +1,3 @@
 import '../base'
 import '../toc'
-import './index.css'
+import './documentlistpage.css'

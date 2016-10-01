@@ -1,2 +1,5 @@
-@import "../settings";
+@import "../site/index.css";
 @import "./base.css";
+@import "../top/index.css";
+@import "../bottom_nav/index.css";
+@import "../bottom_footer/index.css";
