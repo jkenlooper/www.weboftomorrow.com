@@ -50,6 +50,7 @@
   "author": "Jake Hickenlooper",
   "license": "WTFPL",
   "dependencies": {
+    "prismjs": "file:lib/prism-1.5.1.tar.gz",
     "suitcss-utils-text": "file:lib/suitcss-utils-text-1.0.0.tgz"
   }
 }

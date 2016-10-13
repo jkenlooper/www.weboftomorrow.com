@@ -75,9 +75,4 @@ code {
     font-family: 'Source Code Pro', Terminus, monospace;
   /* Want to keep any use of this font to have the same font-size site wide. */
     font-size: 1.6rem;
-
-  /* Add a nice looking background */
-    background: rgba(255,255,255,0.3);
-    border-radius: 2px;
-    box-shadow: -1px -1px 0 rgba(0,0,0,0.2);
 }

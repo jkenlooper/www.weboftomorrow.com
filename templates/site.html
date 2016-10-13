@@ -34,5 +34,10 @@
     {% block body %}
     {% endblock %}
 
+    {% block javascript %}
+    <script src="{{ url_for('send_theme_file', filename='commons.bundle.js') }}"></script>
+    <script src="{{ url_for('send_theme_file', filename='all.bundle.js') }}"></script>
+    {% endblock %}
+
   </body>
 </html>

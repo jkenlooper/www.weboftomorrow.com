@@ -11,9 +11,14 @@
 {% block main %}
 <article class="t-Barkdown">
   {% if content.format == 'html' %}
-    {{ content.document|readfile|safe }}
+    {{ content.document|readfile|safe|shortcodes }}
   {% elif content.format == 'md' %}
-    {{ content.document|readfile|markdown }}
+    {{ content.document|readfile|markdown|shortcodes }}
   {% endif %}
 </article>
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+<script src="{{ url_for('send_theme_file', filename='document.bundle.js') }}"></script>
 {% endblock %}

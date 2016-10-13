@@ -1,0 +1,17 @@
+/*
+ * Set max height scrollable box for the content.
+ */
+.wot-CodeSnippet {
+  box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  min-height: calc((17em * 1.5) - (0.5em * 2));
+  max-height: 42vh;
+  overflow: scroll;
+}
+
+/* Need to have higher specificity here for setting the font and background. */
+.wot-CodeSnippet > code[class*="language-"],
+pre.wot-CodeSnippet[class*="language-"] {
+  font-family: 'Source Code Pro', Terminus, monospace;
+  font-size: 1.6rem;
+}
