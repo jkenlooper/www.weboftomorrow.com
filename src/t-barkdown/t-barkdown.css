@@ -1,7 +1,6 @@
 /* barkdown.css
  * Using mostly pseudo elements; attach common markdown syntax back to the HTML elements.
  */
-
 .t-Barkdown h1::before,
 .t-Barkdown h2::before,
 .t-Barkdown h3::before,
@@ -20,25 +19,31 @@
 .t-Barkdown code::after,
 .t-Barkdown li::before {
   opacity: 0.42;
-	font-weight: normal;
-	font-style: normal;
-	font-family: 'Source Code Pro', Terminus, monospace;
+  font-family: 'Source Code Pro', Terminus, monospace;
+  font-style: normal;
+  font-weight: normal;
 }
+
 .t-Barkdown h1::before {
   content: '# ';
 }
+
 .t-Barkdown h2::before {
   content: '## ';
 }
+
 .t-Barkdown h3::before {
   content: '### ';
 }
+
 .t-Barkdown h4::before {
   content: '#### ';
 }
+
 .t-Barkdown h5::before {
   content: '##### ';
 }
+
 .t-Barkdown h6::before {
   content: '###### ';
 }
@@ -47,10 +52,12 @@
 .t-Barkdown strong::before {
   content: '**';
 }
+
 .t-Barkdown b::after,
 .t-Barkdown strong::after {
   content: '**';
 }
+
 .t-Barkdown b,
 .t-Barkdown strong {
 }
@@ -58,30 +65,41 @@
 .t-Barkdown em::before {
   content: '*';
 }
+
 .t-Barkdown em::after {
   content: '*';
 }
 
 /* implicit link name */
+
 /*
 TODO: define the link at the bottom?
 Example: [Google]: http://google.com/
 */
 .t-Barkdown a::before {
-	content: '[';
+  content: '[';
 }
+
 .t-Barkdown a::after {
-	content: '][]';
+  content: '][]';
 }
 
 /* inline code */
 .t-Barkdown code {
 }
+
 .t-Barkdown code::before {
   content: '`';
 }
+
 .t-Barkdown code::after {
   content: '`';
+}
+
+/* Override if the code is within a pre */
+.t-Barkdown pre code::before,
+.t-Barkdown pre code::after {
+  content: '';
 }
 
 /* Replace the default list-style. */
@@ -89,26 +107,32 @@ Example: [Google]: http://google.com/
 .t-Barkdown ul {
   padding: 0;
 }
+
 .t-Barkdown li {
   list-style: none;
 }
+
 .t-Barkdown ul > li {
   margin-left: 1.2em;
 }
+
 .t-Barkdown ul > li::before {
-  content: '* ';
   float: left;
   margin-left: -1.2em;
+  content: '* ';
 }
+
 .t-Barkdown ol > li:first-child {
-	counter-reset: barkdown-li-number 0;
+  counter-reset: barkdown-li-number 0;
 }
+
 .t-Barkdown ol > li {
-	counter-increment: barkdown-li-number 1;
+  counter-increment: barkdown-li-number 1;
   margin-left: 1.5em;
 }
+
 .t-Barkdown ol > li::before {
-  content: counter(barkdown-li-number) '. ';
   float: left;
   margin-left: -1.5em;
+  content: counter(barkdown-li-number) '. ';
 }

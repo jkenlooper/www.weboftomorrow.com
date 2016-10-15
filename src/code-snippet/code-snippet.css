@@ -1,17 +1,28 @@
+.wot-CodeSnippet {
+}
+
+.wot-CodeSnippet-filepath {
+  display: block;
+  text-align: right;
+}
+
 /*
  * Set max height scrollable box for the content.
  */
-.wot-CodeSnippet {
+.wot-CodeSnippet-pre {
   box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-  min-height: calc((17em * 1.5) - (0.5em * 2));
   max-height: 42vh;
   overflow: scroll;
 }
 
+.wot-CodeSnippet-filepath + .wot-CodeSnippet-pre {
+  margin-top: 0;
+}
+
 /* Need to have higher specificity here for setting the font and background. */
-.wot-CodeSnippet > code[class*="language-"],
-pre.wot-CodeSnippet[class*="language-"] {
+.wot-CodeSnippet-pre > code[class*="language-"],
+pre.wot-CodeSnippet-pre[class*="language-"] {
   font-family: 'Source Code Pro', Terminus, monospace;
   font-size: 1.6rem;
 }

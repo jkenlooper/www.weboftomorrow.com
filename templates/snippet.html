@@ -1,3 +1,8 @@
-<pre class="wot-CodeSnippet line-numbers language-{{ language }}"><code>
-{{ ('snippets/' + filepath)|readfile|escape }}
-</code></pre>
+<div class="wot-CodeSnippet">
+  <small class="wot-CodeSnippet-filepath">
+    {{ filepath }}
+  </small>
+  <pre class="wot-CodeSnippet-pre line-numbers language-{{ language }}"><code><!--
+  -->{{ ('snippets/' + filepath)|readfile|escape }}<!--
+  --></code></pre>
+</div>
