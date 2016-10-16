@@ -33,6 +33,7 @@ h1,h2,h3,h4,h5,h6 {
  * have the same font-size. */
 h1,h2,h3,h4,h5,h6,
 nav,
+b,
 header {
   font-family: 'underwood_championregular', monospace;
   font-size: 2.0rem;
@@ -67,6 +68,12 @@ abbr[title] {
 }
 em {
   font-style: italic;
+}
+strong {
+  font-weight: bold;
+}
+b {
+  font-weight: normal;
 }
 code {
   /* The Terminus font is my ideal programming font, but it doesn't look as

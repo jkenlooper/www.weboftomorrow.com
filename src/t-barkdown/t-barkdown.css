@@ -9,8 +9,6 @@
 .t-Barkdown h6::before,
 .t-Barkdown strong::before,
 .t-Barkdown strong::after,
-.t-Barkdown b::before,
-.t-Barkdown b::after,
 .t-Barkdown em::before,
 .t-Barkdown em::after,
 .t-Barkdown a::before,
@@ -48,17 +46,14 @@
   content: '###### ';
 }
 
-.t-Barkdown b::before,
 .t-Barkdown strong::before {
   content: '**';
 }
 
-.t-Barkdown b::after,
 .t-Barkdown strong::after {
   content: '**';
 }
 
-.t-Barkdown b,
 .t-Barkdown strong {
 }
 
