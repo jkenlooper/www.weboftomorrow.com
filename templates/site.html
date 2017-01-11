@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Web of Tomorrow</title>
+    <title>Web of Tomorrow{% if content and content.title %} | {{ content.title }}{% endif %}</title>
 
     {% if description %}
     <meta name="description" content="{{ description|readfile }}">
