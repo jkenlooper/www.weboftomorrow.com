@@ -53,6 +53,11 @@ article li p {
   text-indent: 0;
 }
 
+figure {
+  margin: 0;
+  padding: 0;
+}
+
 /* inline-block */
 
 /* table */

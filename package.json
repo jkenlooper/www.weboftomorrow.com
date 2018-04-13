@@ -38,7 +38,9 @@
     "watch": "npm run debug -- --watch",
     "preversion": "npm test && npm run build",
     "version": "git add -f dist && git commit -m 'Add dist/ files' || echo 'No change to dist/ files'",
-    "postversion": "chill freeze && git push --all && chill-upload-rackspace.py"
+    "postversion": "chill freeze && git push --all",
+    "sync": "cp frozen/site/index.html frozen/ && aws s3 sync frozen/ s3://www.weboftomorrow.com/",
+    "upload": "cp frozen/site/index.html frozen/ && aws s3 cp frozen/ s3://www.weboftomorrow.com/ --recursive"
   },
   "standard": {
     "ignore": [
