@@ -45,9 +45,14 @@ Within the directory where the package.json is run:
 
 Now install [chill](https://github.com/jkenlooper/chill).  Chill is built on
 the [Flask](http://flask.pocoo.org/) web framework.  I recommend using
-[pip](https://pip.pypa.io/en/stable/) to install it.
+[pip](https://pip.pypa.io/en/stable/) in virtualenv to install it.
 
-    pip install chill
+    virtualenv .
+    source bin/activate
+    pip install -r requirements.txt
+
+The `source bin/activate` command should be run each time a new terminal window
+is opened so `chill` is available locally.
 
 ### Load the site with test content
 

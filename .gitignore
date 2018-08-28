@@ -6,3 +6,11 @@
 /frozen/
 /documents
 /media
+
+/include/
+/lib/
+/local/
+/share/
+
+*.pyc
+*.egg-info/
