@@ -1,11 +1,8 @@
 /node_modules/
 /npm-debug.log
 /db
-/test-content/db
 /dist/
 /frozen/
-/documents
-/media
 
 /include/
 /lib/

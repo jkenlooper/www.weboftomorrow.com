@@ -1,3 +1,0 @@
-/*! Print styles for Web of Tomorrow
- * Author: Jake Hickenlooper
- */body{background-color:#fff;color:#000;font-size:1rem;padding:0}body:before{display:none}article{max-width:80rem;margin-left:auto;margin-right:auto;line-height:1.3rem}a{text-decoration:none;color:inherit}b,strong{text-shadow:.05em .05em 0 rgba(0,0,0,.25)}h1,h2,h3,h4,h5,h6,header,nav{font-size:1.2rem}li{margin:.2em 0}.wot-Base-bottom,.wot-Base-header{display:none}
