@@ -28,3 +28,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.wot-Base-main .wot-Base-content {
+  background-color: var(--color-paper);
+  border-radius: 1px;
+}
+
+.wot-Base-article {
+}
