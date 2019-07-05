@@ -1,8 +1,34 @@
-/node_modules/
-/npm-debug.log
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+*.DS_Store
+/.env
+/.htpasswd
+/.vagrant/
+/site.cfg
+/frozen.tar.gz
+/web/weboftomorrow.conf
+/chill/weboftomorrow-chill.service
 /db
 /dist/
 /frozen/
+/logs/
+/node_modules/
+/npm-debug.log
+/src/*/*.tmp.css
+/src/*/*.tmp.css.map
+/src/*/*.tmp.js
+/src/*/*.tmp.js.map
+/weboftomorrow/*
+!/weboftomorrow/MANIFEST
+
+/web/dhparam.pem
+/web/rootCA.key
+/web/rootCA.pem
+/web/rootCA.srl
+/web/server.crt
+/web/server.csr
+/web/server.key
+/web/v3.ext
 
 /include/
 /lib/

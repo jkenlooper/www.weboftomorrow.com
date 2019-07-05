@@ -1,100 +1,152 @@
-var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var postcssImport = require('postcss-import')
-var postcssNested = require('postcss-nested')
-var postcssCustomProperties = require('postcss-custom-properties')
-var postcssCustomMedia = require('postcss-custom-media')
-var postcssCalc = require('postcss-calc')
-var postcssUrl = require('postcss-url')
-var autoprefixer = require('autoprefixer')
-var cssByebye = require('css-byebye')
-var cssnano = require('cssnano')
+const webpack = require("webpack");
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const postcssImport = require("postcss-import");
+const postcssURL = require("postcss-url");
+const postcssPresetEnv = require("postcss-preset-env");
+const postcssCustomMedia = require("postcss-custom-media");
 
-var src_entry = require('./src/index.js')
+const srcEntry = require("./src/index.js");
 
-/* Not needed for now.
-var ExtractHTML = new ExtractTextPlugin('[name].html', {
-  allChunks: true
-})
-*/
-var ExtractCSS = new ExtractTextPlugin('[name].css', {
-  allChunks: true
-})
+process.traceDeprecation = true;
 
-module.exports = {
-  entry: src_entry,
-  output: {
-    path: __dirname + '/dist',
-    filename: '[name].bundle.js'
-  },
-  resolve: {
-    modulesDirectories: ['src', 'node_modules']
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      },
-      {
-        test: /_fonts\/.*\.(eot|svg|ttf|woff)$/,
-        loader: 'file-loader?name=[name].[ext]',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.png$/,
-        loader: 'file-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractCSS.extract('style-loader', 'css-loader!postcss-loader')
-      },
-      {
-        test: /\.svg$/,
-        loader: 'file-loader!svgo-loader',
-        exclude: /(node_modules|_fonts)/
+/**
+ * Config
+ * Reference: http://webpack.github.io/docs/configuration.html
+ * This is the object where all configuration gets set
+ */
+const config = {};
+
+config.mode = "development";
+
+config.bail = true;
+
+/**
+ * Entry
+ * Reference: http://webpack.github.io/docs/configuration.html#entry
+ */
+config.entry = srcEntry;
+
+/**
+ * Output
+ * Reference: http://webpack.github.io/docs/configuration.html#output
+ */
+config.output = {
+  path: path.resolve(__dirname, "dist"),
+  filename: "[name].bundle.js"
+};
+
+config.resolve = {
+  extensions: [".ts", ".js"],
+  modules: ["src", "node_modules"]
+};
+
+config.module = {
+  rules: [
+    {
+      test: /\.ts$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "ts-loader"
       }
-    ]
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      minChunks: 2,
-      minSize: 2
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    ExtractCSS,
-    // ExtractHTML
-  ],
-  postcss: function (webpack) {
-    var use = [
-      postcssImport({
-        addDependencyTo: webpack
-      }),
-      postcssNested,
-      postcssCustomProperties,
-      postcssCustomMedia,
-      postcssCalc,
-      autoprefixer,
-      postcssUrl,
-      cssByebye({
-        rulesToRemove: [
-          '.u-textKern',
-          '.u-textTruncate',
-        ]
-      })
-    ]
-    if (this.minimize) {
-      use.push(cssnano({
-        safe: true
-      }))
+    },
+    {
+      test: /_fonts\/.*\.(eot|svg|ttf|woff)/,
+      use: [
+        {
+          loader: "file-loader",
+          options: { name: "[name].[ext]" }
+        }
+      ],
+      exclude: /node_modules/
+    },
+    {
+      test: /\.(png|gif|jpg)$/,
+      use: [
+        {
+          loader: "file-loader",
+          options: { name: "[name].[ext]" }
+        }
+      ],
+      exclude: /node_modules/
+    },
+    {
+      test: /\.css$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        { loader: "css-loader", options: { importLoaders: 1 } },
+        {
+          loader: "postcss-loader",
+          options: {
+            ident: "postcss",
+            plugins: loader => [
+              postcssImport({ root: loader.resourcePath }),
+              postcssURL(),
+              postcssCustomMedia(),
+              postcssPresetEnv()
+            ]
+          }
+        }
+      ]
+    },
+    {
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]"
+          }
+        },
+        "svgo-loader"
+      ],
+      exclude: /(node_modules|_fonts)/
+    },
+    {
+      test: /\.html$/,
+      use: "raw-loader"
     }
-    return use
+  ]
+};
+
+config.plugins = [new MiniCssExtractPlugin({ filename: "[name].css" })];
+
+config.stats = "minimal";
+
+config.optimization = {
+  minimizer: [
+    new TerserPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true, // set to true if you want JS source maps
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    }),
+    new OptimizeCSSAssetsPlugin({})
+  ]
+};
+
+config.performance = {
+  hints: "warning"
+  //maxAssetSize: 500000,
+  //maxEntrypointSize: 800000,
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode !== "production") {
+    config.devtool = "source-map";
+    config.watch = argv.watch;
+    config.watchOptions = {
+      aggregateTimeout: 300,
+      poll: 1000
+    };
+    config.optimization = {};
   }
-}
+
+  return config;
+};

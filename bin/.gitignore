@@ -1,6 +1,6 @@
 /activate*
-/flask
 /chill
+/flask
 /easy_install*
 /markdown_py
 /pip*
@@ -8,3 +8,5 @@
 /rst2*
 /rstpep2*
 /wheel
+/black
+/blackd

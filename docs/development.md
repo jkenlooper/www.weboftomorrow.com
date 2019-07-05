@@ -122,12 +122,12 @@ source bin/activate;
 # Install black to format python code when developing
 pip install black;
 
-# Makes the initial development version
-make;
-
 # Build the dist files for local development
 npm install;
 npm run build;
+
+# Makes the initial development version
+make;
 
 sudo make install;
 sudo systemctl reload nginx
