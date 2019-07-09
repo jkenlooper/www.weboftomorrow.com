@@ -47,13 +47,13 @@ CHILL_DATABASE_URI = "sqlite:///${DATABASEDIR}db"
 #PUBLIC_URL_PREFIX = "/"
 
 # If setting the ROOT_FOLDER:
-#PUBLIC_URL_PREFIX = "/site"
+PUBLIC_URL_PREFIX = "/site"
 
 # The ROOT_FOLDER is used to send static files from the '/' route.  This will
 # conflict with the default value for PUBLIC_URL_PREFIX. Any file or directory
 # within the ROOT_FOLDER will be accessible from '/'.  The default is not
 # having anything set.
-#ROOT_FOLDER = "root"
+ROOT_FOLDER = "root"
 
 # The document folder is an optional way of storing content outside of the
 # database.  It is used with the custom filter 'readfile' which can read the
@@ -82,7 +82,7 @@ MEDIA_PATH = "/media/"
 # When creating a stand-alone static website the files in the MEDIA_FOLDER are
 # only included if they are linked to from a page.  Set this to True if all the
 # files in the media folder should be included in the FREEZER_DESTINATION.
-#MEDIA_FREEZE_ALL = False
+MEDIA_FREEZE_ALL = False
 
 # The theme is where all the front end resources like css, js, graphics and
 # such that make up the theme of a website. The THEME_STATIC_FOLDER is where
@@ -110,7 +110,7 @@ THEME_TEMPLATE_FOLDER = "templates"
 # built-in ones and they can be overridden by adding a file with the same name
 # in here. To do much of anything with Chill you will need to add some custom
 # SQL queries and such to load data into your templates.
-#THEME_SQL_FOLDER = "queries"
+THEME_SQL_FOLDER = "queries"
 
 # Helpful to have this set to True if you want to fix stuff.
 DEBUG=$DEBUG

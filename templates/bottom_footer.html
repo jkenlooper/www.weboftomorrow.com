@@ -3,30 +3,21 @@
   <div class="wot-BottomFooter-info">
     <p>
     <span>Location: </span><br>
-    <span class="u-textNoWrap">{{ site.location }}</span>
+    <span class="u-textNoWrap">{{ 'location.txt'|readfile }}</span>
     </p>
 
-    {% if site.footer_links %}
-    {{ site.footer_links|readfile|safe }}
-    {% endif %}
+    {{ 'footer_links.html'|readfile|safe }}
   </div>
 
   <div class="wot-BottomFooter-copy">
-    {{ site.footer_copy|readfile|markdown }}
+    {{ 'footer_copy.md'|readfile|markdown }}
   </div>
 
   <div class="wot-BottomFooter-end">
-    {% if site.footer_dinosaur %}
     <div class="wot-BottomFooter-dinosaur">
       <!-- Beware! This site has a Dinosaur! RWOAER!! -->
-      <img
-         class="Dinosaur"
-         src="{{ url_for('send_media_file', filename=site.footer_dinosaur.path) }}"
-         alt="{{ site.footer_dinosaur.title }}"
-         width="{{ site.footer_dinosaur.width }}"
-         height="{{ site.footer_dinosaur.height }}">
+      {% include 'dinosaur.html' %}
     </div>
-    {% endif %}
     <div class="wot-BottomFooter-version">
       <a href="https://github.com/jkenlooper/www.weboftomorrow.com/"
          class="u-textInheritColor"

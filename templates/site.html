@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Web of Tomorrow{% if content and content.title %} | {{ content.title }}{% endif %}</title>
+    <title>{% if content.title %}{{ content.title }} | {% endif %}Web of Tomorrow</title>
 
     {% if description %}
     <meta name="description" content="{{ description|readfile }}">
@@ -13,18 +13,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		{% if site.favicon %}
-      {#
-      Snippet and files generated from http://realfavicongenerator.net/ Keeping
-      this bit out of the template as I think it's messy to copy/paste anything
-      in a template.
-      #}
-			{{ site.favicon|readfile|safe }}
-		{% endif %}
+		{{ 'favicon.html'|readfile|safe }}
 
     {% block stylesheet %}
     <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='all.css') }}">
-    <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='commons.css') }}">
     <link rel="stylesheet" media="print" href="{{ url_for('send_theme_file', filename='print.css') }}">
     {% endblock %}
 
@@ -35,7 +27,6 @@
     {% endblock %}
 
     {% block javascript %}
-    <script src="{{ url_for('send_theme_file', filename='commons.bundle.js') }}"></script>
     <script src="{{ url_for('send_theme_file', filename='all.bundle.js') }}"></script>
     {% endblock %}
 

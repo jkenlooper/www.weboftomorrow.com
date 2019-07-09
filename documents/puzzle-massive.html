@@ -1,0 +1,126 @@
+<h1>Puzzle Massive - Massively Multiplayer Online Jigsaw Puzzles</h1>
+
+<p>A web site that allows players to collaborate on jigsaw puzzles. The stack
+is on Python web frameworks using a sqlite database. The front end uses
+AngularJS and some web components. Real time jigsaw puzzle piece movements are
+handled with websockets.
+<span class="u-textNoWrap">
+Check it out: <a href="http://puzzle.massive.xyz/">puzzle.massive.xyz</a>
+</span>
+</p>
+
+<h2>Initial development in 2011</h2>
+<p>
+In 2011 I had some extra time on my hands and a fun idea of creating a jigsaw
+puzzle website.  Of course it had to allow players to collaborate on the same
+puzzle.  This is the feature that would separate it from the rest of the online
+puzzle sites I've seen.  So after a couple of months I had something that
+I made public.  It worked well enough, but I didn't think it could handle heavy
+traffic.  Even if I did get heavy traffic, I had nothing in place to monetize
+that.
+</p>
+
+<p>
+My free time was running out.  I had many ideas on making the site profitable
+which I thought would be better if I just rebuilt the whole thing.  Later my
+attempt at a rebuild took longer then expected.  Oops.  I decided to just stop
+hosting it and move on to other things.
+</p>
+
+<h2>Bringing an old project back to life</h2>
+<p>
+In May of 2016 I decided to dig in to my code I wrote so long ago.  I needed to
+resist the urge to just rewrite the whole thing from scratch and just focus on
+maintaining it.  My first step was cleaning up the deployment process.  It was
+relying on a custom build process that would fetch dependencies that were
+a little too complex and fragile. I also was not as familiar with that
+build/compile process anymore.
+</p>
+
+<p>As a great learning experience for me; I took an iterative approach.  First
+I implemented a Vagrant file and wrote some scripts to get the web app easier
+to develop on.  Next, to familiarize myself with my old code, I started fixing
+minor bugs.  One was a memory leak that steadily made the pages load slower and
+slower.  It felt good to fix that one. </p>
+
+<p>After getting the app to a state that worked better; I started stripping out
+half-baked features and just generally simplifying the code where I could.
+I pretty much started replacing all my old javascript/jquery with just plain
+javascript at this point.  Eventually, I would need to switch over to a JS
+framework and figured if I could clean up my existing javascript it would make
+the transition easier.</p>
+
+<h2>Clean up the server side code</h2>
+
+<p>The existing backend was using a custom CMS built on the tornado python
+framework. This custom CMS I built before I started the puzzle project.  It's
+funny to build a CMS for just your own use, but that's what I did. (This custom
+CMS was not Chill. I built that much later.)  It lacked good documentation and
+probably had a lot of rough edges as I was the only developer on it.  So of
+course I used it as the base framework for the puzzle site.</p>
+
+<p>My job now for the backend was to transition away from this rough custom
+framework.  The first steps were to drop as many features and junk that were
+no longer being used.  Not saying my features/ideas for the framework I built were
+bad; just that they had little use for the puzzle site anymore.</p>
+
+<h2>Framework decisions</h2>
+
+<p>Maybe I'm making the same mistake again, but I decided to use my own custom
+framework, Chill, for any new development with the site.  So, now the site is
+split between two backends that share the data from a sqlite database.  (Yes,
+I'm now running into some minor locking issues, but that is mostly how the
+jigsaw piece renderer interacts with that database.) It is usually best to use
+the framework that you are best familiar with. For me, Chill, which is built on
+the Flask web framework, was the logical choice.  </p>
+
+<p>
+What to use as the framework for the front end?  This was actually a hard
+choice.  At this point I've cleaned up a lot of my old javascript code to
+depend less on jQuery.  The code was now more modular and functionality split
+between files.  My choices started off at creating my own frankenstein
+framework that I would just develop as I went.  I later decided against this
+approach and went with AngularJS 1.5, since that is what I was using/learning
+at work at the time.
+</p>
+
+<p> Getting any kind of framework to fit into an application's development will
+not always be a smooth process.  Sure the tutorial and example apps that use
+the framework will all make it look so simple, but real world apps (If a jigsaw
+puzzle site is a 'real world' app.) tend to have their own pecularities.  For
+Puzzle Massive the problem I ran into was how I incorporated the jigsaw puzzle
+pieces following the 'Angular way'.  Being a developer using angular for just
+a few months; I'm sure I made some rookie mistakes in my design.  To manipulate
+pieces was just a too slow of a process when there were over a thousand of
+them.  I knew I could do better than that.  </p>
+
+<p>Instead of fighting with angular directives and such for the puzzle pieces,
+I decided to use a web component.  The puzzle pieces logic could all live with
+this isolated web component.  Since I already had a lot of javascript for the
+pieces as plain old javascript it was easy to just make it work.  I also ended
+up building a more generic web component 
+(<a href="https://github.com/jkenlooper/slab-massive">slab-massive</a>)
+to handle the zooming/scaling of the whole puzzle so it could all fit on the
+screen.  Hooray for web components.</p>
+
+<h2>Ongoing development</h2>
+
+<p>Even though I've been the sole developer on this side project of mine, I've
+found it useful to create issues and milestones.  This helps so I can just
+concentrate on other things knowing that I've documented that issue or
+feature.</p>
+
+<p>The project is not under an open source license since I didn't really see
+much interest in other developers wanting to collaborate on it.  I have
+separated out bits of the project as open source software.  Like the piece
+rendering logic has been created as a separate repository on github. See <a
+  href="https://github.com/jkenlooper/piecemaker">piecemaker</a> and <a
+  href="https://github.com/jkenlooper/pixsaw">pixsaw</a> for how I create
+random jigsaw puzzle pieces.  Also the
+<a href="https://github.com/jkenlooper/slab-massive">slab-massive web component</a>
+I developed along side the project.  I have plans to
+create a better system of 'collaborativly manipulating thousands of objects in
+delayed time' which I'm hoping could be used in other projects.  Maybe
+eventually the whole of the puzzle project will be itself a puzzle with each
+piece being a bit of software configured to work in the web application.  Or
+not.</p>

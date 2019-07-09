@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block header %}
-  {{ logo_large|safe }}
+  {% include 'logo_large.html' %}
 {% endblock %}
 
 {% block main %}
@@ -16,7 +16,7 @@
 {{ toc|safe }}
 
 <article class="t-Barkdown">
-{{ content|readfile|markdown }}
+{{ 'preface.md'|readfile|markdown }}
 </article>
 
 {% endblock %}

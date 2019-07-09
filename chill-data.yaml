@@ -1,0 +1,47 @@
+!ChillNode
+name: homepage
+route: /
+template: homepage.html
+value:
+  content:
+    title: null
+  description: homepage-description.txt
+  toc:
+    chill_template: toc.html
+    chill_value:
+    - toc_item:
+        description: Some recent side projects that I'm working on.
+        slug: list/projects
+        title: Side Projects
+    - toc_item:
+        description: Writings and other bits of text about web development.
+        slug: list/text
+        title: Writings
+--- !ChillNode
+name: documentpage
+route:
+  method: GET
+  path: /<document>/
+  weight: 1
+template: documentpage.html
+value:
+  content: select_document_for_name.sql
+--- !ChillNode
+name: documentlistpage
+route: /list/<list_slug>/
+template: documentlistpage.html
+value:
+  content: select_list_for_slug.sql
+  document_list: select_documents_for_list.sql
+--- !ChillNode
+name: snippet
+route:
+  method: GET
+  path: /snippet/<path:filepath>/<language>/
+  weight: 2
+template: snippet.html
+value: _select_snippet_document.sql
+--- !ChillNode
+name: jokes-yo-llama-so-fat-spits
+route: /jokes/llama/so-fat/
+value: Yo llama's so fat, when it spits on a hillside, a mudslide happens.

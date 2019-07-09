@@ -68,6 +68,10 @@ objects += frozen.tar.gz
 frozen.tar.gz: db.dump.sql site.cfg package.json $(shell find templates/ -type f -print) $(shell find documents/ -type f -print) $(shell find queries/ -type f -print)
 	bin/freeze.sh $@
 
+# Create db.dump.sql from chill-data.sql and any chill-*.yaml files
+db.dump.sql: site.cfg chill-data.sql $(wildcard chill-*.yaml)
+	bin/create-db-dump-sql.sh
+
 site.cfg: site.cfg.sh $(PORTREGISTRY)
 	./$< $(ENVIRONMENT) $(DATABASEDIR) $(PORTREGISTRY) > $@
 

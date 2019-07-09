@@ -6,15 +6,15 @@
 
 /* For format, set it to either 'md' or 'html'. */
 
-/* node_id references the node that will have the filename of the document as
- * the value. This is commonly added with `chill operate` and the 'add document
- * for node'.
- */
+/* The document references the filename of the document. */
+/* The name is used in the route. */
 
 CREATE TABLE Document (
   id integer PRIMARY KEY AUTOINCREMENT,
   description text,
   stylesheet varchar (255),
-  node_id INTEGER REFERENCES Node (id) ON DELETE CASCADE,
-  format VARCHAR (50) DEFAULT html
+  name varchar (255) unique not null,
+  document varchar (255) not null,
+  format VARCHAR (50) DEFAULT html,
+  title TEXT
 );

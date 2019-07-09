@@ -22,7 +22,9 @@
     <div class="wot-Base-content">
 
       {% block bottom %}
-        {% include 'bottom_nav.html' %}
+      {#
+        {{ [chill route '/internal/bottom_nav/{}/'.format(page.slug)] }}
+        #}
       {% endblock %}
 
     </div>
