@@ -9,7 +9,7 @@
     <h2>Table of Contents</h2>
     <nav>
       {% for item in value %}
-        {{ listItem(item.toc_item.slug, item.toc_item.title, item.toc_item.description) }}
+        {{ listItem(item.toc.toc_item.slug, item.toc.toc_item.title, item.toc.toc_item.description) }}
       {% endfor %}
     </nav>
   </section>

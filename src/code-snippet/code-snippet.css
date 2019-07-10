@@ -24,6 +24,6 @@
 /* Need to have higher specificity here for setting the font and background. */
 .wot-CodeSnippet-pre > code[class*="language-"],
 pre.wot-CodeSnippet-pre[class*="language-"] {
-  font-family: 'Source Code Pro', Terminus, monospace;
+  font-family: "Source Code Pro", Terminus, monospace;
   font-size: 1.6rem;
 }

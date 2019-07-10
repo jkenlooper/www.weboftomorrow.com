@@ -126,6 +126,11 @@ pip install black;
 npm install;
 npm run build;
 
+# Checkout any git submodules in this repo if didn't
+# `git clone --recurse-submodules ...`.
+git submodule init;
+git submodule update;
+
 # Makes the initial development version
 make;
 

@@ -1,0 +1,18 @@
+[submodule "documents/snippets/sample-css"]
+	path = documents/snippets/sample-css
+	url = https://gist.github.com/4890deecb3aa8b704e7f675733b32b47.git
+[submodule "documents/snippets/flaskstatic"]
+	path = documents/snippets/flaskstatic
+	url = https://gist.github.com/ac1d41172363b88ea364cfc7cdaa10f2.git
+[submodule "documents/snippets/css-zen-garden-road-flower"]
+	path = documents/snippets/css-zen-garden-road-flower
+	url = https://gitlab.com/jkenlooper/css-zen-garden-road-flower.git
+[submodule "documents/snippets/chill"]
+	path = documents/snippets/chill
+	url = https://github.com/jkenlooper/chill.git
+[submodule "documents/snippets/awesomemudworks.com/gist-intrinsic-ratio-css"]
+	path = documents/snippets/awesomemudworks.com/gist-intrinsic-ratio-css
+	url = https://gist.github.com/55f5a6a001937bc8bde408ff03a80f97.git
+[submodule "documents/snippets/awesomemudworks.com/gist-gallery-mk"]
+	path = documents/snippets/awesomemudworks.com/gist-gallery-mk
+	url = https://gist.github.com/1529699c7cf5bd2e66669d930461f673.git

@@ -21,7 +21,7 @@ value:
 name: documentpage
 route:
   method: GET
-  path: /<document>/
+  path: /<document_name>/
   weight: 1
 template: documentpage.html
 value:
