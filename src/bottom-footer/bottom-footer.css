@@ -7,20 +7,23 @@
 }
 .wot-BottomFooter-info {
   min-width: 113px;
+  background-color: var(--color-paper);
 }
 .wot-BottomFooter-copy {
   min-width: 20rem;
   max-width: 51rem;
   margin-left: 10px;
   margin-right: 0px;
-  padding-bottom: 4.0rem;
+  padding-bottom: 4rem;
+  background-color: var(--color-paper);
 }
 .wot-BottomFooter-end {
   align-self: flex-end;
 }
-  .wot-BottomFooter-dinosaur {
-  }
-  .wot-BottomFooter-version {
-    padding-left: 0px;
-    text-align: right;
-  }
+.wot-BottomFooter-dinosaur {
+}
+.wot-BottomFooter-version {
+  padding-left: 0px;
+  text-align: right;
+  background-color: var(--color-paper);
+}

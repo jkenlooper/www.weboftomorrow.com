@@ -1,0 +1,60 @@
+@import "./colour.css";
+/* color naming convention:
+ * http://codepen.io/nicetransition/pen/QjwbRg
+ */
+:root {
+  /* Color name aliases from colour.css */
+  --color-darkpurple: var(--color-shadowsonthecliff);
+  --color-red: var(--color-bloattonguerbloat);
+  --color-orange: var(--color-itscutee);
+  --color-beige: var(--color-edccb);
+  /*--color-vintageblue: #a6c4bc;*/
+  --color-paper: #f2f5fa;
+
+  /* Darkest color in your palette */
+  /*
+  --color-dark: #3d3d3d;
+  --color-dark-dark: #171818;
+  */
+
+  /* Main color in your palette */
+  /*
+  --color-primary: var(--color-drk-blue);
+  */
+
+  /* Usually a contrast of primary color */
+  /*
+  --color-secondary: var(--color-brown);
+  */
+
+  /* Lightest color in your palette */
+  /*
+  --color-light: #ebe4dc;
+  --color-light-dark: var(--color-gray);
+  --color-light-light: #fef7ee;
+  --color-light-accent: var(--color-lt-blue);
+  */
+
+  /* Accent color in the palette */
+  /*
+  --color-accent: var(--color-orange);
+  --color-accent-light: #812b81;
+  */
+}
+
+/* widths (update custom-media.css, too) */
+:root {
+  --sm-viewport-max: 599px;
+  --md-viewport-min: 600px;
+  --md-viewport-max: 959px;
+  --lg-viewport-min: 960px;
+}
+
+/* spacing */
+:root {
+  /*
+  --spacing-sm: 0.6em;
+  --spacing-md: 1em;
+  --spacing-lg: 3em;
+  */
+}

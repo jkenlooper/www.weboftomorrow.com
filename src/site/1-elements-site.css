@@ -12,7 +12,7 @@ body::before {
   height: 10px;
   left: 0;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   z-index: 10;
 }
 
@@ -20,11 +20,12 @@ body::before {
 article {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+  transform: rotate(var(--rot, 0deg));
 }
 article h1 {
   position: relative;
   text-align: center;
-  margin-top: 2.0rem;
+  margin-top: 2rem;
   padding-bottom: calc(0.7rem + 0.4rem);
   /* See ::after element.
   border-bottom: 0.4rem solid var(--color-red);
@@ -75,7 +76,12 @@ b {
 @media (--sm-viewport) {
   body {
   }
-  h1,h2,h3,h4,h5,h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   header {
   }
 }

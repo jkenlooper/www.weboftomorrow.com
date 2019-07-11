@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block main %}
-<article class="t-Barkdown">
+<article style="--rot: 0.8deg" class="t-Barkdown">
   {% if content.format == 'html' %}
     {{ content.document|readfile|safe|shortcodes }}
   {% elif content.format == 'md' %}

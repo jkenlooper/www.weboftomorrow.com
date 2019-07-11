@@ -1,8 +1,0 @@
-/*! Site wide styles for Web of Tomorrow
- * Author: Jake Hickenlooper
- */
-
-@import "../0-generic/index.css";
-
-@import "../1-elements/site.css";
-@import "../1-elements/typography.css";

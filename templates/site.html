@@ -16,7 +16,7 @@
 		{{ 'favicon.html'|readfile|safe }}
 
     {% block stylesheet %}
-    <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='all.css') }}">
+    <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='app.css') }}">
     <link rel="stylesheet" media="print" href="{{ url_for('send_theme_file', filename='print.css') }}">
     {% endblock %}
 
@@ -27,7 +27,7 @@
     {% endblock %}
 
     {% block javascript %}
-    <script src="{{ url_for('send_theme_file', filename='all.bundle.js') }}"></script>
+    <script src="{{ url_for('send_theme_file', filename='app.bundle.js') }}"></script>
     {% endblock %}
 
   </body>
