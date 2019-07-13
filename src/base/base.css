@@ -1,25 +1,8 @@
-:root {
-  --wot-Base-background-image: none;
-}
 .wot-Base {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: var(--wot-Base-background-image);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-}
-.wot-Base::before {
-  content: "";
-  display: block;
-  background-color: rgba(108, 109, 117, 0.84);
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
 }
 .wot-Base > * {
   position: relative;
@@ -37,6 +20,13 @@
 }
 .wot-Base-footer {
   padding-top: 3rem;
+  border-top-width: 0.3rem;
+  border-top-style: solid;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-top-color: var(--color-red);
+  background-color: var(--color-orange);
+  color: white;
+  text-shadow: 0 0 1px var(--color-red);
 }
 .wot-Base-content {
   padding: 1rem;
@@ -49,7 +39,6 @@
 .wot-Base-main .wot-Base-content {
   background-color: var(--color-paper);
   border-radius: 1px;
-  transform: rotate(-0.4deg);
 }
 
 .wot-Base-article {

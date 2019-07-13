@@ -19,10 +19,6 @@
 /* Variant --large */
 .Logo--large {
   flex-direction: column;
-  background-color: var(--color-paper);
-  border-radius: 1px;
-  padding: 4rem;
-  transform: rotate(3.6deg);
 }
 
 .Logo--large .Logo-img {

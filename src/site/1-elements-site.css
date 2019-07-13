@@ -20,7 +20,6 @@ body::before {
 article {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  transform: rotate(var(--rot, 0deg));
 }
 article h1 {
   position: relative;
