@@ -23,10 +23,10 @@
   border-top-width: 0.3rem;
   border-top-style: solid;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  border-top-color: var(--color-red);
-  background-color: var(--color-orange);
-  color: white;
-  text-shadow: 0 0 1px var(--color-red);
+  border-top-color: var(--color-dark-dark);
+  background-color: var(--color-dark-secondary);
+  color: var(--color-light-light);
+  text-shadow: 0 0 1px var(--color-dark-dark);
 }
 .wot-Base-content {
   padding: 1rem;

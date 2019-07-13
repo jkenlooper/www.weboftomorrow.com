@@ -8,10 +8,12 @@ import "./site";
 // import pages which will include their components
 /* 3 Components */
 import "./base";
-import "./top";
-import "./logo";
-import "./bottom-nav";
 import "./bottom-footer";
+import "./bottom-nav";
+import "./code-snippet";
+import "./logo";
+import "./toc";
+import "./top";
 
 /* 4 Theme */
 

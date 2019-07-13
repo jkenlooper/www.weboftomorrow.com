@@ -1,7 +1,7 @@
 /* Only styles for things that are not typographic. */
 body {
-  background-color: var(--color-beige);
-  color: var(--color-darkpurple);
+  background-color: var(--color-light-secondary);
+  color: var(--color-dark-secondary);
   padding: 0;
 }
 /* Add a fixed top shadow */

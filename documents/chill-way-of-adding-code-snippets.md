@@ -120,19 +120,19 @@ _github is very lovable_
 An attempt at a **Far Superior** method using Chill, git submodules, and
 a third party lib for syntax coloring.
 
-<b class="wot-ListItem">
+<b>
   Should be separate from the content.
 </b>
-<b class="wot-ListItem">
+<b>
   Should not *rely* on a third party service.
 </b>
-<b class="wot-ListItem">
+<b>
   Can be easily styled and maintained across site redesigns.
 </b>
-<b class="wot-ListItem">
+<b>
   Needs to be complex enough to write an article on.
 </b>
-<b class="wot-ListItem">
+<b>
   Uses a custom framework with little documentation.
 </b>
 

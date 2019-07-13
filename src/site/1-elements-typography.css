@@ -49,6 +49,7 @@ header {
   font-size: 2rem;
   line-height: 1.3em;
   display: block;
+  color: var(--color-dark-dark);
 }
 nav,
 header {
