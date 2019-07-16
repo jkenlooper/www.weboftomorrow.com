@@ -65,6 +65,9 @@ article {
 
 address,
 p {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.8em;
   margin: 0 0 1.3rem;
 }
 address {

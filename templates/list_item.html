@@ -1,7 +1,7 @@
 {% macro listItem(slug, title, description) -%}
-  <a class="u-textInheritColor"
-     href="{{ url_for('.page_uri', uri=slug) }}"
-     title="{{ description }}">
+  <a class="wot-ListItem"
+     href="{{ url_for('.page_uri', uri=slug) }}">
     {{ title }}
+    <p class="wot-ListItem-description">{{ description }}</p>
   </a>
 {% endmacro %}

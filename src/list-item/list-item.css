@@ -1,0 +1,15 @@
+.wot-ListItem {
+  display: block;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  margin-left: 0.7em;
+}
+
+.wot-ListItem::before {
+  content: "*";
+}
+
+.wot-ListItem-description {
+  color: var(--color-light-dark);
+  margin-left: calc(0.7em + 2em);
+}

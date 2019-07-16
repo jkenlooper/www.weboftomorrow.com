@@ -14,6 +14,7 @@ import "./code-snippet";
 import "./logo";
 import "./toc";
 import "./top";
+import "./list-item";
 
 /* 4 Theme */
 

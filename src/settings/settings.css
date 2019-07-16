@@ -29,12 +29,13 @@
 
   /* Lightest color in your palette */
   --color-light: #ebe4dc;
-  --color-light-light: #fef7ee;
+  --color-light-light: #fff;
   --color-light-secondary: #cfccc9;
+  --color-light-dark: #6d6c83;
 
   /* Accent color in the palette */
-  /*
   --color-accent: var(--color-orange);
+  /*
   --color-accent-light: #812b81;
   */
 }

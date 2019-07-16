@@ -120,21 +120,11 @@ _github is very lovable_
 An attempt at a **Far Superior** method using Chill, git submodules, and
 a third party lib for syntax coloring.
 
-<b>
-  Should be separate from the content.
-</b>
-<b>
-  Should not *rely* on a third party service.
-</b>
-<b>
-  Can be easily styled and maintained across site redesigns.
-</b>
-<b>
-  Needs to be complex enough to write an article on.
-</b>
-<b>
-  Uses a custom framework with little documentation.
-</b>
+- Should be separate from the content
+- Should not _rely_ on a third party service
+- Can be easily styled and maintained across site redesigns
+- Needs to be complex enough to write an article on
+- Uses a custom framework with little documentation
 
 My first step was to research how to make the code that's inserted have
 the proper syntax highlighting. I did a quick [ddg](https://duckduckgo.com) and found

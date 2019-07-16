@@ -49,7 +49,7 @@ CREATE TABLE Document (
   title TEXT
 );
 INSERT INTO Document VALUES(2,'Opinions about some stuff in regard to web development','','opinions','opinions.md','md','An Opinionated Guide on Web Development');
-INSERT INTO Document VALUES(5,'Managing project time',NULL,'pomo-projects','pomo-projects.md','md','Managing project time');
+INSERT INTO Document VALUES(5,'My experience with the Pomodoro technique',NULL,'pomo-projects','pomo-projects.md','md','Managing project time');
 INSERT INTO Document VALUES(6,'Development of a Massively Multiplayer Online Jigsaw Puzzles website.','','puzzle-massive','puzzle-massive.html','html','Puzzle Massive - Massively Multiplayer Online Jigsaw Puzzles');
 INSERT INTO Document VALUES(7,'Around 2007 I wrote a sample.css for CSS Zen Garden and never published it.','','old-css','old-css.md','md','Old CSS Zen Garden example');
 INSERT INTO Document VALUES(8,'Examples of including code snippets into an article','chill-way-of-adding-code-snippets.css','chill-way-of-adding-code-snippets','chill-way-of-adding-code-snippets.md','md','The Chill way of adding code snippets');
