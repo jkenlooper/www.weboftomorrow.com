@@ -1,4 +1,9 @@
 DROP TABLE if exists Chill;
+DROP TABLE if exists Node;
+DROP TABLE if exists Node_Node;
+DROP TABLE if exists Query;
+DROP TABLE if exists Route;
+DROP TABLE if exists Template;
 DROP TABLE if exists Document;
 DROP TABLE if exists List;
 DROP TABLE if exists Document_List;

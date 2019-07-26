@@ -9,6 +9,7 @@
 /web/weboftomorrow.conf
 /chill/weboftomorrow-chill.service
 /db
+/db.dump.sql
 /dist/
 /frozen/
 /logs/
