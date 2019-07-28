@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 
-{% block stylesheet %}
-  {{ super() }}
-  <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='homepage.css') }}">
-{% endblock %}
-
 {% block header %}
   {% include 'logo_large.html' %}
 {% endblock %}

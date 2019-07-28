@@ -45,7 +45,10 @@ server {
   access_log  ${NGINXLOGDIR}access.log;
   error_log   ${NGINXLOGDIR}error.log;
 
-  error_page 404 /notfound/;
+  # Rewrite the homepage url
+  rewrite ^/\$ /site/ last;
+
+  error_page 404 /404.html;
 
   location = /humans.txt {}
   location = /robots.txt {}

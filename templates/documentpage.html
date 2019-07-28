@@ -2,7 +2,6 @@
 
 {% block stylesheet %}
   {{ super() }}
-  <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='document.css') }}">
   {% if content.document_stylesheet %}
   <link rel="stylesheet" media="all" href="{{ url_for('send_media_file', filename=content.document_stylesheet) }}">
   {% endif %}
@@ -16,9 +15,4 @@
     {{ content.document|readfile|markdown|shortcodes }}
   {% endif %}
 </article>
-{% endblock %}
-
-{% block javascript %}
-{{ super() }}
-<script src="{{ url_for('send_theme_file', filename='document.bundle.js') }}"></script>
 {% endblock %}

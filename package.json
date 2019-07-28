@@ -12,8 +12,8 @@
     "watch": "npm run debug -- --watch",
     "preversion": "npm test && npm run build",
     "//TODO:update scripts": "#sync upload",
-    "sync": "cp frozen/site/index.html frozen/ && aws s3 sync frozen/ s3://www.weboftomorrow.com/",
-    "upload": "cp frozen/site/index.html frozen/ && aws s3 cp frozen/ s3://www.weboftomorrow.com/ --recursive"
+    "sync": "aws s3 sync frozen/ s3://www.weboftomorrow.com/",
+    "upload": "aws s3 cp frozen/ s3://www.weboftomorrow.com/ --recursive"
   },
   "dependencies": {
     "prismjs": "^1.5.1",
