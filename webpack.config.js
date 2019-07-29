@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -111,7 +112,10 @@ config.module = {
   ]
 };
 
-config.plugins = [new MiniCssExtractPlugin({ filename: "[name].css" })];
+config.plugins = [
+  new CleanWebpackPlugin(),
+  new MiniCssExtractPlugin({ filename: "[name].css" })
+];
 
 config.stats = "minimal";
 
