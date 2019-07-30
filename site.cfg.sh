@@ -82,7 +82,7 @@ MEDIA_PATH = "/media/"
 # When creating a stand-alone static website the files in the MEDIA_FOLDER are
 # only included if they are linked to from a page.  Set this to True if all the
 # files in the media folder should be included in the FREEZER_DESTINATION.
-MEDIA_FREEZE_ALL = False
+MEDIA_FREEZE_ALL = True
 
 # The theme is where all the front end resources like css, js, graphics and
 # such that make up the theme of a website. The THEME_STATIC_FOLDER is where
