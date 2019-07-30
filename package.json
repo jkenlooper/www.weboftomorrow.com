@@ -1,6 +1,6 @@
 {
   "name": "www.weboftomorrow.com",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "A web developer's website about web development.",
   "author": "Jake Hickenlooper",
   "private": true,
@@ -8,11 +8,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "debug": "webpack --mode=development --debug --devtool source-map --output-pathinfo",
-    "watch": "npm run debug -- --watch",
-    "preversion": "npm test && npm run build",
-    "//TODO:update scripts": "#sync upload",
-    "sync": "aws s3 sync frozen/ s3://www.weboftomorrow.com/",
-    "upload": "aws s3 cp frozen/ s3://www.weboftomorrow.com/ --recursive"
+    "watch": "npm run debug -- --watch"
   },
   "dependencies": {
     "prismjs": "^1.5.1",
