@@ -1,3 +1,25 @@
+This site is currently deployed as a static website and is hosted on
+a compatible Amazon s3 service. Use `aws configure` to set credentials for the
+`weboftomorrow` profile.
+
+To upload to s3 after testing development on local machine:
+
+```
+source bin/activate
+nvm use
+
+# Create dist files
+npm run build
+
+# Create frozen.tar.gz
+make ENVIRONMENT=production
+
+# Upload the frozen.tar.gz to s3 bucket
+./bin/upload.sh
+```
+
+**The below is the standard deployment if not using s3**
+
 # Deployment Guide
 
 There are two kinds of deployments outlined here. The first one is for in-place
