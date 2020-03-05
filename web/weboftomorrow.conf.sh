@@ -6,6 +6,7 @@ ENVIRONMENT=$1
 SRVDIR=$2
 NGINXLOGDIR=$3
 PORTREGISTRY=$4
+INTERNALIP=$5
 
 # shellcheck source=/dev/null
 source "$PORTREGISTRY"
@@ -70,7 +71,10 @@ cat <<HEREBEDEVELOPMENT
   ssl_certificate /etc/nginx/ssl/server.crt;
   ssl_certificate_key /etc/nginx/ssl/server.key;
 
-  server_name local-weboftomorrow;
+  # Only when in development should the site be accessible via internal ip.
+  # This makes it easier to test with other devices that may not be able to
+  # update a /etc/hosts file.
+  server_name local-weboftomorrow $INTERNALIP;
 
   # It is useful to have chill run in dev mode when editing templates. Note
   # that in production it uses the static pages (frozen).
@@ -105,7 +109,8 @@ fi
 
 cat <<HEREBEPRODUCTION
 
-  server_name www.weboftomorrow.com;
+  # Support blue-green deployments.
+  server_name weboftomorrow-blue weboftomorrow-green www.weboftomorrow.com;
 
   location /.well-known/ {
     try_files \$uri =404;

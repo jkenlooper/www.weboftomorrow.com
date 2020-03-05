@@ -7,7 +7,6 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const postcssImport = require("postcss-import");
 const postcssURL = require("postcss-url");
 const postcssPresetEnv = require("postcss-preset-env");
-const postcssCustomMedia = require("postcss-custom-media");
 
 const srcEntry = require("./src/index.js");
 
@@ -50,7 +49,11 @@ config.module = {
       test: /\.ts$/,
       exclude: /node_modules/,
       use: {
-        loader: "ts-loader"
+        loader: "ts-loader",
+        // Only care about transpiling typescript and not doing all the type
+        // checking which is slower.  TODO: could do type checking by using
+        // fork-ts-checker-webpack-plugin
+        options: { transpileOnly: true }
       }
     },
     {
@@ -85,7 +88,6 @@ config.module = {
             plugins: loader => [
               postcssImport({ root: loader.resourcePath }),
               postcssURL(),
-              postcssCustomMedia(),
               postcssPresetEnv()
             ]
           }

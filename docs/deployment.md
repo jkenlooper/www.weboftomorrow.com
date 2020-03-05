@@ -12,10 +12,11 @@ nvm use
 npm run build
 
 # Create frozen.tar.gz
-make ENVIRONMENT=production
+make ENVIRONMENT=production -B
 
-# Upload the frozen.tar.gz to s3 bucket
-./bin/upload.sh
+# Upload the frozen.tar.gz and project's root/ to s3 bucket
+make ENVIRONMENT=production deploy --dryrun
+make ENVIRONMENT=production deploy
 ```
 
 **The below is the standard deployment if not using s3**
@@ -185,19 +186,19 @@ by the public.
 
 Note that by default the production version of the nginx conf for the website is
 hosted at [www.weboftomorrow.com](http://www.weboftomorrow.com) as well as
-[blue-weboftomorrow](http://blue-weboftomorrow/) and
-[green-weboftomorrow](http://green-weboftomorrow/). You can edit
-your `/etc/hosts` to point to the old (blue-weboftomorrow) and new
-(green-weboftomorrow) servers.
+[weboftomorrow-blue](http://weboftomorrow-blue/) and
+[weboftomorrow-green](http://weboftomorrow-green/). You can edit
+your `/etc/hosts` to point to the old (weboftomorrow-blue) and new
+(weboftomorrow-green) servers.
 
 ### Transferring data from the old server to the new server
 
 At this point two servers should be running the website with only the older
 one (blue) having traffic. The new one (green) should be verified that everything is working
 correctly by doing some integration testing. The next step is to stop the apps
-on the old server and copy all the data over to the new green-weboftomorrow server.
+on the old server and copy all the data over to the new weboftomorrow-green server.
 
-1.  On the **old server** (blue-weboftomorrow) stop the apps and backup the data. The old
+1.  On the **old server** (weboftomorrow-blue) stop the apps and backup the data. The old
     server is left untouched in case something fails on the new server.
 
     ```bash
@@ -207,7 +208,7 @@ on the old server and copy all the data over to the new green-weboftomorrow serv
     ./bin/backup.sh;
     ```
 
-2.  On the **new server** (green-weboftomorrow) the files from the old server will be copied over with
+2.  On the **new server** (weboftomorrow-green) the files from the old server will be copied over with
     rsync. First step here is to stop the apps on the new server and remove the
     initial db.
 
@@ -220,7 +221,7 @@ on the old server and copy all the data over to the new green-weboftomorrow serv
 
 3.  Copy the backup db (db-YYYY-MM-DD.dump.gz) to the new server and replace the
     other one (SQLITE_DATABASE_URI). This is assuming that ssh agent forwarding
-    is enabled for the blue-weboftomorrow host.
+    is enabled for the weboftomorrow-blue host.
     TODO: should journal_mode be set to wal for this app? Only have one app
     accessing the database at this point.
 
@@ -228,7 +229,7 @@ on the old server and copy all the data over to the new green-weboftomorrow serv
     cd /usr/local/src/weboftomorrow/;
     DBDUMPFILE="db-$(date +%F).dump.gz";
     rsync --archive --progress --itemize-changes \
-      dev@blue-weboftomorrow:/usr/local/src/weboftomorrow/$DBDUMPFILE \
+      dev@weboftomorrow-blue:/usr/local/src/weboftomorrow/$DBDUMPFILE \
       /usr/local/src/weboftomorrow/;
     zcat $DBDUMPFILE | sqlite3 /var/lib/weboftomorrow/sqlite3/db
     #echo 'pragma journal_mode=wal' | sqlite3 /var/lib/weboftomorrow/sqlite3/db
@@ -238,7 +239,7 @@ on the old server and copy all the data over to the new green-weboftomorrow serv
 
     ```bash
     rsync --archive --progress --itemize-changes \
-      dev@blue-weboftomorrow:/var/log/nginx/weboftomorrow \
+      dev@weboftomorrow-blue:/var/log/nginx/weboftomorrow \
       /var/log/nginx/
     ```
 
@@ -246,10 +247,10 @@ on the old server and copy all the data over to the new green-weboftomorrow serv
 
     ```bash
     scp \
-      dev@blue-weboftomorrow:/etc/letsencrypt/live/www.weboftomorrow.com/fullchain.pem \
+      dev@weboftomorrow-blue:/etc/letsencrypt/live/www.weboftomorrow.com/fullchain.pem \
       /etc/letsencrypt/live/www.weboftomorrow.com/
     scp \
-      dev@blue-weboftomorrow:/etc/letsencrypt/live/www.weboftomorrow.com/privkey.pem \
+      dev@weboftomorrow-blue:/etc/letsencrypt/live/www.weboftomorrow.com/privkey.pem \
       /etc/letsencrypt/live/www.weboftomorrow.com/
     ```
 
@@ -267,5 +268,34 @@ on the old server and copy all the data over to the new green-weboftomorrow serv
     ```
 
     Verify that the new version of the website is running correctly on
-    green-weboftomorrow/. If everything checks out, then switch the traffic over to
+    weboftomorrow-green/. If everything checks out, then switch the traffic over to
     www.weboftomorrow.com/.
+
+## Removing the app from a server
+
+Run the below commands to remove weboftomorrow from the
+server. This will uninstall and disable the services, remove any files
+installed outside of the `/usr/local/src/weboftomorrow/`
+directory including the sqlite3 database and finally remove the source files as
+well. _Only do this if the website is running on the new server and is no
+longer needed on the old one._
+
+```bash
+cd /usr/local/src/weboftomorrow/;
+source bin/activate;
+sudo ./bin/appctl.sh stop;
+
+# Removes any installed files outside of the project
+sudo make uninstall;
+
+# Remove files generated by make
+make clean;
+deactivate;
+
+# Removes all data including the sqlite3 database
+sudo rm -rf /var/lib/weboftomorrow/
+
+# Remove the source files
+cd ../;
+sudo rm -rf /usr/local/src/weboftomorrow/;
+```

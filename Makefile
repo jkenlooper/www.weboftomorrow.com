@@ -25,6 +25,9 @@ SYSTEMDDIR := $(PREFIXDIR)/etc/systemd/system/
 DATABASEDIR := $(PREFIXDIR)/var/lib/weboftomorrow/sqlite3/
 NGINXLOGDIR := $(PREFIXDIR)/var/log/nginx/weboftomorrow/
 
+# Set the internal ip which is used to secure access to admin/ pages.
+INTERNALIP := $(shell hostname -I | cut -d' ' -f1)
+
 # Get the version from the package.json
 TAG := $(shell cat package.json | python -c 'import sys, json; print(json.load(sys.stdin)["version"])')
 
@@ -77,7 +80,7 @@ site.cfg: site.cfg.sh $(PORTREGISTRY)
 	./$< $(ENVIRONMENT) $(DATABASEDIR) $(PORTREGISTRY) > $@
 
 web/weboftomorrow.conf: web/weboftomorrow.conf.sh $(PORTREGISTRY)
-	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(PORTREGISTRY) > $@
+	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(PORTREGISTRY) $(INTERNALIP) > $@
 
 # Uncomment if using dhparam.pem
 #ifeq ($(ENVIRONMENT),production)
@@ -98,6 +101,14 @@ all: bin/chill $(objects)
 .PHONY: install
 install:
 	./bin/install.sh $(SRVDIR) $(NGINXDIR) $(NGINXLOGDIR) $(SYSTEMDDIR) $(DATABASEDIR)
+
+.PHONY: deploy
+deploy:
+ifeq ($(ENVIRONMENT),production)
+	./bin/deploy.sh
+else
+	./bin/deploy.sh --dryrun
+endif
 
 # Remove any created files in the src directory which were created by the
 # `make all` recipe.

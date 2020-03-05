@@ -1,11 +1,12 @@
 Makefile
 README.md
 bin/appctl.sh
+bin/create-db-dump-sql.sh
+bin/deploy.sh
 bin/freeze.sh
 bin/init.sh
 bin/install.sh
 bin/log.sh
-bin/provision-build.sh
 bin/provision-certbot.sh
 bin/provision-local.sh
 bin/setup.sh
@@ -14,7 +15,8 @@ certbot
 chill/README.md
 chill/requirements.txt
 chill/weboftomorrow-chill.service.sh
-db.dump.sql
+chill-data.sql
+chill-data.yaml
 dist
 documents
 media
