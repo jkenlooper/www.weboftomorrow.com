@@ -1,0 +1,13 @@
+default_context:
+  project_name: "Web of Tomorrow"
+  project_slug: "www.weboftomorrow.com"
+  site_domain: "www.weboftomorrow.com"
+  s3_object_storage_name: "www.weboftomorrow.com"
+  site_protocol: "http"
+  internal_port_prefix: "113"
+  full_name: "Jake Hickenlooper"
+  email: "jake@weboftomorrow.com"
+  project_short_description: "A web developer's website about web development."
+  version: "0.7.0"
+  now: "2015-09-20"
+  generated_by_cookiecutter_website_version: "0.1.0"
