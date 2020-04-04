@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const postcssImport = require("postcss-import");
 const postcssURL = require("postcss-url");
 const postcssPresetEnv = require("postcss-preset-env");
+const postcssCustomMedia = require("postcss-custom-media");
 
 const srcEntry = require("./src/index.js");
 
@@ -35,12 +36,12 @@ config.entry = srcEntry;
  */
 config.output = {
   path: path.resolve(__dirname, "dist"),
-  filename: "[name].bundle.js"
+  filename: "[name].bundle.js",
 };
 
 config.resolve = {
   extensions: [".ts", ".js"],
-  modules: ["src", "node_modules"]
+  modules: ["src", "node_modules"],
 };
 
 config.module = {
@@ -53,31 +54,32 @@ config.module = {
         // Only care about transpiling typescript and not doing all the type
         // checking which is slower.  TODO: could do type checking by using
         // fork-ts-checker-webpack-plugin
-        options: { transpileOnly: true }
-      }
+        options: { transpileOnly: true },
+      },
     },
     {
-      test: /_fonts\/.*\.(eot|svg|ttf|woff)/,
+      test: /fonts\/.*\.(eot|svg|ttf|woff)$/,
       use: [
         {
           loader: "file-loader",
-          options: { name: "[name].[ext]" }
-        }
+          options: { name: "[name].[ext]" },
+        },
       ],
-      exclude: /node_modules/
+      exclude: /node_modules/,
     },
     {
       test: /\.(png|gif|jpg)$/,
       use: [
         {
           loader: "file-loader",
-          options: { name: "[name].[ext]" }
-        }
+          options: { name: "[name].[ext]" },
+        },
       ],
-      exclude: /node_modules/
+      exclude: /node_modules/,
     },
     {
       test: /\.css$/,
+      include: [path.resolve(__dirname, "src"), /prismjs/],
       use: [
         MiniCssExtractPlugin.loader,
         { loader: "css-loader", options: { importLoaders: 1 } },
@@ -85,14 +87,15 @@ config.module = {
           loader: "postcss-loader",
           options: {
             ident: "postcss",
-            plugins: loader => [
+            plugins: (loader) => [
               postcssImport({ root: loader.resourcePath }),
+              postcssCustomMedia(),
               postcssURL(),
-              postcssPresetEnv()
-            ]
-          }
-        }
-      ]
+              postcssPresetEnv(),
+            ],
+          },
+        },
+      ],
     },
     {
       test: /\.svg$/,
@@ -100,23 +103,23 @@ config.module = {
         {
           loader: "file-loader",
           options: {
-            name: "[name].[ext]"
-          }
+            name: "[name].[ext]",
+          },
         },
-        "svgo-loader"
+        "svgo-loader",
       ],
-      exclude: /(node_modules|_fonts)/
+      exclude: /(node_modules|fonts)/,
     },
     {
       test: /\.html$/,
-      use: "raw-loader"
-    }
-  ]
+      use: "raw-loader",
+    },
+  ],
 };
 
 config.plugins = [
   new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin({ filename: "[name].css" })
+  new MiniCssExtractPlugin({ filename: "[name].css" }),
 ];
 
 config.stats = "minimal";
@@ -129,16 +132,16 @@ config.optimization = {
       sourceMap: true, // set to true if you want JS source maps
       terserOptions: {
         compress: {
-          drop_console: true
-        }
-      }
+          drop_console: true,
+        },
+      },
     }),
-    new OptimizeCSSAssetsPlugin({})
-  ]
+    new OptimizeCSSAssetsPlugin({}),
+  ],
 };
 
 config.performance = {
-  hints: "warning"
+  hints: "warning",
   //maxAssetSize: 500000,
   //maxEntrypointSize: 800000,
 };
@@ -149,7 +152,7 @@ module.exports = (env, argv) => {
     config.watch = argv.watch;
     config.watchOptions = {
       aggregateTimeout: 300,
-      poll: 1000
+      poll: 1000,
     };
     config.optimization = {};
   }

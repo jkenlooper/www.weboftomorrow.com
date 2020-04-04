@@ -42,7 +42,7 @@ make dist;
 
 The distribution file will be at the top level of the project and named after
 the version found in package.json. For example, with version 0.3.1 the file is
-`weboftomorrow-0.3.1.tar.gz`.
+`www.weboftomorrow.com-0.3.1.tar.gz`.
 
 That tar file can then be uploaded to the server. The next step varies
 depending if the deployment will be an in-place deployment or if a new server
@@ -65,7 +65,7 @@ been uploaded to the home directory.
     a cautionary measure and is left in the folder.
 
     ```bash
-    cd /usr/local/src/weboftomorrow;
+    cd /usr/local/src/www.weboftomorrow.com;
     source bin/activate;
     sudo ./bin/appctl.sh stop;
     ./bin/backup.sh;
@@ -73,18 +73,18 @@ been uploaded to the home directory.
     ```
 
 2.  Replace the current source code with the new version. Example shows the
-    weboftomorrow-0.3.1.tar.gz which should be in the dev home directory.
+    www.weboftomorrow.com-0.3.1.tar.gz which should be in the dev home directory.
     The current source code is moved to the home directory under a date label in
     case it needs to revert back. The `.env` and `.htpasswd` files are copied
     over since they are not included in the distribution.
 
     ```bash
     cd /home/dev/;
-    sudo mv /usr/local/src/weboftomorrow weboftomorrow-$(date +%F);
-    sudo tar --directory=/usr/local/src/ --extract --gunzip -f weboftomorrow-0.3.1.tar.gz
-    sudo chown -R dev:dev /usr/local/src/weboftomorrow
-    cp weboftomorrow-$(date +%F)/.env /usr/local/src/weboftomorrow/;
-    cp weboftomorrow-$(date +%F)/.htpasswd /usr/local/src/weboftomorrow/;
+    sudo mv /usr/local/src/www.weboftomorrow.com www.weboftomorrow.com-$(date +%F);
+    sudo tar --directory=/usr/local/src/ --extract --gunzip -f www.weboftomorrow.com-0.3.1.tar.gz
+    sudo chown -R dev:dev /usr/local/src/www.weboftomorrow.com
+    cp www.weboftomorrow.com-$(date +%F)/.env /usr/local/src/www.weboftomorrow.com/;
+    cp www.weboftomorrow.com-$(date +%F)/.htpasswd /usr/local/src/www.weboftomorrow.com/;
     ```
 
 3.  Make the new apps and install the source code. The install will also start
@@ -92,7 +92,7 @@ been uploaded to the home directory.
     and is only needed if the nginx conf changed.
 
     ```bash
-    cd /usr/local/src/weboftomorrow;
+    cd /usr/local/src/www.weboftomorrow.com;
     virtualenv . -p python3;
     source bin/activate;
     make ENVIRONMENT=production && \
@@ -122,7 +122,7 @@ by the public.
 
     ```bash
     cd /root;
-    tar --directory=/usr/local/src/ --extract --gunzip -f weboftomorrow-0.3.1.tar.gz
+    tar --directory=/usr/local/src/ --extract --gunzip -f www.weboftomorrow.com-0.3.1.tar.gz
     ```
 
 2.  Now setup the new server by running the `init.sh` and `setup.sh` scripts.
@@ -132,21 +132,21 @@ by the public.
     to dev since it was initially added via root user.
 
     ```bash
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     ./bin/init.sh;
     ./bin/setup.sh;
-    chown -R dev:dev /usr/local/src/weboftomorrow
+    chown -R dev:dev /usr/local/src/www.weboftomorrow.com
     ```
 
 3.  SSH in as the dev user and upload or create the `.env` and `.htpasswd` files
-    in the `/usr/local/src/weboftomorrow/` directory. See the README on how to
+    in the `/usr/local/src/www.weboftomorrow.com/` directory. See the README on how to
     create these. At this point there is no need to SSH in to the server as the
     root user.
 
 4.  Now create the initial bare-bones version without any data as the dev user.
 
     ```bash
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     virtualenv . -p python3;
     source bin/activate;
     make ENVIRONMENT=production;
@@ -162,7 +162,9 @@ by the public.
     sudo ./bin/appctl.sh status;
     ```
 
-6.  Test and reload the nginx config.
+6.  Test and reload the nginx config. If this is a new server you may need to
+    remove the `/etc/nginx/sites-enabled/default` file. This site will include it's
+    own [web/default.conf]().
 
     ```bash
     sudo nginx -t && \
@@ -175,9 +177,9 @@ by the public.
     name. The certs can be copied over from the live server later.
 
     ```bash
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     source bin/activate;
-    sudo bin/provision-certbot.sh /srv/weboftomorrow/
+    sudo bin/provision-certbot.sh /srv/www.weboftomorrow.com/
     make ENVIRONMENT=production;
     sudo make ENVIRONMENT=production install;
     sudo nginx -t && \
@@ -186,60 +188,60 @@ by the public.
 
 Note that by default the production version of the nginx conf for the website is
 hosted at [www.weboftomorrow.com](http://www.weboftomorrow.com) as well as
-[weboftomorrow-blue](http://weboftomorrow-blue/) and
-[weboftomorrow-green](http://weboftomorrow-green/). You can edit
-your `/etc/hosts` to point to the old (weboftomorrow-blue) and new
-(weboftomorrow-green) servers.
+[www.weboftomorrow.com-blue](http://www.weboftomorrow.com-blue/) and
+[www.weboftomorrow.com-green](http://www.weboftomorrow.com-green/). You can edit
+your `/etc/hosts` to point to the old (www.weboftomorrow.com-blue) and new
+(www.weboftomorrow.com-green) servers.
 
 ### Transferring data from the old server to the new server
 
 At this point two servers should be running the website with only the older
 one (blue) having traffic. The new one (green) should be verified that everything is working
 correctly by doing some integration testing. The next step is to stop the apps
-on the old server and copy all the data over to the new weboftomorrow-green server.
+on the old server and copy all the data over to the new www.weboftomorrow.com-green server.
 
-1.  On the **old server** (weboftomorrow-blue) stop the apps and backup the data. The old
+1.  On the **old server** (www.weboftomorrow.com-blue) stop the apps and backup the data. The old
     server is left untouched in case something fails on the new server.
 
     ```bash
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     source bin/activate;
     sudo ./bin/appctl.sh stop;
     ./bin/backup.sh;
     ```
 
-2.  On the **new server** (weboftomorrow-green) the files from the old server will be copied over with
+2.  On the **new server** (www.weboftomorrow.com-green) the files from the old server will be copied over with
     rsync. First step here is to stop the apps on the new server and remove the
     initial db.
 
     ```bash
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     source bin/activate;
     sudo ./bin/appctl.sh stop;
-    rm /var/lib/weboftomorrow/sqlite3/db;
+    rm /var/lib/www.weboftomorrow.com/sqlite3/db;
     ```
 
 3.  Copy the backup db (db-YYYY-MM-DD.dump.gz) to the new server and replace the
     other one (SQLITE_DATABASE_URI). This is assuming that ssh agent forwarding
-    is enabled for the weboftomorrow-blue host.
+    is enabled for the www.weboftomorrow.com-blue host.
     TODO: should journal_mode be set to wal for this app? Only have one app
     accessing the database at this point.
 
     ```bash
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     DBDUMPFILE="db-$(date +%F).dump.gz";
     rsync --archive --progress --itemize-changes \
-      dev@weboftomorrow-blue:/usr/local/src/weboftomorrow/$DBDUMPFILE \
-      /usr/local/src/weboftomorrow/;
-    zcat $DBDUMPFILE | sqlite3 /var/lib/weboftomorrow/sqlite3/db
-    #echo 'pragma journal_mode=wal' | sqlite3 /var/lib/weboftomorrow/sqlite3/db
+      dev@www.weboftomorrow.com-blue:/usr/local/src/www.weboftomorrow.com/$DBDUMPFILE \
+      /usr/local/src/www.weboftomorrow.com/;
+    zcat $DBDUMPFILE | sqlite3 /var/lib/www.weboftomorrow.com/sqlite3/db
+    #echo 'pragma journal_mode=wal' | sqlite3 /var/lib/www.weboftomorrow.com/sqlite3/db
     ```
 
-4.  Copy the nginx logs (NGINXLOGDIR) found at: `/var/log/nginx/weboftomorrow/`
+4.  Copy the nginx logs (NGINXLOGDIR) found at: `/var/log/nginx/www.weboftomorrow.com/`
 
     ```bash
     rsync --archive --progress --itemize-changes \
-      dev@weboftomorrow-blue:/var/log/nginx/weboftomorrow \
+      dev@www.weboftomorrow.com-blue:/var/log/nginx/www.weboftomorrow.com \
       /var/log/nginx/
     ```
 
@@ -247,10 +249,10 @@ on the old server and copy all the data over to the new weboftomorrow-green serv
 
     ```bash
     scp \
-      dev@weboftomorrow-blue:/etc/letsencrypt/live/www.weboftomorrow.com/fullchain.pem \
+      dev@www.weboftomorrow.com-blue:/etc/letsencrypt/live/www.weboftomorrow.com/fullchain.pem \
       /etc/letsencrypt/live/www.weboftomorrow.com/
     scp \
-      dev@weboftomorrow-blue:/etc/letsencrypt/live/www.weboftomorrow.com/privkey.pem \
+      dev@www.weboftomorrow.com-blue:/etc/letsencrypt/live/www.weboftomorrow.com/privkey.pem \
       /etc/letsencrypt/live/www.weboftomorrow.com/
     ```
 
@@ -261,27 +263,27 @@ on the old server and copy all the data over to the new weboftomorrow-green serv
     if anything is throwing errors.
 
     ```
-    cd /usr/local/src/weboftomorrow/;
+    cd /usr/local/src/www.weboftomorrow.com/;
     source bin/activate;
     sudo ./bin/appctl.sh start;
     ./bin/log.sh;
     ```
 
     Verify that the new version of the website is running correctly on
-    weboftomorrow-green/. If everything checks out, then switch the traffic over to
+    www.weboftomorrow.com-green/. If everything checks out, then switch the traffic over to
     www.weboftomorrow.com/.
 
 ## Removing the app from a server
 
-Run the below commands to remove weboftomorrow from the
+Run the below commands to remove www.weboftomorrow.com from the
 server. This will uninstall and disable the services, remove any files
-installed outside of the `/usr/local/src/weboftomorrow/`
+installed outside of the `/usr/local/src/www.weboftomorrow.com/`
 directory including the sqlite3 database and finally remove the source files as
 well. _Only do this if the website is running on the new server and is no
 longer needed on the old one._
 
 ```bash
-cd /usr/local/src/weboftomorrow/;
+cd /usr/local/src/www.weboftomorrow.com/;
 source bin/activate;
 sudo ./bin/appctl.sh stop;
 
@@ -293,9 +295,9 @@ make clean;
 deactivate;
 
 # Removes all data including the sqlite3 database
-sudo rm -rf /var/lib/weboftomorrow/
+sudo rm -rf /var/lib/www.weboftomorrow.com/
 
 # Remove the source files
 cd ../;
-sudo rm -rf /usr/local/src/weboftomorrow/;
+sudo rm -rf /usr/local/src/www.weboftomorrow.com/;
 ```

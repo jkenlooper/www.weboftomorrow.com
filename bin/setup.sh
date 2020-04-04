@@ -22,3 +22,6 @@ apt-get --yes install \
   libpq-dev \
   python-psycopg2 \
   virtualenv
+
+apt-get --yes install \
+  awstats

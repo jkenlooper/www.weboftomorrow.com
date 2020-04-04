@@ -19,11 +19,12 @@ PREFIXDIR :=
 ENVIRONMENT := development
 
 PORTREGISTRY := ${PWD}/port-registry.cfg
-SRVDIR := $(PREFIXDIR)/srv/weboftomorrow/
+SRVDIR := $(PREFIXDIR)/srv/www.weboftomorrow.com/
 NGINXDIR := $(PREFIXDIR)/etc/nginx/
 SYSTEMDDIR := $(PREFIXDIR)/etc/systemd/system/
-DATABASEDIR := $(PREFIXDIR)/var/lib/weboftomorrow/sqlite3/
-NGINXLOGDIR := $(PREFIXDIR)/var/log/nginx/weboftomorrow/
+DATABASEDIR := $(PREFIXDIR)/var/lib/www.weboftomorrow.com/sqlite3/
+NGINXLOGDIR := $(PREFIXDIR)/var/log/nginx/www.weboftomorrow.com/
+AWSTATSLOGDIR := $(PREFIXDIR)/var/log/awstats/www.weboftomorrow.com/
 
 # Set the internal ip which is used to secure access to admin/ pages.
 INTERNALIP := $(shell hostname -I | cut -d' ' -f1)
@@ -45,11 +46,12 @@ ifneq ($(shell which pip),$(project_dir)bin/pip)
 $(warning run "source bin/activate" to activate the virtualenv. Using $(shell which pip). Ignore this warning if using sudo make install.)
 endif
 
+
 # Always run.  Useful when target is like targetname.% .
 # Use $* to get the stem
 FORCE:
 
-objects := site.cfg web/weboftomorrow.conf
+objects := site.cfg web/www.weboftomorrow.com.conf web/www.weboftomorrow.com--down.conf stats/awstats.www.weboftomorrow.com.conf stats/awstats-www.weboftomorrow.com-crontab
 
 
 #####
@@ -62,8 +64,8 @@ bin/chill: chill/requirements.txt requirements.txt
 	pip install --upgrade --upgrade-strategy eager -r $<
 	touch $@;
 
-objects += chill/weboftomorrow-chill.service
-chill/weboftomorrow-chill.service: chill/weboftomorrow-chill.service.sh
+objects += chill/www.weboftomorrow.com-chill.service
+chill/www.weboftomorrow.com-chill.service: chill/www.weboftomorrow.com-chill.service.sh
 	./$< $(ENVIRONMENT) $(project_dir) > $@
 
 # Create a tar of the frozen directory to prevent manually updating files within it.
@@ -76,31 +78,48 @@ objects += db.dump.sql
 db.dump.sql: site.cfg chill-data.sql $(wildcard chill-*.yaml)
 	bin/create-db-dump-sql.sh
 
+bin/www.weboftomorrow.com-api: api/requirements.txt requirements.txt api/setup.py
+	pip install --upgrade --upgrade-strategy eager -r $<
+	touch $@;
+
+
+objects += api/www.weboftomorrow.com-api.service
+api/www.weboftomorrow.com-api.service: api/www.weboftomorrow.com-api.service.sh
+	./$< $(project_dir) > $@
+
 site.cfg: site.cfg.sh $(PORTREGISTRY)
 	./$< $(ENVIRONMENT) $(DATABASEDIR) $(PORTREGISTRY) > $@
 
-web/weboftomorrow.conf: web/weboftomorrow.conf.sh $(PORTREGISTRY)
+web/www.weboftomorrow.com.conf: web/www.weboftomorrow.com.conf.sh $(PORTREGISTRY)
+	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(PORTREGISTRY) $(INTERNALIP) > $@
+web/www.weboftomorrow.com--down.conf: web/www.weboftomorrow.com--down.conf.sh $(PORTREGISTRY)
 	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(PORTREGISTRY) $(INTERNALIP) > $@
 
 # Uncomment if using dhparam.pem
 #ifeq ($(ENVIRONMENT),production)
 ## Only create the dhparam.pem if needed.
 #objects += web/dhparam.pem
-#web/weboftomorrow.conf: web/dhparam.pem
+#web/www.weboftomorrow.com.conf: web/dhparam.pem
 #endif
 
-.PHONY: weboftomorrow-$(TAG).tar.gz
-weboftomorrow-$(TAG).tar.gz: bin/dist.sh
+stats/awstats.www.weboftomorrow.com.conf: stats/awstats.www.weboftomorrow.com.conf.sh
+	./$< $(NGINXLOGDIR) > $@
+
+stats/awstats-www.weboftomorrow.com-crontab: stats/awstats-www.weboftomorrow.com-crontab.sh
+	./$< $(SRVDIR) $(AWSTATSLOGDIR) > $@
+
+.PHONY: www.weboftomorrow.com-$(TAG).tar.gz
+www.weboftomorrow.com-$(TAG).tar.gz: bin/dist.sh
 	./$< $(abspath $@)
 
 ######
 
 .PHONY: all
-all: bin/chill $(objects)
+all: bin/chill bin/www.weboftomorrow.com-api media $(objects)
 
 .PHONY: install
 install:
-	./bin/install.sh $(SRVDIR) $(NGINXDIR) $(NGINXLOGDIR) $(SYSTEMDDIR) $(DATABASEDIR)
+	./bin/install.sh $(SRVDIR) $(NGINXDIR) $(NGINXLOGDIR) $(AWSTATSLOGDIR) $(SYSTEMDDIR) $(DATABASEDIR)
 
 .PHONY: deploy
 deploy:
@@ -115,7 +134,10 @@ endif
 .PHONY: clean
 clean:
 	rm $(objects)
+	echo $(objects) | xargs rm -f
 	pip uninstall --yes -r chill/requirements.txt
+	pip uninstall --yes -r api/requirements.txt
+	for mk in $(source_media_mk); do make -f $${mk} clean; done;
 
 # Remove files placed outside of src directory and uninstall app.
 # Will also remove the sqlite database file.
@@ -124,4 +146,11 @@ uninstall:
 	./bin/uninstall.sh $(SRVDIR) $(NGINXDIR) $(SYSTEMDDIR) $(DATABASEDIR)
 
 .PHONY: dist
-dist: weboftomorrow-$(TAG).tar.gz
+dist: www.weboftomorrow.com-$(TAG).tar.gz
+
+# Find any make files in the source-media folder. Sort so the 00_ratio-hint.mk
+# is last.
+source_media_mk := $(shell find source-media/ -type f -name '*.mk' -print | sort --dictionary-order --ignore-case --reverse)
+.PHONY: media
+media:
+	for mk in $(source_media_mk); do make -f $${mk}; done;

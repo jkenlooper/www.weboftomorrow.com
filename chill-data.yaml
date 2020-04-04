@@ -1,13 +1,13 @@
 !ChillNode
 name: homepage
 route: /
-template: homepage.html
+template: homepage.html.jinja2
 value:
   content:
-    title: null
-  description: homepage-description.txt
+    pagetitle: null
+  description_txt_file: homepage-description.txt
   toc:
-    chill_template: toc.html
+    chill_template: toc.html.jinja2
     chill_value:
     - toc_item:
         description: Some recent side projects that I'm working on.
@@ -23,13 +23,13 @@ route:
   method: GET
   path: /<document_name>/
   weight: 1
-template: documentpage.html
+template: documentpage.html.jinja2
 value:
   content: select_document_for_name.sql
 --- !ChillNode
 name: documentlistpage
 route: /list/<list_slug>/
-template: documentlistpage.html
+template: documentlistpage.html.jinja2
 value:
   content: select_list_for_slug.sql
   document_list: select_documents_for_list.sql
@@ -39,7 +39,7 @@ route:
   method: GET
   path: /snippet/<path:filepath>/<language>/
   weight: 2
-template: snippet.html
+template: snippet.html.jinja2
 value: _select_snippet_document.sql
 --- !ChillNode
 name: jokes-yo-llama-so-fat-spits

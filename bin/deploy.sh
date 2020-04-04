@@ -11,11 +11,11 @@ tar --directory="${FROZENTMP}" --gunzip --extract -f frozen.tar.gz
 # Prompt to execute the aws s3 commands
 echo aws s3 sync \
   "${FROZENTMP}/frozen/" s3://www.weboftomorrow.com/ \
-  --profile weboftomorrow \
+  --profile www.weboftomorrow.com \
   $@
 echo aws s3 sync \
   root/ s3://www.weboftomorrow.com/ \
-  --profile weboftomorrow \
+  --profile www.weboftomorrow.com \
   $@
 read -p "execute commands? y/n " -n 1 CONTINUE
 
@@ -23,11 +23,11 @@ read -p "execute commands? y/n " -n 1 CONTINUE
 if test $CONTINUE == 'y'; then
 aws s3 sync \
   "${FROZENTMP}/frozen/" s3://www.weboftomorrow.com/ \
-  --profile weboftomorrow \
+  --profile www.weboftomorrow.com \
   $@
 aws s3 sync \
   root/ s3://www.weboftomorrow.com/ \
-  --profile weboftomorrow \
+  --profile www.weboftomorrow.com \
   $@
 fi
 

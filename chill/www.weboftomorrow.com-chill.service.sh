@@ -11,7 +11,7 @@ cat <<HERE
 # on ${DATE}
 
 [Unit]
-Description=Chill weboftomorrow instance
+Description=Chill www.weboftomorrow.com instance
 After=network.target
 
 [Service]

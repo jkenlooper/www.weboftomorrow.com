@@ -5,7 +5,7 @@ default_md = sha256
 distinguished_name = dn
 
 [ dn ]
-subjectAltName=local-weboftomorrow
-commonName=local-weboftomorrow
+subjectAltName=local-www.weboftomorrow.com
+commonName=local-www.weboftomorrow.com
 emailAddress=jake@weboftomorrow.com
 name=Jake Hickenlooper

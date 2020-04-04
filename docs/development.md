@@ -8,7 +8,7 @@ Written for a Linux machine that is Debian based. Only tested on Ubuntu. Use
 [Vagrant](https://www.vagrantup.com/) or something similar if not on a Linux
 machine.
 
-If using Vagrant; then run `vagrant up` and ssh in (`vagrant ssh`) and go to
+If using Vagrant; then run `vagrant up` and ssh in (`vagrant ssh`). Go to
 the /vagrant/ shared directory when running the rest of the commands.
 
 ```bash
@@ -41,8 +41,9 @@ sudo ./bin/setup.sh;
 ```
 
 To have TLS (SSL) on your development machine run the `bin/provision-local.sh`
-script. That will use `openssl` to create some certs in the web/ directory.
-The rootCA.pem should be imported to Keychain Access and marked as always trusted.
+script. That will use `openssl` to create some certs in the web/ directory. The
+`local-www.weboftomorrow.com-CA.pem`
+file should be imported to Keychain Access and marked as always trusted.
 
 ### The 'dev' user and sqlite db file
 
@@ -81,7 +82,7 @@ The service config files are created by running `make` and installed with
 and activating each time for a new shell with `source bin/activate` before
 running `make`.
 
-**All commands are run from the projects directory unless otherwise noted.** For
+**All commands are run from the project's directory unless otherwise noted.** For
 the Vagrant setup this is the shared folder `/vagrant/`.
 
 ```bash
@@ -95,7 +96,7 @@ before following the below setup will result in an error if these commands
 haven't been installed on the development machine.
 
 If `nvm` isn't available on the dev machine then install it. See
-[github.com/creationix/nvm](https://github.com/creationix/nvm) for more
+[github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm) for more
 information.
 
 ```bash
@@ -104,9 +105,10 @@ information.
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 source ~/.bashrc
 
-# Install latest Nodejs LTS version and set it in the .nvmrc
-nvm install --lts=Erbium
-nvm current > .nvmrc
+# Update to latest Nodejs LTS version and update the .nvmrc
+# This is optional.
+#nvm install --lts=Erbium
+#nvm current > .nvmrc
 
 # Install and use the version set in .nvmrc
 nvm install
@@ -123,14 +125,16 @@ source bin/activate;
 # Install black to format python code when developing
 pip install black;
 
-# Build the dist files for local development
+# Install build dependencies with npm
 npm install;
-npm run build;
 
 # Checkout any git submodules in this repo if didn't
 # `git clone --recurse-submodules ...`.
 git submodule init;
 git submodule update;
+
+# Build the dist files for local development
+npm run build;
 
 # Makes the initial development version
 make;
@@ -139,17 +143,17 @@ sudo make install;
 sudo systemctl reload nginx
 ```
 
-Update `/etc/hosts` to have local-weboftomorrow map to your machine.
+Update `/etc/hosts` to have local-www.weboftomorrow.com map to your machine.
 Access your local development version of the website at
-http://local-weboftomorrow/ . If using vagrant you'll need to use the
-8080 port http://local-weboftomorrow:8080/ .
+http://local-www.weboftomorrow.com/ . If using vagrant you'll need to use the
+8080 port http://local-www.weboftomorrow.com:8080/ .
 
 Append to your `/etc/hosts` file on the host machine (Not vagrant). The
 location of this file on a Windows machine is different.
 
-```bash
+```
 # Append to /etc/hosts
-127.0.0.1 local-weboftomorrow
+127.0.0.1 local-www.weboftomorrow.com
 ```
 
 ### Building the `dist/` files
@@ -157,9 +161,9 @@ location of this file on a Windows machine is different.
 The javascript and CSS files in the `dist/` directory are built from the source
 files in `src/` by running the `npm run build` command. This uses
 [webpack](https://webpack.js.org/) and is configured with the
-`webpack.config.js`. The entry file is `src/index.ts` and following that the
-main site bundle (`site.bundle.js`, `site.css`) is built from
-`src/site/index.js`.
+`webpack.config.js`. The entry file is `src/index.js` and following that the
+main app bundle (`app.bundle.js`, `app.css`) is built from
+`src/app.js`.
 
 The source files for javascript and CSS are organized mostly as components. The
 `src/site/` being an exception as it includes CSS and javascript used across the
@@ -178,12 +182,12 @@ order for them to be included in the distribution file. The distribution file
 is uploaded to the server and the guide to do deployments should then be
 followed.
 
-To create the versioned distribution file (like `weboftomorrow-2.2.0.tar.gz`) use the
+To create the versioned distribution file (like `www.weboftomorrow.com-0.7.0.tar.gz`) use the
 `make dist` command. Note that the version is set in the `package.json`.
 
 The script to create the distribution file only includes the files that have
 been committed to git. It will also limit these to what is listed in the
-`weboftomorrow/MANIFEST`.
+`www.weboftomorrow.com/MANIFEST`.
 
 ## Feature branches and chill-data
 
@@ -218,14 +222,13 @@ sudo ./bin/appctl.sh stop;
 # Builds new db.dump.sql
 make;
 
-# Reset the chill data tables with what is in the new db.dump.sql file
-sqlite3 "/var/lib/weboftomorrow/sqlite3/db" < db.dump.sql;
-echo "pragma journal_mode=wal" | sqlite3 /var/lib/weboftomorrow/sqlite3/db;
+# Update the database with what is in db.dump.sql
+sudo make install;
 ```
 
 ## Uninstalling the app
 
-Run the below commands to remove weboftomorrow from your
+Run the below commands to remove www.weboftomorrow.com from your
 development machine. This will uninstall and disable the services, remove any
 files installed outside of the project's directory including the sqlite3
 database. _Only do this on a development machine if it's database and other
@@ -246,5 +249,61 @@ deactivate;
 git clean -fdX
 
 # Removes all data including the sqlite3 database
-sudo rm -rf /var/lib/weboftomorrow/
+sudo rm -rf /var/lib/www.weboftomorrow.com/
+```
+
+## Regenerating with cookiecutter
+
+Get the latest changes from the cookiecutter that initially generated the
+project
+([jkenlooper/cookiecutter-website](https://github.com/jkenlooper/cookiecutter-website))
+by uninstalling the app, running the cookiecutter in a different directory, and
+then rsync the changed files back in. Use `git` to then patch files as needed.
+
+```bash
+now=$(date --iso-8601 --utc)
+# In the project directory of www.weboftomorrow.com.
+cd ../;
+mkdir www.weboftomorrow.com--${now};
+cd www.weboftomorrow.com--${now};
+
+# Regenerate using last entered config from initial project.  Then git clean the
+# new project files that were just created.
+cookiecutter \
+  --config-file ../www.weboftomorrow.com/.cookiecutter-regen-config.yaml \
+  gh:jkenlooper/cookiecutter-website renow=${now};
+cd www.weboftomorrow.com;
+git clean -fdx;
+
+# Back to parent directory
+cd ../../;
+
+# Create backup tar of project directory before removing all untracked files.
+tar --auto-compress --create --file www.weboftomorrow.com-${now}.bak.tar.gz www.weboftomorrow.com;
+cd www.weboftomorrow.com;
+git clean -fdx --exclude=.env --exclude=.htpasswd;
+cd ../;
+
+# Use rsync to copy over the generated project
+# (www.weboftomorrow.com--${now}/www.weboftomorrow.com)
+# files to the initial project.
+# This will delete all files from the initial project.
+rsync -a \
+  --itemize-changes \
+  --delete \
+  --exclude=.git/ \
+  --exclude=.env \
+  --exclude=.htpasswd \
+  www.weboftomorrow.com--${now}/www.weboftomorrow.com/ \
+  www.weboftomorrow.com
+
+# Remove the generated project after it has been rsynced.
+rm -rf www.weboftomorrow.com--${now};
+
+# Patch files (git add) and drop changes (git checkout) as needed.
+# Refer to the backup www.weboftomorrow.com-${now}.bak.tar.gz
+# if a file or directory that was not tracked by git is missing.
+cd www.weboftomorrow.com;
+git add -i .;
+git checkout -p .;
 ```

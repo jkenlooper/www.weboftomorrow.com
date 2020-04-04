@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{%  from './list_item.html' import listItem %}
+{% extends "base.html.jinja2" %}
+{%  from './list_item.html.jinja2' import listItem %}
 
 {% block main %}
 
@@ -12,7 +12,7 @@
 
     <section>
       <h1>
-        {{ content.title }}
+        {{ content.pagetitle }}
       </h1>
       <nav>
         {% for document in document_list %}

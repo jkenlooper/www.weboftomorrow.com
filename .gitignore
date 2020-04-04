@@ -2,13 +2,20 @@
 
 *.DS_Store
 /.env
+/.eslintcache
 /.htpasswd
 /.has-certs
 /.vagrant/
+/.design-tokens-css
 /site.cfg
 /frozen.tar.gz
-/web/weboftomorrow.conf
-/chill/weboftomorrow-chill.service
+/www.weboftomorrow.com-*.tar.gz
+/web/www.weboftomorrow.com.conf
+/web/www.weboftomorrow.com--down.conf
+/stats/awstats.www.weboftomorrow.com.conf
+/stats/awstats-www.weboftomorrow.com-crontab
+/chill/www.weboftomorrow.com-chill.service
+/api/www.weboftomorrow.com-api.service
 /db
 /db.dump.sql
 /dist/
@@ -20,17 +27,18 @@
 /src/*/*.tmp.css.map
 /src/*/*.tmp.js
 /src/*/*.tmp.js.map
-/weboftomorrow/*
-!/weboftomorrow/MANIFEST
+
+/media/llama-crop.jpg
+/media/llama.*x*.jpg
+/media/llama-*-*.jpg
 
 /web/dhparam.pem
-/web/rootCA.key
-/web/rootCA.pem
-/web/rootCA.srl
-/web/server.crt
-/web/server.csr
-/web/server.key
-/web/v3.ext
+/web/local-www.weboftomorrow.com-CA.key
+/web/local-www.weboftomorrow.com-CA.pem
+/web/local-www.weboftomorrow.com-CA.srl
+/web/local-www.weboftomorrow.com.crt
+/web/local-www.weboftomorrow.com.csr
+/web/local-www.weboftomorrow.com.key
 
 /include/
 /lib/

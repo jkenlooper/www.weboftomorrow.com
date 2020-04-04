@@ -17,7 +17,7 @@ if test -e .env; then
 fi
 
 if test "$ENVIRONMENT" == 'development'; then
-  HOSTNAME="'local-weboftomorrow'"
+  HOSTNAME="'local-www.weboftomorrow.com'"
   DEBUG=True
 else
   HOSTNAME="'www.weboftomorrow.com'"
@@ -34,6 +34,7 @@ cat <<HERE
 HOST = '127.0.0.1'
 HOSTNAME = $HOSTNAME
 PORT = $PORTCHILL
+PORTAPI = $PORTAPI
 
 # Valid SQLite URL forms are:
 #   sqlite:///:memory: (or, sqlite://)

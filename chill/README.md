@@ -1,49 +1,49 @@
-# Chill app for weboftomorrow
+# Chill app for www.weboftomorrow.com
 
-The weboftomorrow-chill.service should be placed in /etc/systemd/system/ in order to function. Note that this is commonly done by the install script.
+The www.weboftomorrow.com-chill.service should be placed in /etc/systemd/system/ in order to function. Note that this is commonly done by the install script.
 
 ```
-sudo cp weboftomorrow-chill.service /etc/systemd/system/
+sudo cp www.weboftomorrow.com-chill.service /etc/systemd/system/
 ```
 
 Start and enable the service.
 
 ```
-sudo systemctl start weboftomorrow-chill
-sudo systemctl enable weboftomorrow-chill
+sudo systemctl start www.weboftomorrow.com-chill
+sudo systemctl enable www.weboftomorrow.com-chill
 ```
 
 Stop the service.
 
 ```
-sudo systemctl stop weboftomorrow-chill
+sudo systemctl stop www.weboftomorrow.com-chill
 ```
 
 View the end of log.
 
 ```
-sudo journalctl --pager-end _SYSTEMD_UNIT=weboftomorrow-chill.service
+sudo journalctl --pager-end _SYSTEMD_UNIT=www.weboftomorrow.com-chill.service
 ```
 
 Follow the log.
 
 ```
-sudo journalctl --follow _SYSTEMD_UNIT=weboftomorrow-chill.service
+sudo journalctl --follow _SYSTEMD_UNIT=www.weboftomorrow.com-chill.service
 ```
 
 View details about service.
 
 ```
-sudo systemctl show weboftomorrow-chill
+sudo systemctl show www.weboftomorrow.com-chill
 ```
 
 Check the status of the service.
 
 ```
-sudo systemctl status weboftomorrow-chill.service
+sudo systemctl status www.weboftomorrow.com-chill.service
 ```
 
-Reload if weboftomorrow-chill.service file has changed.
+Reload if www.weboftomorrow.com-chill.service file has changed.
 
 ```
 sudo systemctl daemon-reload

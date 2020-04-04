@@ -8,22 +8,32 @@ ARCHIVE=$1
 
 TMPDIR=$(mktemp --directory);
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 git clone . "$TMPDIR";
 
 (
 cd "$TMPDIR";
 
+# Use the node and npm that is set in .nvmrc
+nvm use;
+
+# Build
+npm ci; # clean install
+npm run build;
+
 # Create symlinks for all files in the MANIFEST.
-for item in $(cat weboftomorrow/MANIFEST); do
-  dirname "weboftomorrow/${item}" | xargs mkdir -p;
-  dirname "weboftomorrow/${item}" | xargs ln -sf "${PWD}/${item}";
+mkdir -p www.weboftomorrow.com;
+for item in $(cat MANIFEST); do
+  dirname "www.weboftomorrow.com/${item}" | xargs mkdir -p;
+  dirname "www.weboftomorrow.com/${item}" | xargs ln -sf "${PWD}/${item}";
 done;
 
 tar --dereference \
   --exclude=MANIFEST \
   --create \
   --auto-compress \
-  --file "${ARCHIVE}" weboftomorrow;
+  --file "${ARCHIVE}" www.weboftomorrow.com;
 )
 
 # Clean up

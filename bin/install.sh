@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-# /srv/weboftomorrow/
+# /srv/www.weboftomorrow.com/
 SRVDIR=$1
 
 # /etc/nginx/
 NGINXDIR=$2
 
-# /var/log/nginx/weboftomorrow/
+# /var/log/nginx/www.weboftomorrow.com/
 NGINXLOGDIR=$3
 
-# /etc/systemd/system/
-SYSTEMDDIR=$4
+# /var/log/awstats/www.weboftomorrow.com/
+AWSTATSLOGDIR=$4
 
-# /var/lib/weboftomorrow/sqlite3/
-DATABASEDIR=$5
+# /etc/systemd/system/
+SYSTEMDDIR=$5
+
+# /var/lib/www.weboftomorrow.com/sqlite3/
+DATABASEDIR=$6
 
 mkdir -p "${SRVDIR}root/";
 #chown -R dev:dev "${SRVDIR}root/";
@@ -43,12 +46,14 @@ mkdir -p "${NGINXDIR}sites-available"
 rsync --inplace \
   --checksum \
   --itemize-changes \
-  web/default.conf web/weboftomorrow.conf "${NGINXDIR}sites-available/";
-echo rsynced web/default.conf web/weboftomorrow.conf to "${NGINXDIR}sites-available/";
+  web/default.conf web/www.weboftomorrow.com.conf web/www.weboftomorrow.com--down.conf "${NGINXDIR}sites-available/";
+echo rsynced web/default.conf web/www.weboftomorrow.com.conf web/www.weboftomorrow.com--down.conf to "${NGINXDIR}sites-available/";
 
 mkdir -p "${NGINXDIR}sites-enabled";
 ln -sf "${NGINXDIR}sites-available/default.conf" "${NGINXDIR}sites-enabled/default.conf";
-ln -sf "${NGINXDIR}sites-available/weboftomorrow.conf"  "${NGINXDIR}sites-enabled/weboftomorrow.conf";
+
+rm -f "${NGINXDIR}sites-enabled/www.weboftomorrow.com--down.conf"
+ln -sf "${NGINXDIR}sites-available/www.weboftomorrow.com.conf"  "${NGINXDIR}sites-enabled/www.weboftomorrow.com.conf";
 
 rsync --inplace \
   --checksum \
@@ -62,17 +67,58 @@ rsync --inplace \
   --itemize-changes \
   web/dhparam.pem "${NGINXDIR}ssl/dhparam.pem";
 fi
-
-# Create the sqlite database file if not there.
-if (test ! -f "${DATABASEDIR}db"); then
-    echo "Creating database from db.dump.sql"
-    mkdir -p "${DATABASEDIR}"
-    chown -R dev:dev "${DATABASEDIR}"
-    su dev -c "sqlite3 \"${DATABASEDIR}db\" < db.dump.sql"
-    chmod -R 770 "${DATABASEDIR}"
+if (test -f web/local-www.weboftomorrow.com.crt); then
+mkdir -p "${NGINXDIR}ssl/"
+rsync --inplace \
+  --checksum \
+  --itemize-changes \
+  web/local-www.weboftomorrow.com.crt "${NGINXDIR}ssl/local-www.weboftomorrow.com.crt";
+fi
+if (test -f web/local-www.weboftomorrow.com.key); then
+mkdir -p "${NGINXDIR}ssl/"
+rsync --inplace \
+  --checksum \
+  --itemize-changes \
+  web/local-www.weboftomorrow.com.key "${NGINXDIR}ssl/local-www.weboftomorrow.com.key";
 fi
 
+# Create the root directory for stats. The awstats icons will be placed there.
+mkdir -p "${SRVDIR}stats"
+
+if (test -d /usr/share/awstats/icon); then
+rsync --archive \
+  --inplace \
+  --checksum \
+  --itemize-changes \
+  /usr/share/awstats/icon "${SRVDIR}stats/";
+fi
+
+mkdir -p "${AWSTATSLOGDIR}"
+
+# Add crontab file in the cron directory
+cp stats/awstats-www.weboftomorrow.com-crontab /etc/cron.d/
+chmod 0644 /etc/cron.d/awstats-www.weboftomorrow.com-crontab
+# Stop and start in order for the crontab to be loaded (reload not supported).
+systemctl stop cron && systemctl start cron || echo "Can't reload cron service"
+
+# Add the awstats conf
+cp stats/awstats.www.weboftomorrow.com.conf /etc/awstats/
+
+# Set the sqlite database file from the db.dump.sql.
+echo "Setting Chill database tables from db.dump.sql"
+mkdir -p "${DATABASEDIR}"
+chown -R dev:dev "${DATABASEDIR}"
+su dev -c "sqlite3 \"${DATABASEDIR}db\" < db.dump.sql"
+# Need to set Write-Ahead Logging so multiple apps can work with the db
+# concurrently.  https://sqlite.org/wal.html
+su dev -c "echo \"pragma journal_mode=wal\" | sqlite3 ${DATABASEDIR}db"
+chmod -R 770 "${DATABASEDIR}"
+
 mkdir -p "${SYSTEMDDIR}"
-cp chill/weboftomorrow-chill.service "${SYSTEMDDIR}"
-systemctl start weboftomorrow-chill || echo "can't start service"
-systemctl enable weboftomorrow-chill || echo "can't enable service"
+cp chill/www.weboftomorrow.com-chill.service "${SYSTEMDDIR}"
+systemctl start www.weboftomorrow.com-chill || echo "can't start service"
+systemctl enable www.weboftomorrow.com-chill || echo "can't enable service"
+
+cp api/www.weboftomorrow.com-api.service "${SYSTEMDDIR}"
+systemctl start www.weboftomorrow.com-api || echo "can't start service"
+systemctl enable www.weboftomorrow.com-api || echo "can't enable service"

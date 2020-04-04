@@ -1,5 +1,10 @@
 Makefile
 README.md
+api/README.md
+api/api
+api/requirements.txt
+api/setup.py
+api/www.weboftomorrow.com-api.service.sh
 bin/appctl.sh
 bin/create-db-dump-sql.sh
 bin/deploy.sh
@@ -11,10 +16,9 @@ bin/provision-certbot.sh
 bin/provision-local.sh
 bin/setup.sh
 bin/uninstall.sh
-certbot
 chill/README.md
 chill/requirements.txt
-chill/weboftomorrow-chill.service.sh
+chill/www.weboftomorrow.com-chill.service.sh
 chill-data.sql
 chill-data.yaml
 dist
@@ -26,6 +30,11 @@ queries
 requirements.txt
 root
 site.cfg.sh
+source-media
+stats/README.md
+stats/awstats-www.weboftomorrow.com-crontab.sh
+stats/awstats.www.weboftomorrow.com.conf.sh
 templates
 web/default.conf
-web/weboftomorrow.conf.sh
+web/www.weboftomorrow.com.conf.sh
+web/www.weboftomorrow.com--down.conf.sh

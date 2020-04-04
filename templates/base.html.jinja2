@@ -1,11 +1,11 @@
-{% extends 'site.html' %}
+{% extends 'site.html.jinja2' %}
 
 {% block body %}
 <div class="wot-Base">
   <header class="wot-Base-header">
     <div class="wot-Base-content">
       {% block header %}
-      {% include 'top.html' %}
+      {% include 'top.html.jinja2' %}
       {% endblock %}
     </div>
   </header>
@@ -33,7 +33,7 @@
       <div class="wot-Base-content">
 
       {% block footer %}
-        {% include 'bottom_footer.html' %}
+        {% include 'bottom_footer.html.jinja2' %}
       {% endblock %}
 
       </div>
