@@ -74,8 +74,8 @@ frozen.tar.gz: db.dump.sql site.cfg package.json $(shell find templates/ -type f
 	bin/freeze.sh $@
 
 objects += db.dump.sql
-# Create db.dump.sql from chill-data.sql and any chill-*.yaml files
-db.dump.sql: site.cfg chill-data.sql $(wildcard chill-*.yaml)
+# Create db.dump.sql from site-data.sql and any chill-*.yaml files
+db.dump.sql: site.cfg site-data.sql $(wildcard chill-*.yaml)
 	bin/create-db-dump-sql.sh
 
 bin/www.weboftomorrow.com-api: api/requirements.txt requirements.txt api/setup.py

@@ -191,6 +191,12 @@ been committed to git. It will also limit these to what is listed in the
 
 ## Feature branches and chill-data
 
+TODO: bin/create-site-data-sql.sh should be used when any site data should be
+included in source control that is not in chill-data.yaml or other
+chill-data-\*.yaml files.
+
+TODO: Remove chill-data.sql references.
+
 The `chill-data.sql` contains only a dump of the database tables that are used
 in chill. The Chill, Node, Node_Node, Query, Route, and Template tables are
 rebuilt if the `cat chill-data.sql | sqlite3 /path/to/sqlite/db` command is run.
