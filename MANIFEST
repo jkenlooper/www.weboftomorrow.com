@@ -19,7 +19,7 @@ bin/uninstall.sh
 chill/README.md
 chill/requirements.txt
 chill/www.weboftomorrow.com-chill.service.sh
-chill-data.sql
+site-data.sql
 chill-data.yaml
 dist
 documents

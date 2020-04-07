@@ -189,37 +189,33 @@ The script to create the distribution file only includes the files that have
 been committed to git. It will also limit these to what is listed in the
 `www.weboftomorrow.com/MANIFEST`.
 
-## Feature branches and chill-data
+## Committing database data to source control
 
-TODO: bin/create-site-data-sql.sh should be used when any site data should be
-included in source control that is not in chill-data.yaml or other
-chill-data-\*.yaml files.
+Any data that is required for the site to operate should be stored along with
+the source files. Chill specific data is stored as `chill-data.yaml` and any
+other `chill-data-*.yaml` files. Other data that chill would query for should be
+stored in a `site-data.sql` file. The `bin/create-site-data-sql.sh` can be
+edited and run when needed in development. It should export database table data
+to the `site-data.sql` file. The `site-data.sql` should be committed to source
+control and will be used when deploying the site to a server.
 
-TODO: Remove chill-data.sql references.
+The `chill-data.yaml` and `chill-data-*.yaml` files can be manually edited or
+recreated by running the `chill dump` command. The dump command will export
+chill specific data to these files.
 
-The `chill-data.sql` contains only a dump of the database tables that are used
-in chill. The Chill, Node, Node_Node, Query, Route, and Template tables are
-rebuilt if the `cat chill-data.sql | sqlite3 /path/to/sqlite/db` command is run.
-This command is commonly run when deploying to a server or developing locally on
-your own machine. A new feature on a git feature branch will sometimes require updates
-to the `chill-data.sql` file. There is a potential that if multiple feature
-branches are being developed, that there will be messy git conflicts in
-`chill-data.sql`. That would happen if those feature branches committed any
-changes to `chill-data.sql`.
-
-To solve this potential problem of conflicts with `chill-data.sql`, feature
-branches should _not_ be committing any changes to the `chill-data.sql`.
-Instead, the new additions to the chill data should be dumped into
-a `chill-data-feature-[feature-name].yaml` file using the `chill dump` command.
-Then when the feature branch has been merged to the develop branch, the
-`chill-data-feature-[feature-name].yaml` file contents should be appended to
-the `chill-data.yaml` file. The `chill-data-feature-[feature-name].yaml` file
-should then be removed.
+It is good practice to dump feature branch specific chill data to separate files
+like `chill-data-[feature-name].yaml`. That way those changes will not conflict
+with other changes that may be committed to `chill-data.yaml`. When the feature
+branch has been merged to the develop branch, the
+`chill-data-feature-[feature-name].yaml` file contents should be appended to the
+`chill-data.yaml` file. The `chill-data-feature-[feature-name].yaml` file should
+then be removed.
 
 The `chill-data-feature-[feature-name].yaml` file should also be edited to
 _only_ include changes that are being added for that feature branch.
 
-On updates to any chill-data\*.yaml files; run the below commands to reload the chill database.
+On updates to any `chill-data*.yaml` or `site-data.sql` files; run the below
+commands to reload the chill database.
 
 ```bash
 # stop the apps first
