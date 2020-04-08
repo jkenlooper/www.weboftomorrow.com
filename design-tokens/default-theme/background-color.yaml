@@ -9,7 +9,7 @@ global:
 
 props:
   BackgroundColor-background:
-    value: "{!color-light-light}"
+    value: "{!color-light-dark}"
   BackgroundColor-background--dark:
     value: "{!color-light-dark}"
   BackgroundColor-background--light:

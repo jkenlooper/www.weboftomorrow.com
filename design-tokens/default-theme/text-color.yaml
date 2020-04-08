@@ -39,5 +39,14 @@ props:
     value: "{!color-primary-dark}"
     comment: Link text color
   TextColor-primaryOnSurface:
+    value: "{!color-primary}"
+    comment: Link text color and header underline
+  TextColor-secondaryOnBackground:
+    value: "{!color-secondary}"
+    comment: Logo text color
+  TextColor-secondaryOnSurface:
     value: "{!color-primary-dark}"
-    comment: Link text color
+    comment: Logo text color
+  TextColor-darkOnSurface:
+    value: "{!color-dark-dark}"
+    comment: headers and strong text

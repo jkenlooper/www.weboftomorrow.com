@@ -1,8 +1,28 @@
-/* Only styles for things that are not typographic. */
+/*! Underwood Champion by Vic Fieger
+ * http://www.fontsquirrel.com/fonts/Underwood-Champion
+ * http://www.vicfieger.com/
+ */
+@import "../_fonts/underwoodchampion_regular_ubasic/stylesheet.css";
+
+@import url(https://fonts.googleapis.com/css?family=Source + Code + Pro:400);
+
+html {
+  /* font-size 1em = 10px on default browser settings */
+  font-size: 0.625em;
+}
+
 body {
-  background-color: var(--color-light-secondary);
-  color: var(--color-dark-secondary);
+  background-color: var(--designtoken-BackgroundColor-background);
+  color: var(--designtoken-TextColor-onBackground);
   padding: 0;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.6rem; /* 2.0rem if using Terminus */
+  line-height: 1.8em; /* 1.3em if using Terminus */
+}
+@media (--sm-viewport) {
+  body {
+    font-size: 1.3rem;
+  }
 }
 /* Add a fixed top shadow */
 body::before {
@@ -20,21 +40,43 @@ body::before {
 article {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.6rem;
+}
+
+/* Any use of this 'typewriter' font will all
+ * have the same font-size. */
+header {
+  font-family: "underwood_championregular", monospace;
+  font-size: 2rem;
+  line-height: 1.3em;
+  display: block;
+  margin: 0.4em 0;
+}
+
+/* headers */
+h1 {
+  font-weight: normal;
+  font-style: normal;
+  margin: 1.3em 0 0.2em;
+  font-family: "underwood_championregular", monospace;
+  font-size: 2rem;
+  line-height: 1.3em;
+  display: block;
 }
 article h1 {
   position: relative;
   text-align: center;
   margin-top: 2rem;
   padding-bottom: calc(0.7rem + 0.4rem);
-  /* See ::after element.
-  border-bottom: 0.4rem solid var(--color-red);
-  */
   margin-bottom: 1.5rem;
 }
 article h1::after {
   /* Add a bottom border with oh so fancy rounded edges.  For safety reasons. */
   content: "";
-  background-color: var(--color-red);
+  background-color: var(--designtoken-TextColor-primaryOnSurface);
   border-radius: 0.2rem;
   height: 0.4rem;
   display: block;
@@ -42,6 +84,34 @@ article h1::after {
   bottom: 0.5rem;
   left: -2.5rem;
   right: -2.5rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-style: normal;
+  margin: 1.3em 0 0.2em;
+  font-family: "underwood_championregular", monospace;
+  font-size: 2rem;
+  line-height: 1.3em;
+  display: block;
+}
+.wot-Base-main .wot-Base-content h2,
+.wot-Base-main .wot-Base-content h3,
+.wot-Base-main .wot-Base-content h4,
+.wot-Base-main .wot-Base-content h5,
+.wot-Base-main .wot-Base-content h6 {
+  color: var(--designtoken-TextColor-darkOnSurface);
+}
+
+p {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.8em;
+  margin: 0 0 1.3rem;
 }
 /* Indent the first paragraph after a header in an article. */
 article > h1 + p,
@@ -58,6 +128,34 @@ figure {
   padding: 0;
 }
 
+nav {
+  font-family: "underwood_championregular", monospace;
+  font-size: 2rem;
+  line-height: 1.3em;
+  display: block;
+  margin: 0.4em 0;
+}
+.wot-Base-main .wot-Base-content nav {
+  color: var(--designtoken-TextColor-darkOnSurface);
+}
+
+address {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.8em;
+  margin: 0 0 1.3rem;
+}
+address {
+  font-style: normal;
+  line-height: 1.5em;
+}
+
+ul {
+}
+li {
+  margin: 0.6em 0;
+}
+
 /* inline-block */
 
 /* table */
@@ -65,7 +163,7 @@ figure {
 /* inline */
 a {
   text-decoration: none;
-  color: var(--color-red);
+  color: currentcolor;
 }
 a:link {
 }
@@ -76,20 +174,35 @@ a:active,
 a:focus {
   outline: 2px dotted currentcolor;
 }
-
-strong,
-b {
+.wot-Base-main .wot-Base-content a {
+  color: var(--designtoken-TextColor-primaryOnSurface);
 }
 
-@media (--sm-viewport) {
-  body {
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  header {
-  }
+b {
+  font-family: "underwood_championregular", monospace;
+  font-size: 2rem;
+  line-height: 1.3em;
+  display: block;
+  font-weight: normal;
+}
+.wot-Base-main .wot-Base-content b {
+  color: var(--designtoken-TextColor-darkOnSurface);
+}
+
+abbr[title] {
+  border-bottom: 0;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-weight: bold;
+}
+code {
+  /* The Terminus font is my ideal programming font, but it doesn't look as
+   * good on a website. Using this google hosted one instead.
+   */
+  font-family: "Source Code Pro", Terminus, monospace;
+  /* Want to keep any use of this font to have the same font-size site wide. */
+  font-size: 1.6rem;
 }

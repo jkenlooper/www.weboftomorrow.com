@@ -23,10 +23,10 @@
   border-top-width: 0.3rem;
   border-top-style: solid;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  border-top-color: var(--color-dark-dark);
-  background-color: var(--color-dark-secondary);
-  color: var(--color-light-light);
-  text-shadow: 0 0 1px var(--color-dark-dark);
+  border-top-color: var(--designtoken-BackgroundColor-dark--dark);
+  background-color: var(--designtoken-BackgroundColor-dark--light);
+  color: var(--designtoken-TextColor-onDark);
+  text-shadow: 0 0 1px var(--designtoken-BackgroundColor-dark--dark);
 }
 .wot-Base-content {
   padding: 1rem;
@@ -37,7 +37,8 @@
 }
 
 .wot-Base-main .wot-Base-content {
-  background-color: var(--color-light-light);
+  background-color: var(--designtoken-BackgroundColor-surface--light);
+  color: var(--designtoken-TextColor-onsurface);
   border-radius: 1px;
 }
 

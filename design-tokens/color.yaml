@@ -1,65 +1,65 @@
 aliases:
   # Dark grays
-  color-dark: "#221716"
+  color-dark: "#202127"
   color-dark-contrast: "white"
   color-dark-contrast-high: "rgba(255,255,255,0.87)"
   color-dark-contrast-medium: "rgba(255,255,255,0.60)"
   color-dark-contrast-disabled: "rgba(255,255,255,0.38)"
-  color-dark-dark: "#000105"
-  color-dark-light: "#43434e"
-  color-dark-accent: "#272738"
+  color-dark-dark: "#011300"
+  color-dark-light: "#363535"
+  color-dark-accent: "#332017"
 
   # Light grays
-  color-light: "hsl(0, 0%, 96%)"
+  color-light: "#E0D8D0"
   color-light-contrast: "black"
   color-light-contrast-high: "rgba(0,0,0,0.87)"
   color-light-contrast-medium: "rgba(0,0,0,0.60)"
   color-light-contrast-disabled: "rgba(0,0,0,0.38)"
-  color-light-dark: "hsl(0, 0%, 90%)"
-  color-light-light: "hsl(0, 0%, 98%)"
-  color-light-accent: "#fbeedd"
+  color-light-dark: "#cfccc9"
+  color-light-light: "#ebe4dc"
+  color-light-accent: "#F2C2A5"
 
-  # Primary
-  color-primary: "#a5db72"
-  color-primary-contrast: "black"
-  color-primary-contrast-high: "rgba(0,0,0,0.87)"
-  color-primary-contrast-medium: "rgba(0,0,0,0.60)"
-  color-primary-contrast-disabled: "rgba(0,0,0,0.38)"
-  color-primary-dark: "rgb(107, 162, 55)"
-  color-primary-light: "rgb(186, 242, 133)"
-  color-primary-accent: "rgb(139, 232, 50)"
+  # Primary (red)
+  color-primary: "#cf4747"
+  color-primary-contrast: "white"
+  color-primary-contrast-high: "rgba(255,255,255,0.87)"
+  color-primary-contrast-medium: "rgba(255,255,255,0.60)"
+  color-primary-contrast-disabled: "rgba(255,255,255,0.38)"
+  color-primary-dark: "#9A2828"
+  color-primary-light: "#EA5454"
+  color-primary-accent: "#C91010"
 
-  # Secondary
-  color-secondary: "#a872db"
-  color-secondary-contrast: "black"
-  color-secondary-contrast-high: "rgba(0,0,0,0.87)"
-  color-secondary-contrast-medium: "rgba(0,0,0,0.60)"
-  color-secondary-contrast-disabled: "rgba(0,0,0,0.38)"
-  color-secondary-dark: "rgb(100, 62, 136)"
-  color-secondary-light: "rgb(178, 141, 213)"
-  color-secondary-accent: "rgb(131, 44, 215)"
+  # Secondary (darkpurple)
+  color-secondary: "#524656"
+  color-secondary-contrast: "white"
+  color-secondary-contrast-high: "rgba(255,255,255,0.87)"
+  color-secondary-contrast-medium: "rgba(255,255,255,0.60)"
+  color-secondary-contrast-disabled: "rgba(255,255,255,0.38)"
+  color-secondary-dark: "#3D3640"
+  color-secondary-light: "#5E5260"
+  color-secondary-accent: "#47294C"
 
-  # Tertiary
-  color-tertiary: "#72a5db"
+  # Tertiary (not used)
+  color-tertiary: "black"
   color-tertiary-contrast: "white"
   color-tertiary-contrast-high: "rgba(255,255,255,0.87)"
   color-tertiary-contrast-medium: "rgba(255,255,255,0.60)"
   color-tertiary-contrast-disabled: "rgba(255,255,255,0.38)"
-  color-tertiary-dark: "#547aa2"
-  color-tertiary-light: "#94b9e0"
-  color-tertiary-accent: "#4c9ff7"
+  color-tertiary-dark: "black"
+  color-tertiary-light: "black"
+  color-tertiary-accent: "black"
 
-  # Accent
-  color-accent: "#fdba2b"
+  # Accent (not used)
+  color-accent: "red"
   color-accent-contrast: "black"
   color-accent-contrast-high: "rgba(0,0,0,0.87)"
   color-accent-contrast-medium: "rgba(0,0,0,0.60)"
   color-accent-contrast-disabled: "rgba(0,0,0,0.38)"
-  color-accent-dark: "#d89d21"
-  color-accent-light: "#fed57f"
-  color-accent-accent: "#f5a704"
+  color-accent-dark: "red"
+  color-accent-light: "red"
+  color-accent-accent: "red"
 
-  # Error
+  # Error (not used)
   color-error: "#d8091c"
   color-error-contrast: "white"
   color-error-contrast-high: "rgba(255,255,255,0.87)"

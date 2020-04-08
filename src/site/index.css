@@ -9,7 +9,6 @@
 
 /* 1 Elements */
 @import "1-elements-site.css";
-@import "1-elements-typography.css";
 
 /* 2 Objects */
 @import "../t-barkdown/t-barkdown.css"; /* TODO: move to theme level (4) */

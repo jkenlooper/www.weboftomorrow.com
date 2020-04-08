@@ -40,6 +40,11 @@
   */
 }
 
+@import "../../.design-tokens-css/default-theme/settings.custom-properties-selector.css";
+/*
+@import "../../.design-tokens-css/dark-theme/settings.custom-properties-selector.css" (prefers-color-scheme: dark);
+ */
+
 /* widths (update custom-media.css, too) */
 :root {
   --sm-viewport-max: 599px;
