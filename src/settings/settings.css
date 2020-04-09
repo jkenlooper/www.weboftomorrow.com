@@ -1,47 +1,5 @@
-@import "./colour.css";
-/* color naming convention:
- * http://codepen.io/nicetransition/pen/QjwbRg
- */
-:root {
-  /* Color name aliases from colour.css */
-  --color-darkpurple: var(--color-shadowsonthecliff);
-  --color-red: var(--color-bloattonguerbloat);
-  --color-orange: var(--color-itscutee);
-  --color-beige: var(--color-edccb);
-  /*--color-vintageblue: #a6c4bc;*/
-  --color-paper: #f2f5fa;
-
-  /* Darkest color in your palette */
-  --color-dark: #202127;
-  --color-dark-dark: #011300;
-  --color-dark-primary: var(--color-darkpurple);
-  --color-dark-secondary: #363535;
-
-  /* Main color in your palette */
-  /*
-  --color-primary: var(--color-drk-blue);
-  */
-
-  /* Usually a contrast of primary color */
-  /*
-  --color-secondary: var(--color-brown);
-  */
-
-  /* Lightest color in your palette */
-  --color-light: #ebe4dc;
-  --color-light-light: #fff;
-  --color-light-secondary: #cfccc9;
-  --color-light-dark: #6d6c83;
-
-  /* Accent color in the palette */
-  --color-accent: var(--color-orange);
-  /*
-  --color-accent-light: #812b81;
-  */
-}
-
 @import "../../.design-tokens-css/default-theme/settings.custom-properties-selector.css";
-/*
+/* TODO: add dark color scheme
 @import "../../.design-tokens-css/dark-theme/settings.custom-properties-selector.css" (prefers-color-scheme: dark);
  */
 

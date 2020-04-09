@@ -79,7 +79,11 @@ config.module = {
     },
     {
       test: /\.css$/,
-      include: [path.resolve(__dirname, "src"), /prismjs/],
+      include: [
+        path.resolve(__dirname, ".design-tokens-css"),
+        path.resolve(__dirname, "src"),
+        /prismjs/,
+      ],
       use: [
         MiniCssExtractPlugin.loader,
         { loader: "css-loader", options: { importLoaders: 1 } },

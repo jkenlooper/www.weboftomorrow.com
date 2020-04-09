@@ -10,6 +10,6 @@
 }
 
 .wot-ListItem-description {
-  color: var(--color-light-dark);
+  color: var(--designtoken-TextColor-onSurface--medium);
   margin-left: calc(0.7em + 2em);
 }
