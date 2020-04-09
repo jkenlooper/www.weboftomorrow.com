@@ -9,3 +9,11 @@
   overflow: scroll;
   color: white;
 }
+@media print {
+  .document-Example-flaskstatic + pre {
+    max-height: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid black;
+  }
+}

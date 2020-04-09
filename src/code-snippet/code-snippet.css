@@ -14,7 +14,11 @@
   box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   max-height: 42vh;
-  overflow: scroll;
+}
+@media print {
+  .wot-CodeSnippet-pre {
+    max-height: none;
+  }
 }
 
 .wot-CodeSnippet-filepath + .wot-CodeSnippet-pre {
@@ -26,4 +30,12 @@
 pre.wot-CodeSnippet-pre[class*="language-"] {
   font-family: "Source Code Pro", Terminus, monospace;
   font-size: 1.6rem;
+}
+
+@media print {
+  pre.wot-CodeSnippet-pre[class*="language-"] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid black;
+  }
 }

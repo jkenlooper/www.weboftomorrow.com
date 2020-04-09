@@ -18,9 +18,9 @@
     "transform-design-tokens": "./bin/transform-design-tokens.sh"
   },
   "dependencies": {
-    "prismjs": "1.5.1",
     "main.css": "^2.0.0",
     "normalize.css": "^8.0.1",
+    "prismjs": "1.20.0",
     "suitcss-components-button": "^6.0.2",
     "suitcss-utils-display": "^1.0.2",
     "suitcss-utils-text": "^1.0.0"

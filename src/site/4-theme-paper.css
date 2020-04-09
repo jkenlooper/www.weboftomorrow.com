@@ -1,4 +1,6 @@
-.wot-Base-header,
-.wot-Base-bottom {
-  display: none;
+@media print {
+  .wot-Base-header,
+  .wot-Base-bottom {
+    display: none;
+  }
 }

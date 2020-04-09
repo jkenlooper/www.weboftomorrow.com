@@ -24,7 +24,6 @@
     {% block stylesheet %}
 
     <link rel="stylesheet" media="all" href="{{ url_for('send_theme_file', filename='app.css') }}{% if config.DEBUG == True and config.CACHE_TYPE == "null" %}?debug-no-cache={{ chill_now }}{% endif %}">
-    <link rel="stylesheet" media="print" href="{{ url_for('send_theme_file', filename='print.css') }}{% if config.DEBUG == True and config.CACHE_TYPE == "null" %}?debug-no-cache={{ chill_now }}{% endif %}">
     {% endblock %}
 
 		{{ 'favicon.html'|readfile|safe }}
@@ -37,7 +36,6 @@
 
     {% block script %}
     <script src="{{ url_for('send_theme_file', filename='app.bundle.js') }}{% if config.DEBUG == True and config.CACHE_TYPE == "null" %}?debug-no-cache={{ chill_now }}{% endif %}"></script>
-    <script src="{{ url_for('send_theme_file', filename='print.bundle.js') }}{% if config.DEBUG == True and config.CACHE_TYPE == "null" %}?debug-no-cache={{ chill_now }}{% endif %}"></script>
     {% endblock %}
   </body>
 </html>

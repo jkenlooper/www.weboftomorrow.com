@@ -1,0 +1,48 @@
+@media print {
+  body {
+    font-size: 1rem;
+    padding: 0;
+  }
+  body::before {
+    display: none;
+  }
+  /* block */
+  article {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+
+  /* inline-block */
+
+  /* table */
+
+  /* inline */
+  a {
+  }
+
+  strong,
+  b {
+  }
+
+  /* Any use of this 'typewriter' font will all
+ * have the same font-size. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  nav,
+  header {
+    font-size: 1.2rem;
+  }
+
+  li {
+    margin: 0.2em 0;
+  }
+}

@@ -17,6 +17,7 @@ import "./top";
 import "./list-item";
 
 /* 4 Theme */
+import "./site/4-theme-paper.css";
 
 // Import the utils css last
 /* 5 Utilities */
