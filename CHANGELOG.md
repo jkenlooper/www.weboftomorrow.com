@@ -27,11 +27,13 @@ Regenerated project files from cookiecutter-website.
 
 ### Added
 
+- Design token support
 - Changelog.
 
 ### Changed
 
-- Lots of things.
+- Cleaned up print styles
+- ...lots of things.
 
 ## [0.1.0] - 2015-09-20
 
