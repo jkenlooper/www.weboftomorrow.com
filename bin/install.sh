@@ -10,14 +10,11 @@ NGINXDIR=$2
 # /var/log/nginx/www.weboftomorrow.com/
 NGINXLOGDIR=$3
 
-# /var/log/awstats/www.weboftomorrow.com/
-AWSTATSLOGDIR=$4
-
 # /etc/systemd/system/
-SYSTEMDDIR=$5
+SYSTEMDDIR=$4
 
 # /var/lib/www.weboftomorrow.com/sqlite3/
-DATABASEDIR=$6
+DATABASEDIR=$5
 
 mkdir -p "${SRVDIR}root/";
 #chown -R dev:dev "${SRVDIR}root/";
@@ -81,28 +78,6 @@ rsync --inplace \
   --itemize-changes \
   web/local-www.weboftomorrow.com.key "${NGINXDIR}ssl/local-www.weboftomorrow.com.key";
 fi
-
-# Create the root directory for stats. The awstats icons will be placed there.
-mkdir -p "${SRVDIR}stats"
-
-if (test -d /usr/share/awstats/icon); then
-rsync --archive \
-  --inplace \
-  --checksum \
-  --itemize-changes \
-  /usr/share/awstats/icon "${SRVDIR}stats/";
-fi
-
-mkdir -p "${AWSTATSLOGDIR}"
-
-# Add crontab file in the cron directory
-cp stats/awstats-www.weboftomorrow.com-crontab /etc/cron.d/
-chmod 0644 /etc/cron.d/awstats-www.weboftomorrow.com-crontab
-# Stop and start in order for the crontab to be loaded (reload not supported).
-systemctl stop cron && systemctl start cron || echo "Can't reload cron service"
-
-# Add the awstats conf
-cp stats/awstats.www.weboftomorrow.com.conf /etc/awstats/
 
 # Set the sqlite database file from the db.dump.sql.
 echo "Setting Chill database tables from db.dump.sql"

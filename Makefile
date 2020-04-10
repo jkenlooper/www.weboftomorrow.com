@@ -24,7 +24,6 @@ NGINXDIR := $(PREFIXDIR)/etc/nginx/
 SYSTEMDDIR := $(PREFIXDIR)/etc/systemd/system/
 DATABASEDIR := $(PREFIXDIR)/var/lib/www.weboftomorrow.com/sqlite3/
 NGINXLOGDIR := $(PREFIXDIR)/var/log/nginx/www.weboftomorrow.com/
-AWSTATSLOGDIR := $(PREFIXDIR)/var/log/awstats/www.weboftomorrow.com/
 
 # Set the internal ip which is used to secure access to admin/ pages.
 INTERNALIP := $(shell hostname -I | cut -d' ' -f1)
@@ -51,7 +50,7 @@ endif
 # Use $* to get the stem
 FORCE:
 
-objects := site.cfg web/www.weboftomorrow.com.conf web/www.weboftomorrow.com--down.conf stats/awstats.www.weboftomorrow.com.conf stats/awstats-www.weboftomorrow.com-crontab
+objects := site.cfg web/www.weboftomorrow.com.conf web/www.weboftomorrow.com--down.conf
 
 
 #####
@@ -102,12 +101,6 @@ web/www.weboftomorrow.com--down.conf: web/www.weboftomorrow.com--down.conf.sh $(
 #web/www.weboftomorrow.com.conf: web/dhparam.pem
 #endif
 
-stats/awstats.www.weboftomorrow.com.conf: stats/awstats.www.weboftomorrow.com.conf.sh
-	./$< $(NGINXLOGDIR) > $@
-
-stats/awstats-www.weboftomorrow.com-crontab: stats/awstats-www.weboftomorrow.com-crontab.sh
-	./$< $(SRVDIR) $(AWSTATSLOGDIR) > $@
-
 .PHONY: www.weboftomorrow.com-$(TAG).tar.gz
 www.weboftomorrow.com-$(TAG).tar.gz: bin/dist.sh
 	./$< $(abspath $@)
@@ -119,7 +112,7 @@ all: bin/chill bin/www.weboftomorrow.com-api media $(objects)
 
 .PHONY: install
 install:
-	./bin/install.sh $(SRVDIR) $(NGINXDIR) $(NGINXLOGDIR) $(AWSTATSLOGDIR) $(SYSTEMDDIR) $(DATABASEDIR)
+	./bin/install.sh $(SRVDIR) $(NGINXDIR) $(NGINXLOGDIR) $(SYSTEMDDIR) $(DATABASEDIR)
 
 .PHONY: deploy
 deploy:

@@ -12,8 +12,6 @@
 /www.weboftomorrow.com-*.tar.gz
 /web/www.weboftomorrow.com.conf
 /web/www.weboftomorrow.com--down.conf
-/stats/awstats.www.weboftomorrow.com.conf
-/stats/awstats-www.weboftomorrow.com-crontab
 /chill/www.weboftomorrow.com-chill.service
 /api/www.weboftomorrow.com-api.service
 /db
@@ -27,10 +25,6 @@
 /src/*/*.tmp.css.map
 /src/*/*.tmp.js
 /src/*/*.tmp.js.map
-
-/media/llama-crop.jpg
-/media/llama.*x*.jpg
-/media/llama-*-*.jpg
 
 /web/dhparam.pem
 /web/local-www.weboftomorrow.com-CA.key

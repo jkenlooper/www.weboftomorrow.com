@@ -31,9 +31,6 @@ requirements.txt
 root
 site.cfg.sh
 source-media
-stats/README.md
-stats/awstats-www.weboftomorrow.com-crontab.sh
-stats/awstats.www.weboftomorrow.com.conf.sh
 templates
 web/default.conf
 web/www.weboftomorrow.com.conf.sh
