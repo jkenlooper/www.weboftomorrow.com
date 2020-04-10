@@ -48,13 +48,13 @@ CHILL_DATABASE_URI = "sqlite:///${DATABASEDIR}db"
 #PUBLIC_URL_PREFIX = "/"
 
 # If setting the ROOT_FOLDER:
-PUBLIC_URL_PREFIX = "/site"
+#PUBLIC_URL_PREFIX = "/site"
 
 # The ROOT_FOLDER is used to send static files from the '/' route.  This will
 # conflict with the default value for PUBLIC_URL_PREFIX. Any file or directory
 # within the ROOT_FOLDER will be accessible from '/'.  The default is not
 # having anything set.
-ROOT_FOLDER = "root"
+#ROOT_FOLDER = "root"
 
 # The document folder is an optional way of storing content outside of the
 # database.  It is used with the custom filter 'readfile' which can read the
