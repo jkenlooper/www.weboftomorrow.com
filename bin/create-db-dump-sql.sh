@@ -7,6 +7,9 @@ set -eu -o pipefail
 sed "/^CHILL_DATABASE_URI/ s/sqlite:\/\/\/.*db/sqlite:\/\/\/tmpdb/ ; /^CACHE_TYPE/ s/filesystem/null/" \
    site.cfg > tmpsite.cfg;
 
+# Remove the tmpdb if it exists still from a previous failed attempt.
+rm -f tmpdb;
+
 # Initialize database tables for chill
 chill initdb --config tmpsite.cfg;
 

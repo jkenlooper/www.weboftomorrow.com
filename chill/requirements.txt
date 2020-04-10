@@ -1,2 +1,3 @@
 -r ../requirements.txt
-chill==0.6.0
+#chill==0.6.0
+https://github.com/jkenlooper/chill/archive/develop.zip#egg=chill
