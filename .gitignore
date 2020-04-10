@@ -13,7 +13,6 @@
 /web/www.weboftomorrow.com.conf
 /web/www.weboftomorrow.com--down.conf
 /chill/www.weboftomorrow.com-chill.service
-/api/www.weboftomorrow.com-api.service
 /db
 /db.dump.sql
 /dist/

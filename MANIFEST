@@ -1,10 +1,5 @@
 Makefile
 README.md
-api/README.md
-api/api
-api/requirements.txt
-api/setup.py
-api/www.weboftomorrow.com-api.service.sh
 bin/appctl.sh
 bin/create-db-dump-sql.sh
 bin/deploy.sh

@@ -17,8 +17,7 @@ elif test "${COMMAND}" == 'stop'; then
 fi
 systemctl reload nginx;
 
-for app in www.weboftomorrow.com-chill \
-  www.weboftomorrow.com-api;
+for app in www.weboftomorrow.com-chill;
 do
   echo "";
   echo "systemctl $COMMAND $app;";

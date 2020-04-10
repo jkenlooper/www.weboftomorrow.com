@@ -77,15 +77,6 @@ objects += db.dump.sql
 db.dump.sql: site.cfg site-data.sql $(wildcard chill-*.yaml)
 	bin/create-db-dump-sql.sh
 
-bin/www.weboftomorrow.com-api: api/requirements.txt requirements.txt api/setup.py
-	pip install --upgrade --upgrade-strategy eager -r $<
-	touch $@;
-
-
-objects += api/www.weboftomorrow.com-api.service
-api/www.weboftomorrow.com-api.service: api/www.weboftomorrow.com-api.service.sh
-	./$< $(project_dir) > $@
-
 site.cfg: site.cfg.sh $(PORTREGISTRY)
 	./$< $(ENVIRONMENT) $(DATABASEDIR) $(PORTREGISTRY) > $@
 
@@ -108,7 +99,7 @@ www.weboftomorrow.com-$(TAG).tar.gz: bin/dist.sh
 ######
 
 .PHONY: all
-all: bin/chill bin/www.weboftomorrow.com-api media $(objects)
+all: bin/chill media $(objects)
 
 .PHONY: install
 install:
@@ -129,7 +120,6 @@ clean:
 	rm $(objects)
 	echo $(objects) | xargs rm -f
 	pip uninstall --yes -r chill/requirements.txt
-	pip uninstall --yes -r api/requirements.txt
 	for mk in $(source_media_mk); do make -f $${mk} clean; done;
 
 # Remove files placed outside of src directory and uninstall app.

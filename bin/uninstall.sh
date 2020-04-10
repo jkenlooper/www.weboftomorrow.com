@@ -38,10 +38,6 @@ systemctl stop www.weboftomorrow.com-chill
 systemctl disable www.weboftomorrow.com-chill
 rm -f "${SYSTEMDDIR}www.weboftomorrow.com-chill.service";
 
-systemctl stop www.weboftomorrow.com-api
-systemctl disable www.weboftomorrow.com-api
-rm -f "${SYSTEMDDIR}www.weboftomorrow.com-api.service";
-
 # TODO: Should it remove the database file in an uninstall?
 echo "Skipping removal of sqlite database file ${DATABASEDIR}db"
 #rm -f "${DATABASEDIR}db"

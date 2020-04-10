@@ -65,10 +65,6 @@ server {
   location = /robots.txt {}
   location = /favicon.ico {}
 
-  location /api/ {
-    return 503;
-  }
-
 HERE
 
 if (test -f web/dhparam.pem); then

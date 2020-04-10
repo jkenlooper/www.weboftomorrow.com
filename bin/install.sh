@@ -93,7 +93,3 @@ mkdir -p "${SYSTEMDDIR}"
 cp chill/www.weboftomorrow.com-chill.service "${SYSTEMDDIR}"
 systemctl start www.weboftomorrow.com-chill || echo "can't start service"
 systemctl enable www.weboftomorrow.com-chill || echo "can't enable service"
-
-cp api/www.weboftomorrow.com-api.service "${SYSTEMDDIR}"
-systemctl start www.weboftomorrow.com-api || echo "can't start service"
-systemctl enable www.weboftomorrow.com-api || echo "can't enable service"

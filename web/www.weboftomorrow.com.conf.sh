@@ -65,18 +65,6 @@ server {
   location = /robots.txt {}
   location = /favicon.ico {}
 
-  location /api/ {
-    proxy_pass_header Server;
-    proxy_set_header Host \$http_host;
-    proxy_set_header  X-Real-IP  \$remote_addr;
-    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-
-    proxy_redirect off;
-    #proxy_intercept_errors on;
-    proxy_pass http://localhost:${PORTAPI};
-    rewrite ^/api/(.*)\$  /\$1 break;
-  }
-
 HERE
 
 if (test -f web/dhparam.pem); then
