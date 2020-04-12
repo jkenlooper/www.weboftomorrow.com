@@ -25,6 +25,9 @@
 /src/*/*.tmp.js
 /src/*/*.tmp.js.map
 
+# favicon.ico is generated from media/WoT.svg
+/root/favicon.ico
+
 /web/dhparam.pem
 /web/local-www.weboftomorrow.com-CA.key
 /web/local-www.weboftomorrow.com-CA.pem

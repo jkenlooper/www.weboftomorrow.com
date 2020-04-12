@@ -32,6 +32,7 @@ Regenerated project files from cookiecutter-website.
 
 ### Changed
 
+- favicon
 - Cleaned up print styles
 - ...lots of things.
 
