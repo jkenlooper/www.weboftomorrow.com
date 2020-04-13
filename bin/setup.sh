@@ -12,6 +12,10 @@ apt-get --yes install \
   cron \
   curl
 
+# Adds the `convert` command which is used to convert source-media/ images to
+# the media/ directory.
+apt-get --yes install imagemagick
+
 apt-get --yes install \
   python \
   python-dev \

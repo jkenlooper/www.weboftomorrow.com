@@ -1,6 +1,7 @@
 Makefile
 README.md
 bin/appctl.sh
+bin/backup.sh
 bin/create-db-dump-sql.sh
 bin/deploy.sh
 bin/freeze.sh
@@ -10,6 +11,7 @@ bin/log.sh
 bin/provision-certbot.sh
 bin/provision-local.sh
 bin/setup.sh
+bin/site-cfg.py
 bin/uninstall.sh
 chill/README.md
 chill/requirements.txt

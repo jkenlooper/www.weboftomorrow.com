@@ -187,7 +187,7 @@ To create the versioned distribution file (like `www.weboftomorrow.com-0.7.0.tar
 
 The script to create the distribution file only includes the files that have
 been committed to git. It will also limit these to what is listed in the
-`www.weboftomorrow.com/MANIFEST`.
+`MANIFEST`.
 
 ## Committing database data to source control
 

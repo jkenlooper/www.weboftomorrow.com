@@ -24,4 +24,4 @@ More documentation is available within the docs directory.
 
 <small>This project was initially generated from
 [cookiecutter-website version 0.1.0](https://github.com/jkenlooper/cookiecutter-website)
-on 2015-09-20 and is up to date with version 0.2.0 on 2020-04-03.</small>
+on 2015-09-20 and is up to date with version 0.3.0 on 2020-04-13.</small>

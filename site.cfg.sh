@@ -122,6 +122,7 @@ CACHE_TYPE = "null"
 #CACHE_TYPE = "simple"
 #CACHE_TYPE = "filesystem"
 
+# https://pythonhosted.org/Frozen-Flask/#configuration
 # For creating a stand-alone static website that you can upload without
 # requiring an app to run it. This will use Frozen-Flask.
 # The path to the static/frozen website will be put.
