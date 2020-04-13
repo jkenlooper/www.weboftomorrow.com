@@ -19,11 +19,15 @@ Types of changes
 - **Security** in case of vulnerabilities.
 -->
 
+<!--
 ## [Unreleased] - ...
+-->
 
 <!-- TODO: update changelog when developing -->
 
-Regenerated project files from cookiecutter-website.
+## [0.8.0] - 2020-04-13
+
+Rebaked project from cookiecutter-website 0.3.0.
 
 ### Added
 
@@ -34,7 +38,7 @@ Regenerated project files from cookiecutter-website.
 
 - favicon
 - Cleaned up print styles
-- ...lots of things.
+- ...lots of things from version 0.1.0 to 0.7.0.
 
 ## [0.1.0] - 2015-09-20
 
