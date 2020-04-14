@@ -13,6 +13,14 @@
 {% elif content and content.description %}
   {%- set _description = content.description|trim -%}
 {% endif -%}
+{%- if canonical_url %}
+  {%- set _canonical_url = canonical_url|trim -%}
+{% elif content and content.canonical_url %}
+  {%- set _canonical_url = content.canonical_url|trim -%}
+{% else %}
+  {# request.path will start with a '/' #}
+  {%- set _canonical_url = '{scheme}://{hostname}{path}'.format(scheme=config.SITE_PROTOCOL, hostname=config.HOSTNAME, path=request.path) -%}
+{% endif -%}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>

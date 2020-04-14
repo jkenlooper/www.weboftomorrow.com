@@ -33,6 +33,7 @@ cat <<HERE
 # Set the HOST to 0.0.0.0 for being an externally visible server.
 HOST = '127.0.0.1'
 HOSTNAME = $HOSTNAME
+SITE_PROTOCOL = 'http'
 PORT = $PORTCHILL
 PORTAPI = $PORTAPI
 
@@ -127,7 +128,7 @@ CACHE_TYPE = "null"
 # requiring an app to run it. This will use Frozen-Flask.
 # The path to the static/frozen website will be put.
 FREEZER_DESTINATION = "frozen"
-FREEZER_BASE_URL = "http://www.weboftomorrow.com/"
+FREEZER_BASE_URL = "{0}://{1}/".format(SITE_PROTOCOL, HOSTNAME)
 
 HERE
 
