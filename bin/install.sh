@@ -65,18 +65,16 @@ rsync --inplace \
   web/dhparam.pem "${NGINXDIR}ssl/dhparam.pem";
 fi
 if (test -f web/local-www.weboftomorrow.com.crt); then
-mkdir -p "${NGINXDIR}ssl/"
 rsync --inplace \
   --checksum \
   --itemize-changes \
-  web/local-www.weboftomorrow.com.crt "${NGINXDIR}ssl/local-www.weboftomorrow.com.crt";
+  web/local-www.weboftomorrow.com.crt "/etc/ssl/certs/local-www.weboftomorrow.com.crt";
 fi
 if (test -f web/local-www.weboftomorrow.com.key); then
-mkdir -p "${NGINXDIR}ssl/"
 rsync --inplace \
   --checksum \
   --itemize-changes \
-  web/local-www.weboftomorrow.com.key "${NGINXDIR}ssl/local-www.weboftomorrow.com.key";
+  web/local-www.weboftomorrow.com.key "/etc/ssl/private/local-www.weboftomorrow.com.key";
 fi
 
 # Set the sqlite database file from the db.dump.sql.

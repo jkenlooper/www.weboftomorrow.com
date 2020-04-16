@@ -13,36 +13,42 @@ source "$PORTREGISTRY"
 
 DATE=$(date)
 
+# Load snippet confs
+file_ssl_params_conf=$(cat web/ssl_params.conf)
+
 cat <<HERE
 # File generated from $0
 # on ${DATE}
+
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#server-name-if
+server {
+  listen 80;
+  listen 443 ssl http2;
+  server_tokens off;
+HERE
+if test $ENVIRONMENT == 'development'; then
+cat <<HEREBEDEVELOPMENT
+  # Redirect other domains (in development uses 302 temporary redirect)
+  server_name local-weboftomorrow.com;
+  return       302 \$scheme://local-www.weboftomorrow.com\$request_uri;
+HEREBEDEVELOPMENT
+else
+cat <<HEREBEPRODUCTION
+  # Permanent redirect other domains (production uses 301 for permanent)
+  server_name weboftomorrow.com;
+  return       301 \$scheme://www.weboftomorrow.com\$request_uri;
+HEREBEPRODUCTION
+fi
+cat <<HERE
+}
 
 server {
   listen 80;
   listen 443 ssl http2;
   server_tokens off;
 
+  ${file_ssl_params_conf}
 
-  ## SSL Params
-  # from https://cipherli.st/
-  # and https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-  # SSL Decoder https://ssldecoder.org/
-
-  ## Danger Zone.  Only uncomment if you know what you are doing.
-  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-  ssl_prefer_server_ciphers on;
-  ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-  ssl_ecdh_curve secp384r1;
-  ssl_session_cache shared:SSL:10m;
-  ssl_session_tickets off;
-  #ssl_stapling on;
-  #ssl_stapling_verify on;
-  resolver 8.8.8.8 8.8.4.4 valid=300s;
-  resolver_timeout 5s;
-  # Disable preloading HSTS for now.  You can use the commented out header line that includes
-  # the "preload" directive if you understand the implications.
-  #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-  #add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
   add_header X-Frame-Options DENY;
   add_header X-Content-Type-Options nosniff;
 
@@ -79,15 +85,15 @@ if test $ENVIRONMENT == 'development'; then
 if test -e .has-certs; then
 cat <<HEREENABLESSLCERTS
   # certs created for local development
-  ssl_certificate /etc/nginx/ssl/local-www.weboftomorrow.com.crt;
-  ssl_certificate_key /etc/nginx/ssl/local-www.weboftomorrow.com.key;
+  ssl_certificate /etc/ssl/certs/local-www.weboftomorrow.com.crt;
+  ssl_certificate_key /etc/ssl/private/local-www.weboftomorrow.com.key;
 HEREENABLESSLCERTS
 else
 cat <<HERETODOSSLCERTS
-  # certs for local development can be created by running './bin/provision-local.sh'
+  # certs for local development can be created by running './bin/provision-local-ssl-certs.sh'
   # uncomment after they exist (run make again)
-  #ssl_certificate /etc/nginx/ssl/local-www.weboftomorrow.com.crt;
-  #ssl_certificate_key /etc/nginx/ssl/local-www.weboftomorrow.com.key;
+  #ssl_certificate /etc/ssl/certs/local-www.weboftomorrow.com.crt;
+  #ssl_certificate_key /etc/ssl/private/local-www.weboftomorrow.com.key;
 HERETODOSSLCERTS
 fi
 

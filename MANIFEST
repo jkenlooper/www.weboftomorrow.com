@@ -9,7 +9,6 @@ bin/init.sh
 bin/install.sh
 bin/log.sh
 bin/provision-certbot.sh
-bin/provision-local.sh
 bin/setup.sh
 bin/site-cfg.py
 bin/uninstall.sh

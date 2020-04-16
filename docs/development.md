@@ -40,10 +40,16 @@ machine.
 sudo ./bin/setup.sh;
 ```
 
-To have TLS (SSL) on your development machine run the `bin/provision-local.sh`
-script. That will use `openssl` to create some certs in the web/ directory. The
-`local-www.weboftomorrow.com-CA.pem`
-file should be imported to Keychain Access and marked as always trusted.
+To have TLS (SSL) on your development machine run the
+`provision-local-ssl-certs.sh` script. That will use `openssl` to create some
+certs in the web/ directory. The `localhost-CA.pem` file that is created in the
+home directory by default should be imported to Keychain Access and marked as
+always trusted. The Firefox web browser will require importing the
+`localhost-CA.pem` certificate authority file.
+
+```bash
+./bin/provision-local-ssl-certs.sh
+```
 
 ### The 'dev' user and sqlite db file
 

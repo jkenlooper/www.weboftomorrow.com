@@ -79,15 +79,15 @@ if test $ENVIRONMENT == 'development'; then
 if test -e .has-certs; then
 cat <<HEREENABLESSLCERTS
   # certs created for local development
-  ssl_certificate /etc/nginx/ssl/local-www.weboftomorrow.com.crt;
-  ssl_certificate_key /etc/nginx/ssl/local-www.weboftomorrow.com.key;
+  ssl_certificate /etc/ssl/certs/local-www.weboftomorrow.com.crt;
+  ssl_certificate_key /etc/ssl/private/local-www.weboftomorrow.com.key;
 HEREENABLESSLCERTS
 else
 cat <<HERETODOSSLCERTS
-  # certs for local development can be created by running './bin/provision-local.sh'
+  # certs for local development can be created by running './bin/provision-local-ssl-certs.sh'
   # uncomment after they exist (run make again)
-  #ssl_certificate /etc/nginx/ssl/local-www.weboftomorrow.com.crt;
-  #ssl_certificate_key /etc/nginx/ssl/local-www.weboftomorrow.com.key;
+  #ssl_certificate /etc/ssl/certs/local-www.weboftomorrow.com.crt;
+  #ssl_certificate_key /etc/ssl/private/local-www.weboftomorrow.com.key;
 HERETODOSSLCERTS
 fi
 
