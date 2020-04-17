@@ -109,6 +109,9 @@ server {
   access_log  ${NGINXLOGDIR}access.log;
   error_log   ${NGINXLOGDIR}error.log;
 
+  # Temporary redirect any old /site/* pages
+  rewrite ^/site/(.*)\$ /\$1 redirect;
+
   error_page 404 /notfound.html;
   location = /notfound.html {
     internal;
