@@ -10,7 +10,7 @@ TMPDIR=$(mktemp --directory);
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-git clone . "$TMPDIR";
+git clone --recurse-submodules . "$TMPDIR";
 
 (
 cd "$TMPDIR";

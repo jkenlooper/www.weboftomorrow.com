@@ -29,4 +29,5 @@ site.cfg.sh
 source-media
 templates
 web/default.conf
+web/ssl_params.conf
 web/www.weboftomorrow.com.conf.sh
