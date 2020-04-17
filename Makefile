@@ -80,10 +80,10 @@ db.dump.sql: site.cfg site-data.sql $(wildcard chill-*.yaml)
 site.cfg: site.cfg.sh $(PORTREGISTRY)
 	./$< $(ENVIRONMENT) $(DATABASEDIR) $(PORTREGISTRY) > $@
 
-web/www.weboftomorrow.com.conf: web/www.weboftomorrow.com.conf.sh $(PORTREGISTRY)
-	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(PORTREGISTRY) $(INTERNALIP) > $@
-web/www.weboftomorrow.com--down.conf: web/www.weboftomorrow.com--down.conf.sh $(PORTREGISTRY)
-	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(PORTREGISTRY) $(INTERNALIP) > $@
+web/www.weboftomorrow.com.conf: web/www.weboftomorrow.com.conf.sh $(PORTREGISTRY) web/ssl_params.conf
+	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(NGINXDIR) $(PORTREGISTRY) $(INTERNALIP) up > $@
+web/www.weboftomorrow.com--down.conf: web/www.weboftomorrow.com.conf.sh $(PORTREGISTRY) web/ssl_params.conf
+	./$< $(ENVIRONMENT) $(SRVDIR) $(NGINXLOGDIR) $(NGINXDIR) $(PORTREGISTRY) $(INTERNALIP) down > $@
 
 # Uncomment if using dhparam.pem
 #ifeq ($(ENVIRONMENT),production)

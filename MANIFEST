@@ -30,4 +30,3 @@ source-media
 templates
 web/default.conf
 web/www.weboftomorrow.com.conf.sh
-web/www.weboftomorrow.com--down.conf.sh
