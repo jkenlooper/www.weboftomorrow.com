@@ -20,6 +20,7 @@ apt-get install --yes certbot python-certbot-nginx
 # Get the cert and place it in the /.well-known/ location from webroot.
 certbot certonly \
   --webroot --webroot-path "${SRVDIR}root/" \
+  --domain weboftomorrow.com \
   --domain www.weboftomorrow.com
 
 # The Certbot packages on your system come with a cron job or systemd timer that
