@@ -29,11 +29,8 @@
 /root/favicon.ico
 
 /web/dhparam.pem
-/web/local-www.weboftomorrow.com-CA.key
-/web/local-www.weboftomorrow.com-CA.pem
-/web/local-www.weboftomorrow.com-CA.srl
 /web/local-www.weboftomorrow.com.crt
-/web/local-www.weboftomorrow.com.csr
+/web/local-development.csr
 /web/local-www.weboftomorrow.com.key
 
 /include/
