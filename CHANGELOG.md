@@ -25,17 +25,24 @@ Types of changes
 
 <!-- TODO: update changelog when developing -->
 
-## [0.8.0] - 2020-04-13
+## [0.8.0] - 2020-04-17
 
 Rebaked project from cookiecutter-website 0.3.0.
 
 ### Added
 
+- Canonical URLs can be set per page by chill data and defaults to request URL path.
 - Design token support
 - Changelog.
 
+### Fixed
+
+- favicon URL when served by https
+
 ### Changed
 
+- Combined scripts for creating NGINX web config
+- Cleaned up script to create ssl certificates for local development
 - favicon
 - Cleaned up print styles
 - ...lots of things from version 0.1.0 to 0.7.0.
