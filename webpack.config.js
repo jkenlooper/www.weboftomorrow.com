@@ -4,10 +4,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const postcssImport = require("postcss-import");
-const postcssURL = require("postcss-url");
-const postcssPresetEnv = require("postcss-preset-env");
-const postcssCustomMedia = require("postcss-custom-media");
 
 const srcEntry = require("./src/index.js");
 
@@ -89,15 +85,6 @@ config.module = {
         { loader: "css-loader", options: { importLoaders: 1 } },
         {
           loader: "postcss-loader",
-          options: {
-            ident: "postcss",
-            plugins: (loader) => [
-              postcssImport({ root: loader.resourcePath }),
-              postcssCustomMedia(),
-              postcssURL(),
-              postcssPresetEnv(),
-            ],
-          },
         },
       ],
     },
