@@ -17,22 +17,7 @@ value:
         description: Writings and other bits of text about web development.
         slug: list/text
         title: Writings
---- !ChillNode
-name: documentpage
-route:
-  method: GET
-  path: /<document_name>/
-  weight: 1
-template: documentpage.html.jinja2
-value:
-  content: select_document_for_name.sql
---- !ChillNode
-name: documentlistpage
-route: /list/<list_slug>/
-template: documentlistpage.html.jinja2
-value:
-  content: select_list_for_slug.sql
-  document_list: select_documents_for_list.sql
+
 --- !ChillNode
 name: snippet
 route:
@@ -45,3 +30,174 @@ value: _select_snippet_document.sql
 name: jokes-yo-llama-so-fat-spits
 route: /jokes/llama/so-fat/
 value: Yo llama's so fat, when it spits on a hillside, a mudslide happens.
+
+
+--- !ChillNode
+name: documentlistpage-text
+route: /list/text/
+template: documentlistpage.html.jinja2
+value:
+  content:
+    pagetitle: Writings
+    description: 'Collection of writings related to web development'
+    summary: ''
+    slug: 'text'
+  document_list:
+    -
+      title: 'An Opinionated Guide on Web Development'
+      description: 'Opinions about some stuff in regard to web development'
+      slug: opinions
+
+    -
+      title: 'Managing project time'
+      description: "My experience with the Pomodoro technique"
+      slug: 'pomo-projects'
+
+    -
+      title: 'Old CSS Zen Garden example'
+      description: 'Around 2007 I wrote a sample.css for CSS Zen Garden and never published it.'
+      slug: 'old-css'
+    -
+      title: 'The Chill way of adding code snippets'
+      description: 'Examples of including code snippets into an article'
+      slug: 'chill-way-of-adding-code-snippets'
+    -
+      title: 'Changing data structure for bit icons on Puzzle Massive'
+      description: 'Thinking out loud about data structure for Puzzle Massive Bit Icon Database Table'
+      slug: 'puzzle-bit-icon-data-structure'
+--- !ChillNode
+name: documentlistpage-projects
+route: /list/projects/
+template: documentlistpage.html.jinja2
+value:
+  content:
+    pagetitle: Side Projects
+    description: "Some side projects that I've done with some free time"
+    summary: ''
+    slug: 'projects'
+  document_list:
+    -
+      title: 'Puzzle Massive - Massively Multiplayer Online Jigsaw Puzzles'
+      description: 'Development of a Massively Multiplayer Online Jigsaw Puzzles website.'
+      slug: 'puzzle-massive'
+    -
+      title: 'Chill - Database Driven Web Application Framework in Flask'
+      description: 'Developing a custom static site generator with Flask'
+      slug: 'chill'
+    -
+      title: 'Cards on a Plane - Simulating a deck of cards'
+      description: 'Card game that can be played on a plane or a train.'
+      slug: 'cards-on-a-plane.md'
+    -
+      title: 'Awesome Mud Works - some clever bits'
+      description: 'Website for a pottery studio that I built and highlight some clever bits that I developed along the way.'
+      slug: 'clever-bits-of-awesome-mud-works'
+
+--- !ChillNode
+name: document-opinions
+route: /opinions/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Opinions about some stuff in regard to web development'
+    document_stylesheet: ''
+    name: 'opinions'
+    document: 'opinions.md'
+    format: 'md'
+    pagetitle: 'An Opinionated Guide on Web Development'
+--- !ChillNode
+name: document-pomo-projects
+route: /pomo-projects/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'My experience with the Pomodoro technique'
+    document_stylesheet: NULL
+    name: 'pomo-projects'
+    document: 'pomo-projects.md'
+    format: 'md'
+    pagetitle: 'Managing project time'
+--- !ChillNode
+name: document-puzzle-massive
+route: /puzzle-massive/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Development of a Massively Multiplayer Online Jigsaw Puzzles website.'
+    document_stylesheet: ''
+    name: 'puzzle-massive'
+    document: 'puzzle-massive.html'
+    format: 'html'
+    pagetitle: 'Puzzle Massive - Massively Multiplayer Online Jigsaw Puzzles'
+--- !ChillNode
+name: document-old-css
+route: /old-css/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Around 2007 I wrote a sample.css for CSS Zen Garden and never published it.'
+    document_stylesheet: ''
+    name: 'old-css'
+    document: 'old-css.md'
+    format: 'md'
+    pagetitle: 'Old CSS Zen Garden example'
+--- !ChillNode
+name: document-chill-way-of-adding-code-snippets
+route: /chill-way-of-adding-code-snippets/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Examples of including code snippets into an article'
+    document_stylesheet: 'chill-way-of-adding-code-snippets.css'
+    name: 'chill-way-of-adding-code-snippets'
+    document: 'chill-way-of-adding-code-snippets.md'
+    format: 'md'
+    pagetitle: 'The Chill way of adding code snippets'
+--- !ChillNode
+name: document-chill
+route: /chill/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Developing a custom static site generator with Flask'
+    document_stylesheet: ''
+    name: 'chill'
+    document: 'chill.md'
+    format: 'md'
+    pagetitle: 'Chill - Database Driven Web Application Framework in Flask'
+--- !ChillNode
+name: document-puzzle-bit-icon-data-structure
+route: /puzzle-bit-icon-data-structure/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Thinking out loud about data structure for Puzzle Massive Bit Icon Database Table'
+    document_stylesheet: ''
+    name: 'puzzle-bit-icon-data-structure'
+    document: 'puzzle-bit-icon-data-structure.md'
+    format: 'md'
+    pagetitle: 'Changing data structure for bit icons on Puzzle Massive'
+--- !ChillNode
+name: document-cards-on-a-plane
+route: /cards-on-a-plane/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Card game that can be played on a plane or a train.'
+    document_stylesheet: NULL
+    name: 'cards-on-a-plane'
+    document: 'cards-on-a-plane.md'
+    format: 'md'
+    pagetitle: 'Cards on a Plane - Simulating a deck of cards'
+--- !ChillNode
+name: document-clever-bits-of-awesome-mud-works
+route: /clever-bits-of-awesome-mud-works/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Website for a pottery studio that I built and highlight some clever bits that I developed along the way.'
+    document_stylesheet: ''
+    name: 'clever-bits-of-awesome-mud-works'
+    document: 'clever-bits-of-awesome-mud-works.md'
+    format: 'md'
+    pagetitle: 'Awesome Mud Works - some clever bits'

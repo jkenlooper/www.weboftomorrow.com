@@ -16,7 +16,7 @@
       </h1>
       <nav>
         {% for document in document_list %}
-          {{ listItem(document.slug, document.title, document.description) }}
+          {{ listItem(document.document_list.slug, document.document_list.title, document.document_list.description) }}
         {% endfor %}
       </nav>
     </section>

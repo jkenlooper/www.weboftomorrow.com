@@ -20,10 +20,11 @@ fi
   echo '--for more information.';
   # Add other table data specific to the site and not included in chill-*.yaml
   # files.
-  echo 'DROP TABLE if exists Document;';
-  echo 'DROP TABLE if exists List;';
-  echo 'DROP TABLE if exists Document_List;';
-  echo '.dump Document' | sqlite3 "$1";
-  echo '.dump List' | sqlite3 "$1";
-  echo '.dump Document_List' | sqlite3 "$1";
+  # Update: No longer storing document data in Document tables.
+  #echo 'DROP TABLE if exists Document;';
+  #echo 'DROP TABLE if exists List;';
+  #echo 'DROP TABLE if exists Document_List;';
+  #echo '.dump Document' | sqlite3 "$1";
+  #echo '.dump List' | sqlite3 "$1";
+  #echo '.dump Document_List' | sqlite3 "$1";
 } >> site-data.sql;
