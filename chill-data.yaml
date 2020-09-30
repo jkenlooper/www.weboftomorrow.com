@@ -88,6 +88,10 @@ value:
       title: 'Cards on a Plane - Simulating a deck of cards'
       description: 'Card game that can be played on a plane or a train.'
       slug: 'cards-on-a-plane'
+    -
+      title: 'Red Button Trainer - A simple app that is slightly over-engineered'
+      description: 'Trying out many different frameworks and technologies to build a simple app.'
+      slug: 'red-button-trainer'
 
 --- !ChillNode
 name: document-opinions
@@ -185,3 +189,15 @@ value:
     document: 'cards-on-a-plane.md'
     format: 'md'
     pagetitle: 'Cards on a Plane - Simulating a deck of cards'
+--- !ChillNode
+name: document-red-button-trainer
+route: /red-button-trainer/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: 'Trying out many different frameworks and technologies to build a simple app.'
+    document_stylesheet: ''
+    name: 'red-button-trainer'
+    document: 'red-button-trainer.md'
+    format: 'md'
+    pagetitle: 'Red Button Trainer - A simple app that is slightly over-engineered'
