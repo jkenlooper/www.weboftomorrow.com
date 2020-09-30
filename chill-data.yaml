@@ -87,11 +87,7 @@ value:
     -
       title: 'Cards on a Plane - Simulating a deck of cards'
       description: 'Card game that can be played on a plane or a train.'
-      slug: 'cards-on-a-plane.md'
-    -
-      title: 'Awesome Mud Works - some clever bits'
-      description: 'Website for a pottery studio that I built and highlight some clever bits that I developed along the way.'
-      slug: 'clever-bits-of-awesome-mud-works'
+      slug: 'cards-on-a-plane'
 
 --- !ChillNode
 name: document-opinions
@@ -189,15 +185,3 @@ value:
     document: 'cards-on-a-plane.md'
     format: 'md'
     pagetitle: 'Cards on a Plane - Simulating a deck of cards'
---- !ChillNode
-name: document-clever-bits-of-awesome-mud-works
-route: /clever-bits-of-awesome-mud-works/
-template: documentpage.html.jinja2
-value:
-  content:
-    description: 'Website for a pottery studio that I built and highlight some clever bits that I developed along the way.'
-    document_stylesheet: ''
-    name: 'clever-bits-of-awesome-mud-works'
-    document: 'clever-bits-of-awesome-mud-works.md'
-    format: 'md'
-    pagetitle: 'Awesome Mud Works - some clever bits'
