@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu -o pipefail
+set -o errexit -o nounset -o pipefail
 
 # Create a distribution for uploading to a production server.
 

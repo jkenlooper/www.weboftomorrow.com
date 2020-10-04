@@ -3,7 +3,6 @@ README.md
 bin/appctl.sh
 bin/backup.sh
 bin/create-db-dump-sql.sh
-bin/deploy.sh
 bin/freeze.sh
 bin/init.sh
 bin/install.sh

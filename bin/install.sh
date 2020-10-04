@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu -o pipefail
+set -o errexit -o nounset -o pipefail
 
 # /srv/www.weboftomorrow.com/
 SRVDIR=$1

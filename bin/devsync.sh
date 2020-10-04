@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
+
+set -o errexit -o nounset -o pipefail
 
 function usage {
   cat <<USAGE
-Usage: ${0} [-h] [SRC... DEST]
+Usage: ${0} [-h]
 
 Options:
   -h            Show help
@@ -30,12 +31,6 @@ while getopts ":h" opt; do
 done;
 shift "$((OPTIND-1))";
 
-params="$*"
-if test -z "${params}"; then
-  # Use the default source and destination
-  params=". dev@local-www.weboftomorrow.com:/usr/local/src/www.weboftomorrow.com/"
-fi
-
 which rsync > /dev/null || (echo "No rsync command found. Install rsync." && exit 1)
 
 # Use --delay-updates to put files into place at the end. This way any file
@@ -56,14 +51,23 @@ rsync --archive \
   --exclude=.vagrant \
   --exclude=node_modules \
   --exclude=package-lock.json \
-  ${params}
+  . dev@local-www.weboftomorrow.com:/usr/local/src/www.weboftomorrow.com/
 
 # Include any other files that are not part of the MANIFEST, but are created on
 # the local machine.
 rsync --archive \
   --delay-updates \
   --itemize-changes \
-  --include=".env" \
-  --include=".htpasswd" \
-  --exclude="*" \
-  ${params}
+  .env \
+  .htpasswd \
+  dev@local-www.weboftomorrow.com:/usr/local/src/www.weboftomorrow.com/
+
+rsync --archive \
+  --delay-updates \
+  --itemize-changes \
+  --relative \
+  bin/dist.sh \
+  bin/deploy.sh \
+  bin/static.sh \
+  dev@local-www.weboftomorrow.com:/usr/local/src/www.weboftomorrow.com/
+
