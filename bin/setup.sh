@@ -10,6 +10,7 @@ apt-get --yes install \
   nginx \
   apache2-utils \
   cron \
+  zip \
   curl
 
 # Adds the `convert` command which is used to convert source-media/ images to

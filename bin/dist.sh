@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -o errexit -o nounset -o pipefail
+set -o errexit -o pipefail
+
+# Allow NVM_DIR to not be set
+#-o nounset
 
 # Create a distribution for uploading to a production server.
 
@@ -8,7 +11,8 @@ ARCHIVE=$1
 
 TMPDIR=$(mktemp --directory);
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" || echo 'No nvm found'  # This conditionally loads nvm
+nvm --version || echo 'skipping use of nvm'
 
 git clone --recurse-submodules . "$TMPDIR";
 
@@ -16,7 +20,7 @@ git clone --recurse-submodules . "$TMPDIR";
 cd "$TMPDIR";
 
 # Use the node and npm that is set in .nvmrc
-nvm use;
+nvm use || echo 'skipping use of nvm'
 
 # Build
 npm ci; # clean install

@@ -10,7 +10,7 @@ Usage: ${0} [-h] [dist_file.tar.gz]
 Options:
   -h          Show help
 
-Creates a static-[version].tar.gz from the dist file. The top level directory in
+Creates a static.zip from the dist file. The top level directory in
 the archive will have the version as the name.
 
 USAGE
@@ -34,6 +34,8 @@ DIST_FILE=$1
 
 TMP_SRC_DIR=$(mktemp -d);
 tar --directory=${TMP_SRC_DIR} --strip 1 --extract --gunzip -f ${DIST_FILE}
+touch .env
+touch .htpasswd
 cp .env ${TMP_SRC_DIR};
 cp .htpasswd ${TMP_SRC_DIR};
 
@@ -55,11 +57,16 @@ mkdir ${TMP_STATIC_DIR}/${TAG}
 mv frozen/* ${TMP_STATIC_DIR}/${TAG}
 mv root/* ${TMP_STATIC_DIR}/${TAG}
 
-tar --create \
-  --file ${WORKING_DIR}/static-${TAG}.tar.gz \
-  --auto-compress \
-  --directory=${TMP_STATIC_DIR} \
-  .
+#tar --create \
+#  --file ${WORKING_DIR}/static-${TAG}.tar.gz \
+#  --auto-compress \
+#  --directory=${TMP_STATIC_DIR} \
+#  .
+
+(
+cd ${TMP_STATIC_DIR}
+zip -r ${WORKING_DIR}/static.zip .
+)
 
 rm -rf "${TMP_STATIC_DIR}";
 

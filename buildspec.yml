@@ -1,0 +1,44 @@
+version: 0.2
+
+env:
+  shell: bash
+  git-credential-helper: yes
+
+  variables:
+    EXAMPLE_PUBLIC_KEY: fill-this-in
+    EXAMPLE_SECRET_KEY: fill-this-in
+  # TODO: use parameter store instead.
+  #parameter-store:
+  #  EXAMPLE_PUBLIC_KEY:
+  #  EXAMPLE_SECRET_KEY:
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - apt-get update
+      - git submodule update --init --recursive
+      - apt-get --yes install imagemagick
+      - apt-get --yes install sqlite3
+      - apt-get --yes install libpq-dev
+      - apt-get --yes install python-psycopg2
+      - apt-get --yes install zip
+      - npm ci
+
+  pre_build:
+    commands:
+      - python3 -m venv .
+      - source bin/activate
+      - echo "EXAMPLE_PUBLIC_KEY=$EXAMPLE_PUBLIC_KEY" > .env;
+      - echo "EXAMPLE_SECRET_KEY=$EXAMPLE_SECRET_KEY" >> .env;
+  build:
+    commands:
+      - npm run build
+      - make ENVIRONMENT=production
+      - make dist
+      - ./bin/static.sh www.weboftomorrow.com-*.tar.gz
+
+artifacts:
+  files:
+    - static.zip
