@@ -4,13 +4,9 @@ env:
   shell: bash
   git-credential-helper: yes
 
-  variables:
-    EXAMPLE_PUBLIC_KEY: fill-this-in
-    EXAMPLE_SECRET_KEY: fill-this-in
-  # TODO: use parameter store instead.
-  #parameter-store:
-  #  EXAMPLE_PUBLIC_KEY:
-  #  EXAMPLE_SECRET_KEY:
+  parameter-store:
+    EXAMPLE_PUBLIC_KEY: /weboftomorrow/example_public_key
+    EXAMPLE_SECRET_KEY: /weboftomorrow/example_secret_key
 
 phases:
   install:
@@ -38,7 +34,16 @@ phases:
       - make ENVIRONMENT=production
       - make dist
       - ./bin/static.sh www.weboftomorrow.com-*.tar.gz
+  post_build:
+    finally:
+      - echo "Creating source.zip"
+      - TMP_STATICZIP_DIR=$(mktemp -d);
+      - mv static.zip $TMP_STATICZIP_DIR
+      - git clean -dx -f
+      - zip -r source.zip .
+      - mv ${TMP_STATICZIP_DIR}/static.zip ./
 
 artifacts:
   files:
     - static.zip
+    - source.zip
