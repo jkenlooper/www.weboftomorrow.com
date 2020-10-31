@@ -5,12 +5,14 @@ env:
   git-credential-helper: yes
   variables:
     STAGING_URL: http://local-www.weboftomorrow.com
+    GIT_BRANCH: release
 
 phases:
   install:
     runtime-versions:
       nodejs: 12
     commands:
+      - git checkout $GIT_BRANCH
       - npm ci
 
   build:

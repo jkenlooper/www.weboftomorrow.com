@@ -8,13 +8,17 @@ env:
     EXAMPLE_PUBLIC_KEY: /weboftomorrow/example_public_key
     EXAMPLE_SECRET_KEY: /weboftomorrow/example_secret_key
 
+  variables:
+    GIT_BRANCH: release
+
 phases:
   install:
     runtime-versions:
       nodejs: 12
     commands:
-      - apt-get update
+      - git checkout $GIT_BRANCH
       - git submodule update --init --recursive
+      - apt-get update
       - apt-get --yes install imagemagick
       - apt-get --yes install sqlite3
       - apt-get --yes install libpq-dev
