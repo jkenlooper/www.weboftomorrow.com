@@ -1,0 +1,26 @@
+[
+  {
+    "ParameterKey": "ProjectSlug",
+    "ParameterValue": "weboftomorrow"
+  },
+  {
+    "ParameterKey": "Region",
+    "ParameterValue": "us-west-2"
+  },
+  {
+    "ParameterKey": "BlueVersion",
+    "ParameterValue": "blue"
+  },
+  {
+    "ParameterKey": "GreenVersion",
+    "ParameterValue": "green"
+  },
+  {
+    "ParameterKey": "GitBranchToBuildFrom",
+    "ParameterValue": "release"
+  },
+  {
+    "ParameterKey": "PatternToTriggerBuild",
+    "ParameterValue": "^refs/heads/release"
+  }
+]

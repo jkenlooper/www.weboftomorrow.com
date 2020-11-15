@@ -51,3 +51,4 @@ artifacts:
   files:
     - static.zip
     - source.zip
+    - parameters.json

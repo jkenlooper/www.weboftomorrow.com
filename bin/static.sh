@@ -56,6 +56,8 @@ shopt -s dotglob nullglob
 mkdir ${TMP_STATIC_DIR}/${TAG}
 mv frozen/* ${TMP_STATIC_DIR}/${TAG}
 mv root/* ${TMP_STATIC_DIR}/${TAG}
+echo "${TAG}" > ${TMP_STATIC_DIR}/VERSION
+#cp -r ${TMP_STATIC_DIR}/${TAG} ${TMP_STATIC_DIR}/yellow
 
 #tar --create \
 #  --file ${WORKING_DIR}/static-${TAG}.tar.gz \
