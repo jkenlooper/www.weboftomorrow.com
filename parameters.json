@@ -22,5 +22,9 @@
   {
     "ParameterKey": "PatternToTriggerBuild",
     "ParameterValue": "^refs/heads/release"
+  },
+  {
+    "ParameterKey": "HostedZoneId",
+    "ParameterValue": "Z0504644KL0PCBGDNYJQ"
   }
 ]
