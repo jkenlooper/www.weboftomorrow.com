@@ -41,11 +41,16 @@ phases:
   post_build:
     finally:
       - echo "Creating source.zip"
-      - TMP_STATICZIP_DIR=$(mktemp -d);
-      - mv static.zip $TMP_STATICZIP_DIR
-      - git clean -dx -f
-      - zip -r source.zip .
-      - mv ${TMP_STATICZIP_DIR}/static.zip ./
+      - TMP_CLEAN_DIR=$(mktemp -d);
+      - git clone . $TMP_CLEAN_DIR
+      - SOURCE_DIR=$PWD
+      - (cd $TMP_CLEAN_DIR && zip -r $SOURCE_DIR/source.zip .)
+      - echo "Clean up before cache is set."
+      - rm -rf node_modules
+
+cache:
+  paths:
+    - '**/*'
 
 artifacts:
   files:
