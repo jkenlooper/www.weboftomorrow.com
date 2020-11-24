@@ -38,5 +38,7 @@
 /local/
 /share/
 
+/.cache/
+
 *.pyc
 *.egg-info/
