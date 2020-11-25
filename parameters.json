@@ -24,6 +24,18 @@
     "ParameterValue": "^refs/heads/release"
   },
   {
+    "ParameterKey": "CacheControlForTheme",
+    "ParameterValue": "max-age=31536000"
+  },
+  {
+    "ParameterKey": "CacheControlForMedia",
+    "ParameterValue": "max-age=1200, s-maxage=31536000"
+  },
+  {
+    "ParameterKey": "CacheControlDefault",
+    "ParameterValue": "max-age=300, s-maxage=31536000"
+  },
+  {
     "ParameterKey": "HostedZoneId",
     "ParameterValue": "Z0504644KL0PCBGDNYJQ"
   }

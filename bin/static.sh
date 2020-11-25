@@ -56,14 +56,8 @@ shopt -s dotglob nullglob
 mkdir ${TMP_STATIC_DIR}/${TAG}
 mv frozen/* ${TMP_STATIC_DIR}/${TAG}
 mv root/* ${TMP_STATIC_DIR}/${TAG}
-echo "${TAG}" > ${TMP_STATIC_DIR}/VERSION
+# The yellow directory is used when syncing to the green version
 mv ${TMP_STATIC_DIR}/${TAG} ${TMP_STATIC_DIR}/yellow
-
-#tar --create \
-#  --file ${WORKING_DIR}/static-${TAG}.tar.gz \
-#  --auto-compress \
-#  --directory=${TMP_STATIC_DIR} \
-#  .
 
 (
 cd ${TMP_STATIC_DIR}

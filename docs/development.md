@@ -74,8 +74,13 @@ Create the `.env` and `.htpasswd` files. These should not be added to the
 distribution or to source control (git).
 
 ```bash
-echo "EXAMPLE_PUBLIC_KEY=fill-this-in" > .env;
-echo "EXAMPLE_SECRET_KEY=fill-this-in" >> .env;
+cat << HERE > .env
+EXAMPLE_PUBLIC_KEY=fill-this-in
+EXAMPLE_SECRET_KEY=fill-this-in
+S3_ARTIFACT_BUCKET_NAME=name-of-s3-bucket-for-artifacts
+S3_WEBSITE_BUCKET_NAME=name-of-s3-bucket-configured-for-website
+AWSCONFIG_PROFILE=aws-config-profile-to-use
+HERE
 htpasswd -c .htpasswd admin;
 ```
 
