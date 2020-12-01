@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -o errexit -o pipefail -o nounset
+set -v
 GIT_STATUS=$(git diff-index --name-status HEAD)
 USE_EXISTING_STATIC_ZIP=n
 
@@ -29,9 +30,9 @@ files in the S3 website bucket with what is currently commited in this git
 directory. The patch file is uploaded to the S3 artifact bucket and a AWS
 CodeBuild project is started to deploy the patch directly on the production
 files in S3.
-The S3 website bucket name and S3 artifact bucket name are set in the project's
-.env file. A profile should also be added to ~/.aws/config file and the name of
-which should be added to the .env file.
+A profile should be added to the ~/.aws/config file and the name of which should
+be added to the project's .env file. This profile should include the
+'artifact_bucket' and 'staticwebsite_bucket' values.
 This will create a local .cache directory which is used to store a copy of the
 static site files. The aws s3 sync command is used with it.
 
@@ -50,17 +51,19 @@ while getopts ":hf" opt; do
 done;
 shift "$((OPTIND-1))";
 
-# Get the S3_ARTIFACT_BUCKET_NAME S3_WEBSITE_BUCKET_NAME from the .env file.
+# Get the AWSCONFIG_PROFILE from the .env file.
 source .env
 
-ARTIFACT_BUCKET=$S3_ARTIFACT_BUCKET_NAME
-STATIC_SITE_FILES_BUCKET=$S3_WEBSITE_BUCKET_NAME
 PROFILE=$AWSCONFIG_PROFILE
+ARTIFACT_BUCKET=$(aws configure get artifact_bucket --profile $AWSCONFIG_PROFILE)
+STATIC_SITE_FILES_BUCKET=$(aws configure get asdfstaticwebsite_bucket --profile $AWSCONFIG_PROFILE)
 VERSION=$(jq -r '.version' package.json)
-PROJECT_SLUG=$(jq -r '.[] | select(.ParameterKey == "ProjectSlug") | .ParameterValue' parameters.json)
+PROJECT_SLUG=weboftomorrow
 GREEN_VERSION=$(jq -r '.[] | select(.ParameterKey == "GreenVersion") | .ParameterValue' parameters.json)
 TMP_DIR=$(mktemp -d)
 WORK_DIR=$PWD
+
+exit 0
 
 cleanup() {
 # Remove all files and directories in .cache except current.
@@ -83,19 +86,19 @@ unzip static.zip -d .cache
 (
 cd .cache
 # diff will exit with 1 if files are different; 2 if trouble; 0 if no changes
-diff --recursive --new-file -u --text current/ yellow/ > $TMP_DIR/static-${GREEN_VERSION}.patch || if [ $? -eq 1 ]; then echo 'Created patch file'; else echo 'failed to create patch file'; cleanup; exit 1; fi
-if [ ! -s $TMP_DIR/static-${GREEN_VERSION}.patch ]; then
+diff --recursive --new-file -u --text current/ yellow/ > $TMP_DIR/static.patch || if [ $? -eq 1 ]; then echo 'Created patch file'; else echo 'failed to create patch file'; cleanup; exit 1; fi
+if [ ! -s $TMP_DIR/static.patch ]; then
   echo 'no patch file created'
   cleanup
   exit 1
 fi
 )
 
-du -h $TMP_DIR/static-${GREEN_VERSION}.patch
+du -h $TMP_DIR/static.patch
 
 (
 cd .cache/current
-patch --dry-run -p1 -r - --no-backup-if-mismatch --remove-empty-files --force < $TMP_DIR/static-${GREEN_VERSION}.patch
+patch --dry-run -p1 -r - --no-backup-if-mismatch --remove-empty-files --force < $TMP_DIR/static.patch
 )
 read -p '
 Proceed with patch? y/n ' -n 1 CONTINUE
@@ -105,7 +108,7 @@ echo ""
 echo "Uploading patch file and starting the StaticPatch build"
 echo ""
 
-aws --profile $PROFILE s3 cp $TMP_DIR/static-${GREEN_VERSION}.patch "s3://${ARTIFACT_BUCKET}/${PROJECT_SLUG}/StaticBuild/static-${GREEN_VERSION}.patch"
+aws --profile $PROFILE s3 cp $TMP_DIR/static.patch "s3://${ARTIFACT_BUCKET}/${PROJECT_SLUG}/StaticBuild/static.patch"
 
 # Trigger the codebuild project
 aws --profile $PROFILE \

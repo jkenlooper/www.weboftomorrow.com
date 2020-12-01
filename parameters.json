@@ -1,9 +1,5 @@
 [
   {
-    "ParameterKey": "ProjectSlug",
-    "ParameterValue": "weboftomorrow"
-  },
-  {
     "ParameterKey": "Region",
     "ParameterValue": "us-west-2"
   },
