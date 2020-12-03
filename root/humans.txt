@@ -4,3 +4,4 @@
 # TEAM
 
     Jake Hickenlooper
+        I create and solve problems. Sometimes in that order.
