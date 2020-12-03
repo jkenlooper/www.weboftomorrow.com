@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -o errexit -o pipefail -o nounset
-set -v
 GIT_STATUS=$(git diff-index --name-status HEAD)
 USE_EXISTING_STATIC_ZIP=n
 
@@ -55,15 +54,17 @@ shift "$((OPTIND-1))";
 source .env
 
 PROFILE=$AWSCONFIG_PROFILE
+# Check for these first
+aws configure get artifact_bucket --profile $AWSCONFIG_PROFILE || (echo "Failed to get artifact_bucket value" && exit 1)
+aws configure get staticwebsite_bucket --profile $AWSCONFIG_PROFILE || (echo "Failed to get staticwebsite_bucket value" && exit 1)
+
 ARTIFACT_BUCKET=$(aws configure get artifact_bucket --profile $AWSCONFIG_PROFILE)
-STATIC_SITE_FILES_BUCKET=$(aws configure get asdfstaticwebsite_bucket --profile $AWSCONFIG_PROFILE)
+STATIC_SITE_FILES_BUCKET=$(aws configure get staticwebsite_bucket --profile $AWSCONFIG_PROFILE)
 VERSION=$(jq -r '.version' package.json)
 PROJECT_SLUG=weboftomorrow
 GREEN_VERSION=$(jq -r '.[] | select(.ParameterKey == "GreenVersion") | .ParameterValue' parameters.json)
 TMP_DIR=$(mktemp -d)
 WORK_DIR=$PWD
-
-exit 0
 
 cleanup() {
 # Remove all files and directories in .cache except current.
