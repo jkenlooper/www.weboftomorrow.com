@@ -10,9 +10,3 @@
 [submodule "documents/snippets/chill"]
 	path = documents/snippets/chill
 	url = https://github.com/jkenlooper/chill.git
-[submodule "documents/snippets/awesomemudworks.com/gist-intrinsic-ratio-css"]
-	path = documents/snippets/awesomemudworks.com/gist-intrinsic-ratio-css
-	url = https://gist.github.com/55f5a6a001937bc8bde408ff03a80f97.git
-[submodule "documents/snippets/awesomemudworks.com/gist-gallery-mk"]
-	path = documents/snippets/awesomemudworks.com/gist-gallery-mk
-	url = https://gist.github.com/1529699c7cf5bd2e66669d930461f673.git
