@@ -105,14 +105,6 @@ all: bin/chill media $(objects)
 install:
 	./bin/install.sh $(SRVDIR) $(NGINXDIR) $(NGINXLOGDIR) $(SYSTEMDDIR) $(DATABASEDIR)
 
-.PHONY: deploy
-deploy:
-ifeq ($(ENVIRONMENT),production)
-	./bin/deploy.sh
-else
-	./bin/deploy.sh --dryrun
-endif
-
 # Remove any created files in the src directory which were created by the
 # `make all` recipe.
 .PHONY: clean

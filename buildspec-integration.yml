@@ -4,7 +4,9 @@ env:
   shell: bash
   git-credential-helper: yes
   variables:
+    # STAGING_URL is set when running the build (see CloudFrontStaging resource)
     STAGING_URL: http://local-www.weboftomorrow.com
+    # GIT_BRANCH is typically set by the GitBranchToBuildFrom parameter value.
     GIT_BRANCH: release
 
 phases:

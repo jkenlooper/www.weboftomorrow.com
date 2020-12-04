@@ -67,7 +67,7 @@ rsync --archive \
   --itemize-changes \
   --relative \
   bin/dist.sh \
-  bin/deploy.sh \
+  bin/deploy-patch.sh \
   bin/static.sh \
   dev@local-www.weboftomorrow.com:/usr/local/src/www.weboftomorrow.com/
 

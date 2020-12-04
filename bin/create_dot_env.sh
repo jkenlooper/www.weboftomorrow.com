@@ -39,6 +39,10 @@ fi
 (
 cat <<HERE
 
+# Any changes to this .env should also match changes in the buildspec.yml. Note
+# that the buildspec.yml uses parameter-store for any variables that should not
+# be committed to version control.
+
 # Example purposes only.
 EXAMPLE_PUBLIC_KEY=fill-this-in
 EXAMPLE_SECRET_KEY=fill-this-in

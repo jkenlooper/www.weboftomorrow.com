@@ -34,9 +34,11 @@
 /web/local-www.weboftomorrow.com.key
 
 /include/
-/lib/
+/lib
+/lib64
 /local/
 /share/
+/pyvenv.cfg
 
 /.cache/
 

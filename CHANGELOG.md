@@ -25,6 +25,26 @@ Types of changes
 
 <!-- TODO: update changelog when developing -->
 
+## [Unreleased] - ...
+
+Support deployment to S3 bucket.
+
+### Added
+
+- Shell scripts to create and deploy patch files to S3 and start a StaticPatch
+  codebuild project
+- Initial buildspec file to run integration testing in a CI environment
+- Buildspec file to build the static site and start a deployment pipeline
+
+### Changed
+
+- Moved custom SQL bits of document page and document list page to be in chill-data.yaml
+
+### Removed
+
+- Replaced old deploy S3 script
+- Old page about Awesome Mud Works
+
 ## [0.8.0] - 2020-04-17
 
 Rebaked project from cookiecutter-website 0.3.0.
