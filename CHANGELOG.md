@@ -35,6 +35,7 @@ Support deployment to S3 bucket.
   codebuild project
 - Initial buildspec file to run integration testing in a CI environment
 - Buildspec file to build the static site and start a deployment pipeline
+- Page about weboftomorrow-infrastructure project
 
 ### Changed
 

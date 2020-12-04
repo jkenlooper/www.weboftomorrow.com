@@ -92,6 +92,11 @@ value:
       title: 'Red Button Trainer - A simple app that is slightly over-engineered'
       description: 'Trying out many different frameworks and technologies to build a simple app.'
       slug: 'red-button-trainer'
+    -
+      title: 'Web of Tomorrow Infrastructure - Using AWS for a static site'
+      description: >
+        Overview of the AWS infrastructure used for the Web of Tomorrow website.
+      slug: 'weboftomorrow-infrastructure'
 
 --- !ChillNode
 name: document-opinions
@@ -201,3 +206,16 @@ value:
     document: 'red-button-trainer.md'
     format: 'md'
     pagetitle: 'Red Button Trainer - A simple app that is slightly over-engineered'
+--- !ChillNode
+name: document-weboftomorrow-infrastructure
+route: /weboftomorrow-infrastructure/
+template: documentpage.html.jinja2
+value:
+  content:
+    description: >
+      Overview of the AWS infrastructure used for the Web of Tomorrow website.
+    document_stylesheet: ''
+    name: 'weboftomorrow-infrastructure'
+    document: 'weboftomorrow-infrastructure.md'
+    format: 'md'
+    pagetitle: 'Web of Tomorrow Infrastructure - Using AWS for a static site'
