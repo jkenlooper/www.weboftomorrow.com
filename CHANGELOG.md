@@ -25,7 +25,7 @@ Types of changes
 
 <!-- TODO: update changelog when developing -->
 
-## [Unreleased] - ...
+## [0.8.1] - 2020-12-05
 
 Support deployment to S3 bucket.
 
