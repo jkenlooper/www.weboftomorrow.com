@@ -81,6 +81,7 @@ aws --profile $PROFILE s3 sync \
 
 [ $USE_EXISTING_STATIC_ZIP = 'n' ] && make dist
 [ $USE_EXISTING_STATIC_ZIP = 'n' ] && ./bin/static.sh www.weboftomorrow.com-${VERSION}.tar.gz
+rm -rf .cache/yellow
 unzip static.zip -d .cache
 
 # Create the patch with the difference of current and yellow.

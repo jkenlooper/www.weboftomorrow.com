@@ -61,6 +61,7 @@ mv ${TMP_STATIC_DIR}/${TAG} ${TMP_STATIC_DIR}/yellow
 
 (
 cd ${TMP_STATIC_DIR}
+rm -f ${WORKING_DIR}/static.zip
 zip -r ${WORKING_DIR}/static.zip .
 )
 
