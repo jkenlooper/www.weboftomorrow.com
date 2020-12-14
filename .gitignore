@@ -10,6 +10,7 @@
 /site.cfg
 /frozen.tar.gz
 /www.weboftomorrow.com-*.tar.gz
+/static.zip
 /web/www.weboftomorrow.com.conf
 /web/www.weboftomorrow.com--down.conf
 /chill/www.weboftomorrow.com-chill.service

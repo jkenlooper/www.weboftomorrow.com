@@ -43,8 +43,7 @@ WORKING_DIR=$(pwd);
 
 (
 cd ${TMP_SRC_DIR};
-#python3 -m venv .
-virtualenv . -p python3;
+python3 -m venv .
 source bin/activate;
 TAG=$(make inspect.TAG)
 make ENVIRONMENT=production;

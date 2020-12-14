@@ -124,7 +124,7 @@ When first installing on a development machine (not production) run:
 
 ```bash
 # Setup to use a virtual python environment
-virtualenv . -p python3;
+python3 -m venv .;
 source bin/activate;
 
 # Install black to format python code when developing
