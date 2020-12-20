@@ -110,7 +110,8 @@ echo ""
 echo "Uploading patch file and starting the StaticPatch build"
 echo ""
 
-aws --profile $PROFILE s3 cp $TMP_DIR/static.patch "s3://${ARTIFACT_BUCKET}/${PROJECT_SLUG}/StaticBuild/static.patch"
+aws --profile $PROFILE s3 cp parameters.json "s3://${ARTIFACT_BUCKET}/staticbuild/${PROJECT_SLUG}/parameters.json"
+aws --profile $PROFILE s3 cp $TMP_DIR/static.patch "s3://${ARTIFACT_BUCKET}/staticbuild/${PROJECT_SLUG}/static.patch"
 
 # Trigger the codebuild project
 aws --profile $PROFILE \
