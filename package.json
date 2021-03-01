@@ -22,7 +22,7 @@
   "dependencies": {
     "main.css": "^2.1.0",
     "normalize.css": "^8.0.1",
-    "prismjs": "1.21.0",
+    "prismjs": "1.23.0",
     "suitcss-components-button": "^6.0.2",
     "suitcss-utils-display": "^1.0.2",
     "suitcss-utils-text": "^1.0.0"
